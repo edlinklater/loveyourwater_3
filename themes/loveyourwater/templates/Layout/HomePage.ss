@@ -4,6 +4,48 @@
        <% include Carousel %>
     </div><!-- /.carousel -->
 
+    <div class="container upcoming-events">
+        <h2 class="page-header">Upcoming events</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
+            </div><!-- /.col-sm-6 -->
+            <div class="col-sm-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
+            </div><!-- /.col-sm-6 -->
+        </div>
+    </div>
+
 
 <!-- Marketing messaging and featurettes
     ================================================== -->
@@ -12,6 +54,7 @@
     <div class="container marketing">
 
         <!-- Three columns of text below the carousel -->
+        <h2 class="page-header">Business sections</h2>
         <div class="row">
             <div class="col-sm-3">
                 <!-- <div class="col-xs-6 col-sm-3 placeholder"> -->
@@ -90,9 +133,4 @@
 
         <hr class="featurette-divider">
 
-        <!-- /END THE FEATURETTES -->   <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
+        <!-- /END THE FEATURETTES -->   
