@@ -1,9 +1,10 @@
 <!-- Carousel
     ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-       <% include Carousel %>
-    </div><!-- /.carousel -->
-
+    <% if Banners %>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+           <% include Carousel %>
+        </div><!-- /.carousel -->
+    <% end_if %>
 
 <!-- Marketing messaging and featurettes
     ================================================== -->
