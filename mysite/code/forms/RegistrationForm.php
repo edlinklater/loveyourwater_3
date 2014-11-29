@@ -13,7 +13,6 @@ class RegistrationForm extends Form {
         $fields->push(new EmailField('Email', 'Email'));
         $fields->push(new TextField('Phone', 'Phone'));
         $fields->push(new ConfirmedPasswordField('setPassword', 'Password'));
-        $fields->push(new CheckboxField('AcceptToc', 'I have read and accept the <a target="_blank" href="#">Terms and Conditions</a>'));
 
         // Actions
         $actions = new FieldList(
@@ -32,6 +31,10 @@ class RegistrationForm extends Form {
         $member = new Member($data);
         $member->write();
         $member->changePassword($data['setPassword']['_Password']);
+
+        if($this->controller->GroupID) {
+            $member->Groups()->add($this->controller->Group());
+        }
         
         // redirect to success page
         return $this->controller->redirect($this->controller->Link('?success=1'));
