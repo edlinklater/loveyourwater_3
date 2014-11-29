@@ -29,6 +29,9 @@
             <label class="left" for="{$FormName}_setPassword"></label>
             $Fields.dataFieldByName(setPassword)
         </div>
+    
+        $Fields.dataFieldByName(SecurityID)
+
     </fieldset>
     <% if $Actions %>
         <div class="Actions">
