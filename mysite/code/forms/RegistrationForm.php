@@ -24,15 +24,17 @@ class RegistrationForm extends Form {
         // Validation
         // $validator = new RequiredFields('FirstName', 'Surname');
 
-        parent::__construct($controller, $name, $fields, $actions, $validator);
+        parent::__construct($controller, $name, $fields, $actions);
     }
 
     public function doRegistration($data, $form, $request) {
+        // create member
         $member = new Member($data);
         $member->write();
         $member->changePassword($data['setPassword']['_Password']);
         
-        return $this->controller->redirectBack();
+        // redirect to success page
+        return $this->controller->redirect($this->controller->Link('?success=1'));
     }
 
 }
