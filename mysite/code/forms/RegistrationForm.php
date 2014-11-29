@@ -16,20 +16,28 @@ class RegistrationForm extends Form {
 
         // Actions
         $actions = new FieldList(
-            new FormAction('doRegistration', 'Register', 'Email', 'Phone', 'setPassword')
+            new FormAction('doRegistration', 'Register', 'Email', 'Phone', 'setPassword'),
+            new ResetFormAction('doReset', 'Reset')
         );
 
         // Validation
-        $validator = new RequiredFields('FirstName', 'Surname');
+        // $validator = new RequiredFields('FirstName', 'Surname');
 
-        parent::__construct($controller, $name, $fields, $actions, $validator);
+        parent::__construct($controller, $name, $fields, $actions);
     }
 
     public function doRegistration($data, $form, $request) {
+        // create member
+        $member = new Member($data);
+        $member->write();
+        $member->changePassword($data['setPassword']['_Password']);
 
-        $memberData = $data;
+        if($this->controller->GroupID) {
+            $member->Groups()->add($this->controller->Group());
+        }
         
-        return $this->controller->redirectBack();
+        // redirect to success page
+        return $this->controller->redirect($this->controller->Link('?success=1'));
     }
 
 }
