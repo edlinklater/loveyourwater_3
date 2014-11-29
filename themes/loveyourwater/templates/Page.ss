@@ -22,7 +22,6 @@
 
     <!-- NAVBAR
         ================================================== -->
-
         <div class="navbar-wrapper">
             <div class="container">
 
@@ -33,11 +32,13 @@
             </div>
         </div>
 
-        $Layout
-        $Form
+        <%-- <div class="container"> --%>
+            $Layout
+            $Form
+        <%-- </div> --%>
 
         <!-- FOOTER -->
-        <footer>
+        <footer class="footer">
             <% include Footer %>
         </footer>
 

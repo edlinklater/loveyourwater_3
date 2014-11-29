@@ -9,6 +9,10 @@ Brand Primary: #33CCCC
 	margin-top: -25px;
 }
 
+.jumbotron {
+	padding-top: 80px;
+}
+
 .heading-block {
 	/*width: 100%;*/
 	text-align: center;
