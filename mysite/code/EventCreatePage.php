@@ -18,7 +18,8 @@ class EventCreatePage_Controller extends Page_Controller {
             TimeField::create('Duration', '')
                 ->setRightTitle('up to 24h')
                 ->setAttribute('placeholder','Enter duration'),
-            DropdownField::create("Category")
+            DropdownField::create("Category"),
+            DropdownField::create('Region', 'Region', EventExtension::getRegions())
         );
 
         $startDateTime->getDateField()

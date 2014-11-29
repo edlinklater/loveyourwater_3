@@ -12,5 +12,8 @@ class EventExtension extends DataExtension {
 		$fields->addFieldToTab('Root.Main', $regionDropDown);
 	}
 
+	public static function getRegions() {
+		return singleton('Event')->dbObject('Region')->enumValues();
+	}
 
 }
