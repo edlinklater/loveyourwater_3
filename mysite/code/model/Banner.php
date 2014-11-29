@@ -21,11 +21,13 @@ class Banner extends DataObject {
     	$fields = new FieldList();
 
     	$fields->push(new TextField('Title', 'Title'));
-    	$fields->push(new HTMLEditorField('Content', 'Content'));
+    	$fields->push(HTMLEditorField::create('Content', 'Content')
+            ->setRows(10)
+            ->setDescription('First 50 words.'));
     	$fields->push(new TextField('ButtonText', 'ButtonText'));
     	$fields->push(new TreeDropdownField("LinkID", "Choose a page to link to:", "Page"));
     	$fields->push(UploadField::create('Image', 'Image')
-            ->setDescription('1280x400px best dimensions'));
+            ->setDescription('1280x400px best dimensions.'));
 
     	return $fields;
     }
