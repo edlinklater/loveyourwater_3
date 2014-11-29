@@ -92,6 +92,8 @@ class RegistrationPage_Controller extends Page_Controller {
                 // redirect
                 return $this->redirect($this->Link('?confirmed=1'));
             }
+        } else {
+            return $this->httpError(500);
         }
     }
 
