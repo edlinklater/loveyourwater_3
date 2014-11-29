@@ -12,10 +12,6 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-            <li><a href="#">Learn</a></li> <!-- class=active for selected state -->
-            <li><a href="#about">Find</a></li>
-            <li><a href="#contact">Create</a></li>
-            <li><a href="#enter">Enter</a></li>
             <% loop $Menu(1) %>
                 <li><a href="$Link">$MenuTitle</a></li>
             <% end_loop %>

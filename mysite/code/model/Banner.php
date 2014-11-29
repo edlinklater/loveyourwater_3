@@ -23,7 +23,8 @@ class Banner extends DataObject {
     	$fields->push(new HTMLEditorField('Content', 'Content'));
     	$fields->push(new TextField('ButtonText', 'ButtonText'));
     	$fields->push(new TreeDropdownField("PageID", "Choose a page to link to:", "SiteTree"));
-    	$fields->push(new UploadField('Image', 'Image'));
+    	$fields->push(UploadField::create('Image', 'Image')
+            ->setDescription('1280x400px best dimensions'));
 
     	return $fields;
     }

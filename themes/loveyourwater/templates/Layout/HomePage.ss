@@ -1,18 +1,92 @@
 <!-- Carousel
     ================================================== -->
-    <% if Banners %>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-           <% include Carousel %>
-        </div><!-- /.carousel -->
-    <% end_if %>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+       <% include Carousel %>
+    </div><!-- /.carousel -->
 
-<!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <div class="container marketing">
+    <div class="container">
+        <h2 class="page-header">Upcoming events</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="event-title">Event title</span> <span class="pull-right event-date">30 Nov</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="media">
+                            <a class="media-left event-image" href="#">
+                                <img data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="width: 64px; height: 64px;">
+                            </a>
+                            <div class="media-body">
+                                <p><strong><span class="event-location">Mt Taranaki</span> @ <span class="event-time">2pm</span></strong></p>
+                                <p class="event-description">Event description lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat facere</p>
+                                <p><strong>Organiser:</strong> <a href="#" class="event-organiser">James Smith</a></p>
+                                <button type="button" class="btn btn-info btn-block"><span class="glyphicon glyphicon-plus"></span> Join this event!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Event title <span class="pull-right event-date">30 Nov</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="media">
+                            <a class="media-left event-image" href="#">
+                                <img data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="width: 64px; height: 64px;">
+                            </a>
+                            <div class="media-body">
+                                <p><strong><span class="event-location">Mt Taranaki</span> @ <span class="event-time">2pm</span></strong></p>
+                                <p class="event-description">Event description lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat facere</p>
+                                <p><strong>Organiser:</strong> <a href="#" class="event-organiser">James Smith</a></p>
+                                <button type="button" class="btn btn-info btn-block"><span class="glyphicon glyphicon-plus"></span> Join this event!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.col-sm-6 -->
+            <div class="col-sm-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Event title <span class="pull-right event-date">30 Nov</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="media">
+                            <a class="media-left event-image" href="#">
+                                <img data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="width: 64px; height: 64px;">
+                            </a>
+                            <div class="media-body">
+                                <p><strong><span class="event-location">Mt Taranaki</span> @ <span class="event-time">2pm</span></strong></p>
+                                <p class="event-description">Event description lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat facere</p>
+                                <p><strong>Organiser:</strong> <a href="#" class="event-organiser">James Smith</a></p>
+                                <button type="button" class="btn btn-info btn-block"><span class="glyphicon glyphicon-plus"></span> Join this event!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Event title <span class="pull-right event-date">30 Nov</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="media">
+                            <a class="media-left event-image" href="#">
+                                <img data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="width: 64px; height: 64px;">
+                            </a>
+                            <div class="media-body">
+                                <p><strong><span class="event-location">Mt Taranaki</span> @ <span class="event-time">2pm</span></strong></p>
+                                <p class="event-description">Event description lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat facere</p>
+                                <p><strong>Organiser:</strong> <a href="#" class="event-organiser">James Smith</a></p>
+                                <button type="button" class="btn btn-info btn-block"><span class="glyphicon glyphicon-plus"></span> Join this event!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.col-sm-6 -->
+        </div>
 
         <!-- Three columns of text below the carousel -->
+        <h2 class="page-header">Site sections</h2>
         <div class="row">
             <div class="col-sm-3">
                 <!-- <div class="col-xs-6 col-sm-3 placeholder"> -->
@@ -49,51 +123,4 @@
                 <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
             </div><!-- /.col-sm-3 -->
         </div><!-- /.row -->
-
-
-        <!-- START THE FEATURETTES -->
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            </div>
-            <div class="col-md-5">
-                <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-5">
-                <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-            </div>
-            <div class="col-md-7">
-                <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            </div>
-            <div class="col-md-5">
-                <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <!-- /END THE FEATURETTES -->   <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
+    </div>
