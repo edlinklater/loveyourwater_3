@@ -55,6 +55,14 @@ Brand Primary: #33CCCC
 	height: 100%;
 }
 
+<<<<<<< HEAD
 #Remember {
 	display: none;
+=======
+@media (max-width: 768px) {
+	.navbar-logo {
+		width: 75px;
+		margin-top: -15px;
+	}
+>>>>>>> 3c7faeecdd35325689a701793fda622777190d03
 }
