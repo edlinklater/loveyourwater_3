@@ -42,6 +42,7 @@ class Page_Controller extends ContentController {
      */
     private static $allowed_actions = array(
         'getTermsPageLink',
+        'LoginForm'
     );
 
     public function init() {

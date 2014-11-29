@@ -11,8 +11,8 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Learn more about the issue.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                        <p>Love Your Water is your tool to learn about and look after our stream, rivers and lakes. We need water to drink, to grow our food, to play and to do business. Let’s look after the waterways we love.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Find events and trained presenters.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p>Freshwater quality affects the health of our seas, wildlife, communities, and economies. Through our everyday actions we can choose to restore or pollute our waterways, we just need the knowledge to help decide what to do. Let’s make the right choices together. </p>
                         <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
                     </div>
                 </div>
@@ -31,8 +31,8 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Create your own event.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                        <p>We can all help look after our waterways. Planting trees beside the water is a great way to start. Trees help to stabilise river banks and stop sediment, reduce harmful nutrients, restore habitats for native wildlife, and capture carbon from the air. Check out tree planting events near you.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Find events</a></p>
                     </div>
                 </div>
             </div>
