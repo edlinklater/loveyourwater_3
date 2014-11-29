@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="$ThemeDir/assets/images/logo.png" class="navbar-logo" alt="Love Your Water logo">
         </a>
     </div>
@@ -16,9 +16,9 @@
                 <li><a href="$Link">$MenuTitle</a></li>
             <% end_loop %>
         </ul>
+
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Sign-up</a></li>
+            <% include Member %>
         </ul>
     </div>
 </div>
