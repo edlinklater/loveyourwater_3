@@ -4,63 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5d252dd63a7d5648af81a95107682393",
+    "hash": "8f5d6b0bd5e905dc2c63affcacd36d53",
     "packages": [
-        {
-            "name": "ajshort/silverstripe-gridfieldextensions",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ajshort/silverstripe-gridfieldextensions.git",
-                "reference": "7bf3cf9a319f35ca858385c8146685ee4bfc5ad0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ajshort/silverstripe-gridfieldextensions/zipball/7bf3cf9a319f35ca858385c8146685ee4bfc5ad0",
-                "reference": "7bf3cf9a319f35ca858385c8146685ee4bfc5ad0",
-                "shasum": ""
-            },
-            "require": {
-                "silverstripe/framework": "~3.1"
-            },
-            "type": "silverstripe-module",
-            "extra": {
-                "installer-name": "gridfieldextensions",
-                "screenshots": [
-                    "docs/en/_images/editable-rows.png",
-                    "docs/en/_images/add-existing-search.png"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Andrew Short",
-                    "email": "andrewjshort@gmail.com"
-                }
-            ],
-            "description": "A collection of useful grid field components",
-            "homepage": "http://github.com/ajshort/silverstripe-gridfieldextensions",
-            "keywords": [
-                "gridfield",
-                "silverstripe"
-            ],
-            "time": "2014-07-09 12:49:12"
-        },
         {
             "name": "betterbrief/silverstripe-googlemapfield",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BetterBrief/silverstripe-googlemapfield.git",
-                "reference": "36cccca6f13e881f01bec7724270701a7552c70b"
+                "reference": "3ef42a58b7c74cdaafa2671424d9250859eb3072"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BetterBrief/silverstripe-googlemapfield/zipball/36cccca6f13e881f01bec7724270701a7552c70b",
-                "reference": "36cccca6f13e881f01bec7724270701a7552c70b",
+                "url": "https://api.github.com/repos/BetterBrief/silverstripe-googlemapfield/zipball/3ef42a58b7c74cdaafa2671424d9250859eb3072",
+                "reference": "3ef42a58b7c74cdaafa2671424d9250859eb3072",
                 "shasum": ""
             },
             "require": {
@@ -92,7 +49,7 @@
                 "maps",
                 "silverstripe"
             ],
-            "time": "2014-07-18 11:27:40"
+            "time": "2014-10-20 09:41:07"
         },
         {
             "name": "composer/installers",
@@ -100,12 +57,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "5ed225fe8545c4e4bf502d56fdd87791ecfdd078"
+                "reference": "22208fc1360014587cfbc95d78d7aab8f25a6889"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/5ed225fe8545c4e4bf502d56fdd87791ecfdd078",
-                "reference": "5ed225fe8545c4e4bf502d56fdd87791ecfdd078",
+                "url": "https://api.github.com/repos/composer/installers/zipball/22208fc1360014587cfbc95d78d7aab8f25a6889",
+                "reference": "22208fc1360014587cfbc95d78d7aab8f25a6889",
                 "shasum": ""
             },
             "replace": {
@@ -157,6 +114,7 @@
                 "codeigniter",
                 "concrete5",
                 "croogo",
+                "dokuwiki",
                 "drupal",
                 "elgg",
                 "fuelphp",
@@ -184,7 +142,53 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2014-09-25 03:36:45"
+            "time": "2014-11-27 19:24:51"
+        },
+        {
+            "name": "silverstripe-australia/gridfieldextensions",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silverstripe-australia/silverstripe-gridfieldextensions.git",
+                "reference": "067608506752dbc0ff2542f08cc9e9184a5eb475"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silverstripe-australia/silverstripe-gridfieldextensions/zipball/067608506752dbc0ff2542f08cc9e9184a5eb475",
+                "reference": "067608506752dbc0ff2542f08cc9e9184a5eb475",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/framework": "~3.1"
+            },
+            "replace": {
+                "ajshort/silverstripe-gridfieldextensions": "self.version"
+            },
+            "type": "silverstripe-module",
+            "extra": {
+                "installer-name": "gridfieldextensions",
+                "screenshots": [
+                    "docs/en/_images/editable-rows.png",
+                    "docs/en/_images/add-existing-search.png"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Short",
+                    "email": "andrewjshort@gmail.com"
+                }
+            ],
+            "description": "A collection of useful grid field components",
+            "homepage": "http://github.com/ajshort/silverstripe-gridfieldextensions",
+            "keywords": [
+                "gridfield",
+                "silverstripe"
+            ],
+            "time": "2014-11-27 13:04:43"
         },
         {
             "name": "silverstripe-themes/simple",
@@ -363,12 +367,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sktzoootech/instagramfeed.git",
-                "reference": "a2df8146ee0d8939b6eca215fe6e6176e96d76b1"
+                "reference": "385b38e7c98f0f1dba5a6c033118b4e57122776b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sktzoootech/instagramfeed/zipball/a2df8146ee0d8939b6eca215fe6e6176e96d76b1",
-                "reference": "a2df8146ee0d8939b6eca215fe6e6176e96d76b1",
+                "url": "https://api.github.com/repos/sktzoootech/instagramfeed/zipball/385b38e7c98f0f1dba5a6c033118b4e57122776b",
+                "reference": "385b38e7c98f0f1dba5a6c033118b4e57122776b",
                 "shasum": ""
             },
             "require": {
@@ -395,26 +399,65 @@
                 "instagramfeed",
                 "silverstripe"
             ],
-            "time": "2014-09-30 20:39:50"
+            "time": "2014-10-15 13:30:57"
+        },
+        {
+            "name": "titledk/silverstripe-calendar",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/edlinklater/silverstripe-calendar.git",
+                "reference": "5c718b808181d4e3b182bd8488f28639755e1dcf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/edlinklater/silverstripe-calendar/zipball/5c718b808181d4e3b182bd8488f28639755e1dcf",
+                "reference": "5c718b808181d4e3b182bd8488f28639755e1dcf",
+                "shasum": ""
+            },
+            "type": "silverstripe-module",
+            "extra": {
+                "installer-name": "calendar",
+                "screenshots": [
+                    "docs/img/preview.png",
+                    "docs/img/screenshots/frontend-fullcalendar.png"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anselm Christophersen",
+                    "email": "ac@anselm.dk"
+                },
+                {
+                    "name": "Colin Burns",
+                    "email": "ccburns@gmail.com"
+                }
+            ],
+            "description": "Highly flexible calendar system for SilverStripe",
+            "homepage": "https://github.com/titledk/silverstripe-calendar",
+            "keywords": [
+                "calendar",
+                "events",
+                "silverstripe"
+            ],
+            "support": {
+                "source": "https://github.com/edlinklater/silverstripe-calendar/tree/master"
+            },
+            "time": "2014-11-29 01:03:04"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "silverstripe/dms": 20,
-        "betterbrief/silverstripe-googlemapfield": 20,
-        "sktzoootech/instagramfeed": 20
+        "silverstripe/dms": 20
     },
     "prefer-stable": false,
     "platform": {
         "php": ">=5.3.2"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }

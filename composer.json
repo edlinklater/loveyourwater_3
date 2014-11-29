@@ -7,11 +7,19 @@
 		"silverstripe/framework": "3.1.6",
 		"silverstripe-themes/simple": "*",
 		"silverstripe/dms": "dev-master",
-		"betterbrief/silverstripe-googlemapfield": "dev-master",
-		"sktzoootech/instagramfeed": "dev-master"
+		"betterbrief/silverstripe-googlemapfield": "*",
+		"sktzoootech/instagramfeed": "*",
+		"titledk/silverstripe-calendar": "*",
+		"silverstripe-australia/gridfieldextensions": "*"
 	},
 	"config": {
 		"process-timeout": 600	
 	},
-	"minimum-stability": "dev"
+	"minimum-stability": "dev",
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "git@github.com:edlinklater/silverstripe-calendar.git"
+		}
+	]
 }
