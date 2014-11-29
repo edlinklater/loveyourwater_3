@@ -1,7 +1,7 @@
 <!-- Indicators -->
 <ol class="carousel-indicators">
     <% loop Banners %>
-        <li data-target="#myCarousel" data-slide-to="$Pos"<% if First %> class="active"<% end_if %>></li>
+        <li data-target="#myCarousel" data-slide-to="$BannerPos($Pos)"<% if First %> class="active"<% end_if %>></li>
     <% end_loop %>
 </ol>
 <div class="carousel-inner" role="listbox">

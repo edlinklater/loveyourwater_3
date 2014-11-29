@@ -28,6 +28,10 @@ class Banner extends DataObject {
     	return $fields;
     }
 
+    public function BannerPos($pos) {
+        return $pos - 1;
+    }
+
     public function onBeforeWrite() {
         // add auto sort
         if (!$this->SortField) {
