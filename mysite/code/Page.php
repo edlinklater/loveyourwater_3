@@ -52,7 +52,10 @@ class Page_Controller extends ContentController {
     }
 
     public function getTermsPageLink() {
-        return DataObject::get_one('Page', '"IsTerms" = TRUE')->Link();
+		$TermsPage = DataObject::get_one('Page', '"IsTerms" = TRUE');
+		if($TermsPage instanceof DataObject) {
+			return $TermsPage->Link();
+		}
     }
 
 }
