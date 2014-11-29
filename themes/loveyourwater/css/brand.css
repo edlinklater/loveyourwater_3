@@ -59,9 +59,20 @@ Brand Primary: #33CCCC
 #Remember {
 	display: none;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
 	.navbar-logo {
 		width: 75px;
 		margin-top: -15px;
+	}
+	.carousel-caption h1 {
+		font-size: 30px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.carousel-caption {
+		/*margin-top: 80px;*/
+		left: 10%;
+		right: 10%;
 	}
 }
