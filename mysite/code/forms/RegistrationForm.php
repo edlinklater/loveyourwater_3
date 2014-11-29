@@ -10,9 +10,9 @@ class RegistrationForm extends Form {
         $fields = new FieldList();
         $fields->push(new TextField('FirstName', 'First Name'));
         $fields->push(new TextField('Surname', 'Last Name'));
-        $fields->push(new EmailField('Email', 'Email'));
+        $fields->push(EmailField::create('Email', 'Email'));
         $fields->push(new TextField('Phone', 'Phone'));
-        $fields->push(new ConfirmedPasswordField('setPassword', 'Password'));
+        $fields->push(ConfirmedPasswordField::create('setPassword', 'Password')->setCustomValidationMessage('Password is required'));
 
         // Actions
         $actions = new FieldList(
@@ -21,9 +21,9 @@ class RegistrationForm extends Form {
         );
 
         // Validation
-        // $validator = new RequiredFields('FirstName', 'Surname');
+        $validator = new RequiredFields('FirstName', 'Surname', 'Email', 'Phone', 'setPassword');
 
-        parent::__construct($controller, $name, $fields, $actions);
+        parent::__construct($controller, $name, $fields, $actions, $validator);
     }
 
     public function doRegistration($data, $form, $request) {
