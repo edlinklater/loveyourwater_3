@@ -19,7 +19,8 @@ class EventCreatePage_Controller extends Page_Controller {
                 ->setRightTitle('up to 24h')
                 ->setAttribute('placeholder','Enter duration'),
             DropdownField::create('Calendar', 'Category', Calendar::get()->map()),
-            DropdownField::create('Region', 'Region', EventExtension::getRegions())
+            DropdownField::create('Region', 'Region', EventExtension::getRegions()),
+            HtmlEditorField::create('Details', 'Description')
         );
 
         $startDateTime->getDateField()
