@@ -67,7 +67,7 @@ class RegistrationForm extends Form {
             $registrationPage->Link('verifyemail'),
             '?h=' . $code
         );
-        $email = (new Email())
+        $email = Email::create()
             ->setTo($member->Email)
             ->setSubject('Your Love Your Water account verification, nearly done!')
             ->setTemplate('RegistrationVerificationEmail')
