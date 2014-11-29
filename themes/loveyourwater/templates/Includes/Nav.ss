@@ -17,7 +17,7 @@
             <% end_loop %>
         </ul>
 
-        <ul class="nav navbar-nav nav-right">
+        <ul class="nav navbar-nav navbar-right">
             <% include Member %>
         </ul>
     </div>
