@@ -11,15 +11,28 @@ class EventCreatePage_Controller extends Page_Controller {
     );
 
     public function Form() {
-        $dateTime = DatetimeField::create("Start");
-        $dateTime->getDateField()->setConfig('showcalendar', 1);
         $fields = new FieldList(
-            TextField::create("Title"),
-            $dateTime,
-            TextField::create("Duration"),
+            TextField::create("Title")
+                ->setAttribute('placeholder','Enter a title'),
+            $startDateTime = DatetimeField::create("Start"),
+            TimeField::create('Duration', '')
+                ->setRightTitle('up to 24h')
+                ->setAttribute('placeholder','Enter duration'),
             DropdownField::create("Category")
         );
-        $actions = new FieldList(FormAction::create("save")->setTitle("Save"));
+
+        $startDateTime->getDateField()
+            ->setConfig('showcalendar', 1)
+            ->setAttribute('placeholder','Enter date')
+            ->setAttribute('readonly', 'true'); 
+
+        $startDateTime->getTimeField()
+            ->setConfig('timeformat', 'HH:mm') 
+            ->setAttribute('placeholder','Enter time');
+
+
+        $actions = new FieldList(FormAction::create("save")->setTitle("Create"));
+
         return Form::create($this, 'EventCreateForm', $fields, $actions);
     }
 
