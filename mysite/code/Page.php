@@ -6,7 +6,9 @@ class Page extends SiteTree {
         "Subtitle" => "Varchar",
         "IsTerms" => "Boolean",
     );
-    private static $has_one = array(
+
+    private static $has_many = array(
+        'Banners' => 'Banner'
     );
 
     public function getCMSFields() {
@@ -18,6 +20,18 @@ class Page extends SiteTree {
         $fields->addFieldToTab('Root.Main', $subtitle, 'Content');
         $fields->addFieldToTab('Root.Settings', new CheckboxField('IsTerms', 'T&Cs Page'));
 
+        // Banners
+        $fields->addFieldToTab('Root.Banners',
+            new HeaderField('BannerHeader', 'The first 4 banners will be used', 6)
+        );
+        $bannerConfig = GridFieldConfig_RecordEditor::create()
+            ->addComponent(new GridFieldOrderableRows('SortField')
+        );
+        $fields->addFieldToTab("Root.Banners",
+            GridField::create('Banners', 'Banners', $this->Banners())
+                ->setConfig($bannerConfig)
+        );
+
         return $fields;
     }
 
@@ -25,30 +39,12 @@ class Page extends SiteTree {
 
 class Page_Controller extends ContentController {
 
-    /**
-     * An array of actions that can be accessed via a request. Each array element should be an action name, and the
-     * permissions or conditions required to allow the user to access it.
-     *
-     * <code>
-     * array (
-     *     'action', // anyone can access this action
-     *     'action' => true, // same as above
-     *     'action' => 'ADMIN', // you must have ADMIN permissions to access this action
-     *     'action' => '->checkAction' // you can only access this action if $this->checkAction() returns true
-     * );
-     * </code>
-     *
-     * @var array
-     */
     private static $allowed_actions = array(
         'getTermsPageLink',
     );
 
     public function init() {
         parent::init();
-
-        // You can include any CSS or JS required by your project here.
-        // See: http://doc.silverstripe.org/framework/en/reference/requirements
     }
 
     public function getTermsPageLink() {
@@ -56,6 +52,10 @@ class Page_Controller extends ContentController {
 		if($TermsPage instanceof DataObject) {
 			return $TermsPage->Link();
 		}
+    }
+
+    public function getBanners() {
+        return $this->Banners()->limit(4);
     }
 
 }
