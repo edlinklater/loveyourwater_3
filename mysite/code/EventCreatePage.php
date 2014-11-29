@@ -15,9 +15,7 @@ class EventCreatePage_Controller extends Page_Controller {
             TextField::create("Title")
                 ->setAttribute('placeholder','Enter a title'),
             $startDateTime = DatetimeField::create("Start"),
-            TimeField::create('Duration', '')
-                ->setRightTitle('up to 24h')
-                ->setAttribute('placeholder','Enter duration'),
+            $endDateTime = DatetimeField::create("End"),
             DropdownField::create('Calendar', 'Category', Calendar::get()->map()),
             DropdownField::create('Region', 'Region', EventExtension::getRegions()),
             HtmlEditorField::create('Details', 'Description')
@@ -25,13 +23,21 @@ class EventCreatePage_Controller extends Page_Controller {
 
         $startDateTime->getDateField()
             ->setConfig('showcalendar', 1)
-            ->setAttribute('placeholder','Enter date')
+            ->setAttribute('placeholder','Enter start date')
             ->setAttribute('readonly', 'true'); 
 
         $startDateTime->getTimeField()
             ->setConfig('timeformat', 'HH:mm') 
-            ->setAttribute('placeholder','Enter time');
+            ->setAttribute('placeholder','Enter start time');
 
+        $endDateTime->getDateField()
+            ->setConfig('showcalendar', 1)
+            ->setAttribute('placeholder','Enter end date')
+            ->setAttribute('readonly', 'true'); 
+
+        $endDateTime->getTimeField()
+            ->setConfig('timeformat', 'HH:mm') 
+            ->setAttribute('placeholder','Enter end time');
 
         $actions = new FieldList(FormAction::create("save")->setTitle("Create"));
 
