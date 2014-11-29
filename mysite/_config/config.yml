@@ -13,3 +13,7 @@ SSViewer:
 Member:
   extensions:
     - MemberExtension
+
+Event:
+  extensions:
+   - EventExtension
