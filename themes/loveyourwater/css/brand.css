@@ -1,6 +1,33 @@
+/*
 
+Brand Primary: #33CCCC
+
+*/
 
 .navbar-logo {
 	width: 100px;
 	margin-top: -25px;
+}
+
+.heading-block {
+	/*width: 100%;*/
+	text-align: center;
+	padding: 1em;
+}
+
+.heading-block .glyphicon {
+	font-size: 3em;
+	line-height: 2.4em;
+}
+
+.heading--brand {
+	background-color: #33CCCC;
+	color: #fff;
+}
+
+.heading-block--circle {
+	border-radius: 200px;
+	width: 130px;
+	height: 130px;
+	margin: auto;
 }
