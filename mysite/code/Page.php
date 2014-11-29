@@ -54,8 +54,8 @@ class Page_Controller extends ContentController {
 		}
     }
 
-    public function getBanners() {
-        return $this->Banners()->limit(4);
+    public function getLimitBanners() {
+        return $this->Banners()->sort('SortField ASC')->limit(4);
     }
 
 }
