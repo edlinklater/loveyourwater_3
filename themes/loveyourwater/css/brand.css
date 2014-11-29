@@ -54,3 +54,10 @@ Brand Primary: #33CCCC
 	width: 100%; 
 	height: 100%;
 }
+
+@media (max-width: 768px) {
+	.navbar-logo {
+		width: 75px;
+		margin-top: -15px;
+	}
+}
