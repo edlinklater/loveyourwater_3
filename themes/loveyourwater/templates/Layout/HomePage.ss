@@ -90,8 +90,10 @@
         </div>
 
         <!-- Three columns of text below the carousel -->
-        <h2 class="page-header">Site sections</h2>
-        <div class="row">
-            <% include ActionLinks %>
-        </div><!-- /.row -->
+        <% if ActionLinks %>
+            <h2 class="page-header">Site sections</h2>
+            <div class="row">
+                <% include ActionLinks %>
+            </div><!-- /.row -->
+        <% end_if %>
     </div>

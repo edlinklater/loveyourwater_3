@@ -25,11 +25,8 @@ class ActionLink extends DataObject {
         $fields->push(new TreeDropdownField("LinkID", "Choose a page to link to:", "Page"));
 
         // Icons
-        // $icons = singleton('ActionLink')->dbObject('Icon')->enumValues();
-        // $iconArray = array();
-        // foreach($icons as $icon) {
-        //     $iconArray[$icon] = "<span class='icons--xl'><i class='i i-section-" . $icon . "'></i></span>";
-        // }
+        $fields->push(TextField::create('Icon', 'Icon')
+            ->setDescription('Insert a glyphicon class from <a href="http://getbootstrap.com/components/#glyphicons" target="_blank">here</a> (eg. glyphicon-asterisk)'));
 
         return $fields;
     }
