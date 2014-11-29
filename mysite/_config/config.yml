@@ -9,3 +9,7 @@ After:
 # Caution: Indentation through two spaces, not tabs
 SSViewer:
   theme: 'simple'
+
+Member:
+  extensions:
+    - MemberExtension
