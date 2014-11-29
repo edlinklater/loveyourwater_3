@@ -6,5 +6,6 @@
 				<span class="arrow">&rarr;</span> <% include Navigation %></div>
 			<small class="right"><a href="http://simple.innovatif.com/about/">Theme</a> by <a href="http://www.saratusar.com">Sara</a> (Innovatif) / Powered by <a href="http://silverstripe.org">SilverStripe</a></small>
 		</div>
+		<div><a href="$TermsPageLink">Terms and Conditions</a></div>
 	</div>
 </footer>

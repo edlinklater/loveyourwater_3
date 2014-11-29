@@ -1,5 +1,5 @@
-cms/*
-assets/*
+cms/
+assets/
 _ss_environment.php
 tools/phing-metadata
 silverstripe-cache
@@ -9,4 +9,8 @@ silverstripe-cache
 .idea
 .DS_Store
 vendor/
-framework/*
+framework/
+calendar/
+googlemapfield/
+instagramfeed/
+gridfieldextensions/
