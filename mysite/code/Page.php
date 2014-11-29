@@ -4,6 +4,7 @@ class Page extends SiteTree {
 
     private static $db = array(
         "Subtitle" => "Varchar",
+        "IsTerms" => "Boolean",
     );
     private static $has_one = array(
     );
@@ -15,6 +16,7 @@ class Page extends SiteTree {
         //google map module
         $subtitle = new TextField('Subtitle', 'Subtitle');
         $fields->addFieldToTab('Root.Main', $subtitle, 'Content');
+        $fields->addFieldToTab('Root.Settings', new CheckboxField('IsTerms', 'T&Cs Page'));
 
         return $fields;
     }
@@ -39,6 +41,7 @@ class Page_Controller extends ContentController {
      * @var array
      */
     private static $allowed_actions = array(
+        'getTermsPageLink',
     );
 
     public function init() {
@@ -46,6 +49,13 @@ class Page_Controller extends ContentController {
 
         // You can include any CSS or JS required by your project here.
         // See: http://doc.silverstripe.org/framework/en/reference/requirements
+    }
+
+    public function getTermsPageLink() {
+		$TermsPage = DataObject::get_one('Page', '"IsTerms" = TRUE');
+		if($TermsPage instanceof DataObject) {
+			return $TermsPage->Link();
+		}
     }
 
 }
