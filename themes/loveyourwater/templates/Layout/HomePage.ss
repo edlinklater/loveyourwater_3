@@ -83,6 +83,10 @@
                     </div>
                 </div>
             </div><!-- /.col-sm-6 -->
+            <div class="col-sm-4 col-sm-offset-4">
+                <br>
+                <button type="button" class="btn btn-primary btn-lg btn-block">See all events <span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
         </div>
 
         <!-- Three columns of text below the carousel -->
