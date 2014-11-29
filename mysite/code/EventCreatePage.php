@@ -34,7 +34,9 @@ class EventCreatePage_Controller extends Page_Controller {
 
         $actions = new FieldList(FormAction::create("save")->setTitle("Create"));
 
-        return Form::create($this, 'EventCreateForm', $fields, $actions);
+        $requiredFields = new RequiredFields(array('Title', 'Start'));
+
+        return Form::create($this, 'EventCreateForm', $fields, $actions, $requiredFields);
     }
 
 }
