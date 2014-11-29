@@ -368,12 +368,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/edlinklater/silverstripe-calendar.git",
-                "reference": "5c718b808181d4e3b182bd8488f28639755e1dcf"
+                "reference": "c5533bbb3a0cffd556e6ac69324aafcb3d1c1adc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/edlinklater/silverstripe-calendar/zipball/5c718b808181d4e3b182bd8488f28639755e1dcf",
-                "reference": "5c718b808181d4e3b182bd8488f28639755e1dcf",
+                "url": "https://api.github.com/repos/edlinklater/silverstripe-calendar/zipball/c5533bbb3a0cffd556e6ac69324aafcb3d1c1adc",
+                "reference": "c5533bbb3a0cffd556e6ac69324aafcb3d1c1adc",
                 "shasum": ""
             },
             "type": "silverstripe-module",
@@ -407,7 +407,7 @@
             "support": {
                 "source": "https://github.com/edlinklater/silverstripe-calendar/tree/master"
             },
-            "time": "2014-11-29 01:03:04"
+            "time": "2014-11-29 22:19:22"
         }
     ],
     "packages-dev": [],
