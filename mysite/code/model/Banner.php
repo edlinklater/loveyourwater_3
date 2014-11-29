@@ -13,7 +13,8 @@ class Banner extends DataObject {
 
     private static $has_one = array(
     	'Image' => 'Image',
-    	'Page' => 'SiteTree'
+    	'Page' => 'SiteTree',
+        'Link' => 'Page'
     );
 
     public function getCMSFields() {
@@ -22,7 +23,7 @@ class Banner extends DataObject {
     	$fields->push(new TextField('Title', 'Title'));
     	$fields->push(new HTMLEditorField('Content', 'Content'));
     	$fields->push(new TextField('ButtonText', 'ButtonText'));
-    	$fields->push(new TreeDropdownField("PageID", "Choose a page to link to:", "SiteTree"));
+    	$fields->push(new TreeDropdownField("LinkID", "Choose a page to link to:", "Page"));
     	$fields->push(UploadField::create('Image', 'Image')
             ->setDescription('1280x400px best dimensions'));
 

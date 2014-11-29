@@ -13,7 +13,7 @@
                     <% if Title %><h1>$Title</h1><% end_if %>
                     <% if Content %>$Content<% end_if %>
                     <% if ButtonText %>
-                        <p><a class="btn btn-lg btn-primary" href="$Page.Link" role="button">$ButtonText</a></p>
+                        <p><a class="btn btn-lg btn-primary" href="$Link.Link" role="button">$ButtonText</a></p>
                     <% end_if %>
                 </div>
             </div>

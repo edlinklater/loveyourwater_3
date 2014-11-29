@@ -8,7 +8,7 @@ class Page extends SiteTree {
     );
 
     private static $has_many = array(
-        'Banners' => 'Banner'
+        'Banners' => 'Banner.Page'
     );
 
     public function getCMSFields() {
