@@ -79,7 +79,7 @@ class RegistrationPage_Controller extends Page_Controller {
                 }
 
                 // send email
-                $email = (new Email())
+                $email = Email::create()
                     ->setTo($member->Email)
                     ->setSubject('Your Love Your Water account confirmation!')
                     ->setTemplate('RegistrationConfirmationEmail')
