@@ -6,6 +6,8 @@
 
 	<% if $isSuccess %>
 		<div class="content">$SuccessMessage</div>
+	<% else_if $isConfirmed %>
+		<div class="content">$ConfirmedMessage</div>
 	<% else %>
 		<div class="content">$Content</div>
 		$Form

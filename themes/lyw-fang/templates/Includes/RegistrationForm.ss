@@ -33,6 +33,9 @@
         $Fields.dataFieldByName(SecurityID)
 
     </fieldset>
+
+    <p>By registering you agree to the <a href="$TermsPageLink" target="_blank">terms and conditions</a>.</p>
+
     <% if $Actions %>
         <div class="Actions">
             <% loop $Actions %>$Field<% end_loop %>
