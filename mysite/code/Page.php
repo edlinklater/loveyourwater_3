@@ -54,6 +54,7 @@ class Page_Controller extends ContentController {
         // See: http://doc.silverstripe.org/framework/en/reference/requirements
 
 		Requirements::javascript('mysite/thirdparty/jquery/jquery-1.11.1.min.js');
+		Requirements::javascript('mysite/thirdparty/jquery/jquery-migrate-1.2.1.js');
 
 		Requirements::block('framework/thirdparty/jquery/jquery.js');
 		Requirements::block('instagramfeed/javascript/jquery/jquery-1.11.1.min.js');
