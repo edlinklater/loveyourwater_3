@@ -5,6 +5,18 @@
 	<li class="eventlist <% if $CurrentMenu == 'eventlist'%>active<% end_if %>">
 		<a href="{$EventListLink}">List View</a>
 	</li>
+	<% if getCalendarFilter %>
+		<li role="presentation" class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+			Calendar <span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu" role="menu">
+				<% loop getCalendarFilter %>
+					<li><a href="{$Top.Link}filtercalendar/?CalendarFilter=$ID">$Title</a></li>
+				<% end_loop %>
+			</ul>
+		</li>
+	<% end_if %>
 	<% if $RegistrationsEnabled %>
 		<li class="registerableevents <% if $CurrentMenu == 'eventregistration'%>active<% end_if %>">
 			<a href="{$Link}eventregistration/">Event Registration</a>

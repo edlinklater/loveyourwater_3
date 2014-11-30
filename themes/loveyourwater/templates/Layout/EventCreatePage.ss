@@ -1,9 +1,11 @@
+
 <div class="jumbotron jumbotron--brand">
 	<div class="container">
-		<h1>$Title</h1>
-		<p>$Content</p>
+		<h1>$title</h1>
+		<p>$Content.Summary</p>
 	</div>
 </div>
+
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6">

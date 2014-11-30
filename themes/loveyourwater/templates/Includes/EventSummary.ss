@@ -12,7 +12,7 @@
                 <div class="media-body">
                     <p><strong><span class="event-location">$Region</span><% if $AllDay %> @ <span class="event-time"> all day</span><% else_if StartDateTime %> @ <span class="event-time">$StartDateTime.Format(g:i)</span><% end_if %></strong></p>
                     <p class="event-description">$Details.Summary</p>
-                    <a href="#" class="btn btn-info btn-block"><span class="glyphicon glyphicon-plus"></span> Join this event!</a>
+                    <a href="$Top.getEventLink($ID)" class="btn btn-info btn-block"><span class="glyphicon glyphicon-plus"></span> Join this event!</a>
                 </div>
             </div>
         </div>

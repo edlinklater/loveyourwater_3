@@ -11,7 +11,7 @@
                 <% include EventSummary %>
                 <div class="col-sm-4 col-sm-offset-4">
                     <br>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">See all events <span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <a href="$getEventsLink" class="btn btn-primary btn-lg btn-block">See all events <span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
             </div>
         <% end_if %>

@@ -7,6 +7,6 @@
 
 	<div class="container">
 		<%-- <div class="row"> --%>
-		<% include EventList %>
+		<% include FilterEventList %>
 		<%-- </div> --%>
 	</div>
