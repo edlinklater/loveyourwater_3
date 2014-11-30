@@ -32,4 +32,14 @@ class HomePage_Controller extends Page_Controller {
         return $this->ActionLinks()->sort('SortField ASC')->limit(4);
     }
 
+    /**
+     * Get the next 4 upcoming events
+     * @return Event
+     */
+    public function getEvents() {
+        if($page = EventPage::get()->first()) {
+            return $page->ComingEvents()->limit(4);
+        }
+    }
+
 }
