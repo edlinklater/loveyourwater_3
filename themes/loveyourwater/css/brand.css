@@ -64,6 +64,13 @@ Brand Primary: #33CCCC
 #Remember {
 	display: none;
 }
+
+.carousel-inner .item {
+	background-repeat: none;
+	background-position: center center;
+	background-size: cover;
+}
+
 @media screen and (max-width: 768px) {
 	.navbar-logo {
 		width: 75px;
