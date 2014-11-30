@@ -8,16 +8,31 @@ class RegistrationForm extends Form {
 
         // Fields
         $fields = new FieldList();
-        $fields->push(new TextField('FirstName', 'First Name'));
-        $fields->push(new TextField('Surname', 'Last Name'));
-        $fields->push(EmailField::create('Email', 'Email'));
-        $fields->push(new TextField('Phone', 'Phone'));
-        $fields->push(ConfirmedPasswordField::create('setPassword', 'Password')->setCustomValidationMessage('Password is required'));
+        $fields->push(TextField::create('FirstName', 'First Name')
+            ->addExtraClass('form-control')
+            ->setAttribute( 'placeholder', 'First Name' ));
+        $fields->push(TextField::create('Surname', 'Last Name')
+            ->addExtraClass('form-control')
+            ->setAttribute( 'placeholder', 'Last Name' ));
+        $fields->push(EmailField::create('Email', 'Email')
+            ->addExtraClass('form-control')
+            ->setAttribute( 'placeholder', 'Email Address' ));
+        $fields->push(TextField::create('Phone', 'Phone')
+            ->addExtraClass('form-control')
+            ->setAttribute( 'placeholder', 'Phone Number' ));
+        $fields->push($pw = ConfirmedPasswordField::create('setPassword', 'Password')
+            ->setCustomValidationMessage('Password is required'));
+
+        foreach ($pw->children as $child) {
+            $child->addExtraClass('form-control');
+        }
 
         // Actions
         $actions = new FieldList(
-            new FormAction('doRegistration', 'Register', 'Email', 'Phone', 'setPassword'),
-            new ResetFormAction('doReset', 'Reset')
+            FormAction::create('doRegistration', 'Register', 'Email', 'Phone', 'setPassword')
+                ->addExtraClass('btn btn-default'),
+            ResetFormAction::create('doReset', 'Reset')
+                ->addExtraClass('btn btn-default')
         );
 
         // Validation
