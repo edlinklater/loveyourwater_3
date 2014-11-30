@@ -56,6 +56,12 @@ class Page_Controller extends ContentController {
 		Requirements::block('instagramfeed/javascript/jquery/jquery-1.11.1.min.js');
     }
 
+    public function getRegistrationLink() {
+        if($page = RegistrationPage::get()->first()) {
+            return $page->Link();
+        }
+    }
+
     public function getTermsPageLink() {
 		$TermsPage = DataObject::get_one('Page', '"IsTerms" = TRUE');
 		if($TermsPage instanceof DataObject) {
