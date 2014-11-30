@@ -13,6 +13,11 @@ Brand Primary: #33CCCC
 	padding-top: 80px;
 }
 
+.jumbotron--brand {
+	background-color: #33CCCC;
+	color: #fff;
+}
+
 .heading-block {
 	/*width: 100%;*/
 	text-align: center;
