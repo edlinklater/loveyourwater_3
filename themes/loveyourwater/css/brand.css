@@ -79,6 +79,14 @@ Brand Primary: #33CCCC
 	.carousel-caption h1 {
 		font-size: 30px;
 	}
+	.search.pull-right {
+		clear: left;
+		float: left !important;
+		margin-top: 20px;
+	}
+	.search.pull-right .form-inline {
+		clear: left;
+	}
 }
 
 @media screen and (min-width: 768px) {

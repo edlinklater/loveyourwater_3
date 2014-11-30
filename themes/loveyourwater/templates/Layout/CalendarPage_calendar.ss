@@ -6,7 +6,7 @@
 	</div>
 
 	<div class="container">
-		<div class="row">
+		<%-- <div class="row"> --%>
 		<% include CalendarDetails %>
-		</div>
+		<%-- </div> --%>
 	</div>
