@@ -5,6 +5,7 @@ class Page extends SiteTree {
     private static $db = array(
         "Subtitle" => "Varchar",
         "IsTerms" => "Boolean",
+        "Summary" => 'Text'
     );
 
     private static $has_many = array(
@@ -14,6 +15,8 @@ class Page extends SiteTree {
     public function getCMSFields() {
         // Get the fields from the parent implementation
         $fields = parent::getCMSFields();
+
+        $fields->addFieldToTab('Root.Main', new TextareaField('Summary', 'Summary'), 'Content');
 
         //google map module
         $subtitle = new TextField('Subtitle', 'Subtitle');
