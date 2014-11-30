@@ -14,12 +14,12 @@ class EventCreatePage_Controller extends Page_Controller {
         $fields = new FieldList(
             TextField::create("Title")
                 ->setAttribute('placeholder','Enter a title')
-                ->setAttribute('required', true),
+                ->setAttribute('required', true)
+                ->addExtraClass('form-control'),
             $startDateTime = DatetimeField::create("StartDateTime", 'Start'),
             $endDateTime = DatetimeField::create("EndDateTime", 'End'),
-            DropdownField::create('Calendar', 'Category', Calendar::get()->map()),
-            DropdownField::create('Region', 'Region', EventExtension::getRegions()),
-            HtmlEditorField::create('Details', 'Description')
+            DropdownField::create('Region', 'Region', EventExtension::getRegions())->addExtraClass('form-control'),
+            HtmlEditorField::create('Details', 'Description')->addExtraClass('form-control')->setRows(10)
         );
 
         $startDateTime->getDateField()
@@ -40,11 +40,15 @@ class EventCreatePage_Controller extends Page_Controller {
             ->setConfig('timeformat', 'HH:mm') 
             ->setAttribute('placeholder','Enter end time');
 
-        $actions = new FieldList(FormAction::create("doCreateEvent")->setTitle("Create"));
+        $actions = new FieldList(FormAction::create("doCreateEvent")
+                ->setTitle("Create")
+                ->addExtraClass('btn btn-success'));
 
         $requiredFields = new RequiredFields(array('Title', 'Start'));
 
-        return Form::create($this, 'CreateEvent', $fields, $actions, $requiredFields);
+        $form = Form::create($this, 'CreateEvent', $fields, $actions, $requiredFields);
+        $form->setTemplate('EventCreateForm');
+        return $form;
     }
 
     public function doCreateEvent($data, $form) {
