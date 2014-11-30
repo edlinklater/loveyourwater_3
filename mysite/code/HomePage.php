@@ -48,4 +48,11 @@ class HomePage_Controller extends Page_Controller {
         }
     }
 
+    public function getEventsLink() {
+        $page = CalendarPage::get()->first();
+        if($page) {
+            return $page->Link();
+        }
+    }
+
 }
