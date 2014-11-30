@@ -37,9 +37,7 @@ class HomePage_Controller extends Page_Controller {
      * @return Event
      */
     public function getEvents() {
-        if($page = EventPage::get()->first()) {
-            return $page->ComingEvents()->limit(4);
-        }
+        return CalendarHelper::all_events()->limit(4);
     }
 
 }
