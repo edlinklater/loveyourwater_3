@@ -16,8 +16,12 @@ Member:
 
 Event:
   extensions:
-   - EventExtension
+    - EventExtension
 
 SiteConfig:
   extensions:
-   - SiteConfigExtension
+    - SiteConfigExtension
+
+CalendarPage_Controller:
+  extensions:
+    - CalendarPage_ControllerExtension
