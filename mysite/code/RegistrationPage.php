@@ -11,12 +11,15 @@ class RegistrationPage extends Page {
         'TermsAndConditions' => 'SiteTree'
     );
 
+    private static $user_group = 'users';
+
     public function getCMSFields() {
         $fields = parent::getCMSFields();
 
         $groups = Group::get()->map();
         $fields->addFieldToTab('Root.Form', DropdownField::create('GroupID', 'Group', $groups)
-            ->setDescription('Security group the registered member will be assigned to.'));
+            ->setDescription('Security group the registered member will be assigned to.')
+            ->setEmptyString('Default Group'));
 
         $pages = SiteTree::get()->map();
         $fields->addFieldToTab('Root.Form', DropdownField::create('TermsAndConditionsID', 'Terms and Conditions', $pages)
@@ -76,6 +79,18 @@ class RegistrationPage_Controller extends Page_Controller {
 
                 if($this->GroupID) {
                     $member->Groups()->add($this->Group());
+                } else {
+                    $code = RegistrationPage::config()->user_group;
+                    $userGroup = Group::get()->filter("Code", $code)->first();
+                    if(!$userGroup) {
+                        $userGroup = new Group();
+                        $userGroup->Code = $code;
+                        $userGroup->Title = $code;
+                        $userGroup->Write();
+                    }
+
+                    //Add member to user group
+                    $userGroup->Members()->add($member);
                 }
 
                 // send email

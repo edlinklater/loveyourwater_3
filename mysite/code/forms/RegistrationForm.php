@@ -8,22 +8,37 @@ class RegistrationForm extends Form {
 
         // Fields
         $fields = new FieldList();
-        $fields->push(new TextField('FirstName', 'First Name'));
-        $fields->push(new TextField('Surname', 'Last Name'));
-        $fields->push(new EmailField('Email', 'Email'));
-        $fields->push(new TextField('Phone', 'Phone'));
-        $fields->push(new ConfirmedPasswordField('setPassword', 'Password'));
+        $fields->push(TextField::create('FirstName', 'First Name')
+            ->addExtraClass('form-control')
+            ->setAttribute( 'placeholder', 'First Name' ));
+        $fields->push(TextField::create('Surname', 'Last Name')
+            ->addExtraClass('form-control')
+            ->setAttribute( 'placeholder', 'Last Name' ));
+        $fields->push(EmailField::create('Email', 'Email')
+            ->addExtraClass('form-control')
+            ->setAttribute( 'placeholder', 'Email Address' ));
+        $fields->push(TextField::create('Phone', 'Phone')
+            ->addExtraClass('form-control')
+            ->setAttribute( 'placeholder', 'Phone Number' ));
+        $fields->push($pw = ConfirmedPasswordField::create('setPassword', 'Password')
+            ->setCustomValidationMessage('Password is required'));
+
+        foreach ($pw->children as $child) {
+            $child->addExtraClass('form-control');
+        }
 
         // Actions
         $actions = new FieldList(
-            new FormAction('doRegistration', 'Register', 'Email', 'Phone', 'setPassword'),
-            new ResetFormAction('doReset', 'Reset')
+            FormAction::create('doRegistration', 'Register', 'Email', 'Phone', 'setPassword')
+                ->addExtraClass('btn btn-default'),
+            ResetFormAction::create('doReset', 'Reset')
+                ->addExtraClass('btn btn-default')
         );
 
         // Validation
-        // $validator = new RequiredFields('FirstName', 'Surname');
+        $validator = new RequiredFields('FirstName', 'Surname', 'Email', 'Phone', 'setPassword');
 
-        parent::__construct($controller, $name, $fields, $actions);
+        parent::__construct($controller, $name, $fields, $actions, $validator);
     }
 
     public function doRegistration($data, $form, $request) {
@@ -67,7 +82,7 @@ class RegistrationForm extends Form {
             $registrationPage->Link('verifyemail'),
             '?h=' . $code
         );
-        $email = (new Email())
+        $email = Email::create()
             ->setTo($member->Email)
             ->setSubject('Your Love Your Water account verification, nearly done!')
             ->setTemplate('RegistrationVerificationEmail')

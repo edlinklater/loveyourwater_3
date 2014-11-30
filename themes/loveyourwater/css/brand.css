@@ -9,6 +9,15 @@ Brand Primary: #33CCCC
 	margin-top: -25px;
 }
 
+.jumbotron {
+	padding-top: 80px;
+}
+
+.jumbotron--brand {
+	background-color: #33CCCC;
+	color: #fff;
+}
+
 .heading-block {
 	/*width: 100%;*/
 	text-align: center;
@@ -49,4 +58,41 @@ Brand Primary: #33CCCC
 	left: 0; 
 	width: 100%; 
 	height: 100%;
+}
+
+
+#Remember {
+	display: none;
+}
+
+.carousel-inner .item {
+	background-repeat: none;
+	background-position: center center;
+	background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+	.navbar-logo {
+		width: 75px;
+		margin-top: -15px;
+	}
+	.carousel-caption h1 {
+		font-size: 30px;
+	}
+	.search.pull-right {
+		clear: left;
+		float: left !important;
+		margin-top: 20px;
+	}
+	.search.pull-right .form-inline {
+		clear: left;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.carousel-caption {
+		/*margin-top: 80px;*/
+		left: 10%;
+		right: 10%;
+	}
 }
