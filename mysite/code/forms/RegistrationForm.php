@@ -30,9 +30,9 @@ class RegistrationForm extends Form {
         // Actions
         $actions = new FieldList(
             FormAction::create('doRegistration', 'Register', 'Email', 'Phone', 'setPassword')
-                ->addExtraClass('btn btn-default'),
+                ->addExtraClass('btn btn-success'),
             ResetFormAction::create('doReset', 'Reset')
-                ->addExtraClass('btn btn-default')
+                ->addExtraClass('btn btn-danger')
         );
 
         // Validation
