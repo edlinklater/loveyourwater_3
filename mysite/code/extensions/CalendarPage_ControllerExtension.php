@@ -10,6 +10,11 @@ class CalendarPage_ControllerExtension extends Extension {
 		return $this->owner;
 	}
 
+	public function getMyEvents(){
+		$events = CalendarHelper::all_events();
+		return $events->filter('CreatorID', Member::CurrentUserID());
+	}
+
 	public function isMyEvents() {
 		return $this->owner->request->allParams()['Action'] == 'myevents';
 	}
