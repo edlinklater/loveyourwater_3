@@ -5,7 +5,7 @@
     </div><!-- /.carousel -->
 
     <div class="container">
-        <% if Events %>
+        <% if $Events %>
             <h2 class="page-header">Upcoming events</h2>
             <div class="row">
                 <% include EventSummary %>
@@ -17,8 +17,8 @@
         <% end_if %>
 
         <!-- Three columns of text below the carousel -->
-        <% if ActionLinks %>
-            <h2 class="page-header">Site sections</h2>
+        <% if $ActionLinks %>
+            <h2 class="page-header">Take action</h2>
             <div class="row">
                 <% include ActionLinks %>
             </div><!-- /.row -->
