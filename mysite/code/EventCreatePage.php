@@ -36,7 +36,13 @@ class EventCreatePage_Controller extends Page_Controller {
         }
     }
 
+	private static $url_handlers = array(
+		'$ID' => 'index'
+	);
+
     public function CreateEvent() {
+		$EventID = $this->urlParams['ID'];
+
         $fields = new FieldList(
             TextField::create("Title")
                 ->setAttribute('placeholder','Enter a title')
@@ -70,7 +76,17 @@ class EventCreatePage_Controller extends Page_Controller {
 
         $requiredFields = new RequiredFields(array('Title', 'Start'));
 
-        return Form::create($this, 'CreateEvent', $fields, $actions, $requiredFields);
+		$form = Form::create($this, 'CreateEvent', $fields, $actions, $requiredFields);
+
+		if(is_numeric($EventID) && $EventID > 0) {
+			$Event = Event::get()->byID($EventID);
+			if($Event->exists() && $Event->CreatorID == Member::currentUserID()) {
+				die();
+				$form->loadDataFrom($Event);
+			}
+		}
+
+        return $form;
     }
 
     public function doCreateEvent($data, $form) {
