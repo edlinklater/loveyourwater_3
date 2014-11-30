@@ -2,7 +2,7 @@
 <div class="col-sm-6">
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title"><span class="event-title">$Title</span> <span class="pull-right event-date"><% if $StartAndEndDates %>$StartAndEndDates<% else %><% if $AllDay %>All Day<% else %>$FormattedTimeframe<% end_if %><% end_if %></span></h3>
+            <h3 class="panel-title"><span class="event-title">$Title</span> <span class="pull-right event-date"><% if $StartDateTime %>$StartDateTime.Nice<% else %><% if $AllDay %>All Day<% else %>$FormattedTimeframe<% end_if %><% end_if %></span></h3>
         </div>
         <div class="panel-body">
             <div class="media">
