@@ -18,7 +18,8 @@ class CalendarPage_ControllerExtension extends Extension {
 	}
 
 	public function isMyEvents() {
-		return $this->owner->request->allParams()['Action'] == 'myevents';
+		$params = $this->owner->request->allParams();
+		return ($params['Action'] == 'myevents' ? true : false);
 	}
 
 	// calendar filter
