@@ -6,8 +6,7 @@
 </ol>
 <div class="carousel-inner" role="listbox">
     <% loop LimitBanners %>
-        <div class="item<% if First %> active<% end_if %>">
-            <img src="<% if Image %>$Image.CroppedImage(1280,400).URL<% else %>$ThemeDir/assets/images/hero-beach-01.jpg<% end_if %>" alt="$Image.Title">
+        <div class="item<% if First %> active<% end_if %>" style="background-image:url(<% if Image %>$Image.CroppedImage(1280,400).URL<% else %>$ThemeDir/assets/images/hero-beach-01.jpg<% end_if %>);">
             <div class="container">
                 <div class="carousel-caption">
                     <% if Title %><h1>$Title</h1><% end_if %>
