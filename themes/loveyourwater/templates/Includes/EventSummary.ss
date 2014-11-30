@@ -18,7 +18,4 @@
         </div>
     </div>
 </div>
-<% if $Pos = 2 %>
-<div style="col-lg-12"></div>
-<% end_if %>
 <% end_loop %>
