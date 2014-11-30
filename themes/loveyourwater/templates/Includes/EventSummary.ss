@@ -18,4 +18,7 @@
         </div>
     </div>
 </div>
+<% if $Pos = 2 %>
+<div class="clearfix"></div>
+<% end_if %>
 <% end_loop %>
