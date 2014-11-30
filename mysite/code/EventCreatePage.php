@@ -7,10 +7,10 @@ class EventCreatePage extends Page {
 class EventCreatePage_Controller extends Page_Controller {
 
     private static $allowed_actions = array(
-        'Form'
+        'CreateEvent'
     );
 
-    public function Form() {
+    public function CreateEvent() {
         $fields = new FieldList(
             TextField::create("Title")
                 ->setAttribute('placeholder','Enter a title')
@@ -44,12 +44,14 @@ class EventCreatePage_Controller extends Page_Controller {
 
         $requiredFields = new RequiredFields(array('Title', 'Start'));
 
-        return Form::create($this, 'Form', $fields, $actions, $requiredFields);
+        return Form::create($this, 'CreateEvent', $fields, $actions, $requiredFields);
     }
 
     public function doCreateEvent($data, $form) {
         $submission = new Event();
         $form->saveInto($submission);
+        // if no currentUser, redirect back to form
+        $submission->CreatorID = Member::currentUser()->ID;
         $submission->write();
         $calPage = CalendarPage::get()->first();
         if ($calPage) {
