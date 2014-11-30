@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron jumbotron--brand">
 	<div class="container">
 		<h1>$Title</h1>
 		<p>$Content</p>
