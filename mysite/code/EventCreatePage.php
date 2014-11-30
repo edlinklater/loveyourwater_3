@@ -2,6 +2,25 @@
 
 class EventCreatePage extends Page {
 
+    public function onAfterWrite() {
+        parent::onAfterWrite();
+
+        if($this->CanViewType != "OnlyTheseUsers") {
+            $this->CanViewType = "OnlyTheseUsers";
+            $this->write();
+        }
+
+        $code = RegistrationPage::config()->user_group;
+        $userGroup = Group::get()->filter("Code", $code)->first();
+        if(!$userGroup) {
+            $userGroup = new Group();
+            $userGroup->Code = $code;
+            $userGroup->Title = $code;
+            $userGroup->Write();
+        }
+        $this->ViewerGroups()->add($userGroup);
+    }
+
 }
 
 class EventCreatePage_Controller extends Page_Controller {

@@ -10,6 +10,11 @@
 			<a href="{$Link}eventregistration/">Event Registration</a>
 		</li>
 	<% end_if %>
+	<% if CurrentUser %>
+		<li class="myevents <% if $isMyEvents %>active<% end_if %>">
+			<a href="{$Link}myevents/">My Events</a>
+		</li>
+	<% end_if %>
 	<% if $SearchEnabled %>
 		<li class="search pull-right">
 			<form class="form-inline" id="EventSearch" action="{$Link}search">
