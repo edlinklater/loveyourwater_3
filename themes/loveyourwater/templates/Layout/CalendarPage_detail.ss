@@ -1,4 +1,4 @@
-;	<div class="jumbotron jumbotron--brand">
+<div class="jumbotron jumbotron--brand">
 		<div class="container">
 			<h1>$title</h1>
 			<p>$Content.Summary</p>
