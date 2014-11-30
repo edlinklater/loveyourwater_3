@@ -40,4 +40,12 @@ class HomePage_Controller extends Page_Controller {
         return CalendarHelper::all_events()->limit(4);
     }
 
+    public function getEventLink($ID) {
+        $page = CalendarPage::get()->first();
+
+        if($page) {
+            return $page->Link('detail/' . $ID);
+        }
+    }
+
 }
