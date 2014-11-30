@@ -29,6 +29,13 @@ class EventCreatePage_Controller extends Page_Controller {
         'CreateEvent'
     );
 
+    public function init() {
+        parent::init();
+        if (!Member::currentUser()->ID) {
+            Security::permissionFailure($this, "You must be logged in to create an event.");
+        }
+    }
+
     public function CreateEvent() {
         $fields = new FieldList(
             TextField::create("Title")
@@ -69,7 +76,6 @@ class EventCreatePage_Controller extends Page_Controller {
     public function doCreateEvent($data, $form) {
         $submission = new Event();
         $form->saveInto($submission);
-        // if no currentUser, redirect back to form
         $submission->CreatorID = Member::currentUser()->ID;
         $submission->write();
         $calPage = CalendarPage::get()->first();
