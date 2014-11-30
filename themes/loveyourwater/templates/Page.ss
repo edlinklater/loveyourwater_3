@@ -36,7 +36,6 @@
 
         <%-- <div class="container"> --%>
             $Layout
-            $Form
         <%-- </div> --%>
 
         <!-- FOOTER -->
