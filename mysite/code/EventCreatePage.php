@@ -2,6 +2,25 @@
 
 class EventCreatePage extends Page {
 
+    public function onAfterWrite() {
+        parent::onAfterWrite();
+
+        if($this->CanViewType != "OnlyTheseUsers") {
+            $this->CanViewType = "OnlyTheseUsers";
+            $this->write();
+        }
+
+        $code = RegistrationPage::config()->user_group;
+        $userGroup = Group::get()->filter("Code", $code)->first();
+        if(!$userGroup) {
+            $userGroup = new Group();
+            $userGroup->Code = $code;
+            $userGroup->Title = $code;
+            $userGroup->Write();
+        }
+        $this->ViewerGroups()->add($userGroup);
+    }
+
 }
 
 class EventCreatePage_Controller extends Page_Controller {
@@ -10,7 +29,20 @@ class EventCreatePage_Controller extends Page_Controller {
         'CreateEvent'
     );
 
+    public function init() {
+        parent::init();
+        if (!Member::currentUser()->ID) {
+            Security::permissionFailure($this, "You must be logged in to create an event.");
+        }
+    }
+
+	private static $url_handlers = array(
+		'$ID' => 'index'
+	);
+
     public function CreateEvent() {
+		$EventID = $this->urlParams['ID'];
+
         $fields = new FieldList(
             TextField::create("Title")
                 ->setAttribute('placeholder','Enter a title')
@@ -18,8 +50,9 @@ class EventCreatePage_Controller extends Page_Controller {
                 ->addExtraClass('form-control'),
             $startDateTime = DatetimeField::create("StartDateTime", 'Start'),
             $endDateTime = DatetimeField::create("EndDateTime", 'End'),
-            DropdownField::create('Region', 'Region', EventExtension::getRegions())->addExtraClass('form-control'),
-            HtmlEditorField::create('Details', 'Description')->addExtraClass('form-control')->setRows(10)
+            DropdownField::create('Calendar', 'Category', Calendar::get()->map()),
+            DropdownField::create('Region', 'Region', EventExtension::getRegions()),
+            HtmlEditorField::create('Details', 'Description')
         );
 
         $startDateTime->getDateField()
@@ -46,8 +79,17 @@ class EventCreatePage_Controller extends Page_Controller {
 
         $requiredFields = new RequiredFields(array('Title', 'Start'));
 
-        $form = Form::create($this, 'CreateEvent', $fields, $actions, $requiredFields);
-        $form->setTemplate('EventCreateForm');
+		$form = Form::create($this, 'CreateEvent', $fields, $actions, $requiredFields);
+		$form->setTemplate('EventCreateForm');
+
+		if(is_numeric($EventID) && $EventID > 0) {
+			$Event = Event::get()->byID($EventID);
+			if($Event->exists() && $Event->CreatorID == Member::currentUserID()) {
+				die();
+				$form->loadDataFrom($Event);
+			}
+		}
+
         return $form;
     }
 
