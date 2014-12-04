@@ -4,12 +4,13 @@ Base project folder for a SilverStripe ([http://silverstripe.org](http://silvers
 
  * [`framework`](http://github.com/silverstripe/silverstripe-framework): Module including the base framework
  * [`cms`](http://github.com/silverstripe/silverstripe-cms): Module including a Content Management System
- * `themes/simple` (optional)
 
 ## Installation ##
 
 See [installation on different platforms](http://doc.silverstripe.org/framework/en/installation/),
 and [installation from source](http://doc.silverstripe.org/framework/en/installation/from-source).
+
+Site dependencies are managed using [Composer](http://doc.silverstripe.org/framework/en/installation/composer).
 
 ## Theme ##
 
