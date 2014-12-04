@@ -9,6 +9,7 @@
 		<div class="col-sm-6">
 			<% if $isSuccess %>
 				<div class="content">$SuccessMessage</div>
+				<p>The link will expire in {$ExpiryHours} hours.</p>
 			<% else_if $isConfirmed %>
 				<div class="content">$ConfirmedMessage</div>
 			<% else %>

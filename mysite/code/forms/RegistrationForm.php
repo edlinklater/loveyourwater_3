@@ -1,8 +1,15 @@
 <?php
 /**
- * A form used to register to the site.
+ * A form used to register to the site. 
+ * Provides a verification and confirmation email on successful submission.
  */
 class RegistrationForm extends Form {
+
+    /**
+     * @config
+     * @var integer
+     */
+    private static $verification_expiry_hours = 24;
 
     public function __construct($controller, $name) {
 
@@ -41,14 +48,22 @@ class RegistrationForm extends Form {
         parent::__construct($controller, $name, $fields, $actions, $validator);
     }
 
-    public function doRegistration($data, $form, $request) {
+    /**
+     * On form submission
+     * 
+     * @param  array  $data    Submitted form data as an array
+     * @param  Form   $form    The submitted RegistrationForm object
+     */
+    public function doRegistration($data, $form) {
 
+        // store the member data for verification
         $memberData = $data;
 
         if(isset($memberData['setPassword']['_Password'])) {
             $memberData['setPassword'] = $memberData['setPassword']['_Password'];
         }
 
+        // check if a member exists with the same email
         $member = Member::get()->filter(array(
             'Email' => $data['Email']
         ))->first();
@@ -58,25 +73,16 @@ class RegistrationForm extends Form {
             return $this->controller->redirectBack();
         }
 
+        // create the new member
         $member = new Member();
         $member->Email = $data['Email'];
         $member->PendingFormData = serialize($memberData);
         $member->write();
 
-        // set verification data
-        $generator = new RandomGenerator();
-        $code = $generator->randomToken();
-        $member->VerificationCode = $code;
-        $member->VerificationExpiry = date(
-            'Y-m-d H:i:s',
-            strtotime(
-                '+24 hours',
-                SS_Datetime::now()->Format('U')
-            )
-        );
-        $member->write();
+        // create verification code
+        $this->setVerificationCode($member);
 
-        // send email
+        // create and send email
         $registrationPage = RegistrationPage::get()->first();
         $link = $this->controller->join_links(
             $registrationPage->Link('verifyemail'),
@@ -95,6 +101,23 @@ class RegistrationForm extends Form {
         
         // redirect to success page
         return $this->controller->redirect($this->controller->Link('?success=1'));
+    }
+
+    /**
+     * Set the members verification code and expiry date
+     */
+    public function setVerificationCode($member) {
+        $generator = new RandomGenerator();
+        $code = $generator->randomToken();
+        $member->VerificationCode = $code;
+        $member->VerificationExpiry = date(
+            'Y-m-d H:i:s',
+            strtotime(
+                '+' . Config::inst()->get('RegistrationForm', 'verification_expiry_hours') . ' hours',
+                SS_Datetime::now()->Format('U')
+            )
+        );
+        $member->write();
     }
 
 }

@@ -1,4 +1,8 @@
 <?php
+/**
+ * Provides a page that gives users the ability to register to the site, creating a {@link Member} account
+ * and adding them to a {@link Group}.
+ */
 class RegistrationPage extends Page {
 
     private static $db = array(
@@ -11,6 +15,10 @@ class RegistrationPage extends Page {
         'TermsAndConditions' => 'SiteTree'
     );
 
+    /**
+     * @config
+     * @var string
+     */
     private static $user_group = 'users';
 
     public function getCMSFields() {
@@ -61,11 +69,32 @@ class RegistrationPage_Controller extends Page_Controller {
         $code = $this->request->getVar('h');
 
         $member = Member::get()->filter('VerificationCode', $code)->first();
+
+        // if a member exists, else throw a 404 error
         if($member) {
+
+            // if verification is expired
+            if(SS_Datetime::now()->Format('U') > strtotime($member->VerificationExpiry)) {
+                $member->delete();
+                $member->destroy();
+
+                $content = sprintf(
+                    'The verification code you entered has expired. The unique verification code is only valid for %s hours. Please register to get a new new code and try again.',
+                    $this->getExpiryHours()
+                );
+
+                return $this->customise(array(
+                    'Content' => $content
+                ));
+            }
+
+            // wipe the verification data
             $member->VerificationCode = null;
             $member->VerificationExpiry = null;
 
+            // check if the member has pending data to save
             if($member->PendingFormData) {
+
                 // save member data
                 $data = unserialize($member->PendingFormData);
                 $member->PendingFormData = null;
@@ -75,8 +104,10 @@ class RegistrationPage_Controller extends Page_Controller {
                 $member->update($data);
                 $member->write();
 
+                // set the members password
                 $member->changePassword($data['setPassword']);
 
+                // find or make group to add member to
                 if($this->GroupID) {
                     $member->Groups()->add($this->Group());
                 } else {
@@ -88,12 +119,10 @@ class RegistrationPage_Controller extends Page_Controller {
                         $userGroup->Title = $code;
                         $userGroup->Write();
                     }
-
-                    //Add member to user group
                     $userGroup->Members()->add($member);
                 }
 
-                // send email
+                // send confirmation email
                 $email = Email::create()
                     ->setTo($member->Email)
                     ->setSubject('Your Love Your Water account confirmation!')
@@ -108,8 +137,16 @@ class RegistrationPage_Controller extends Page_Controller {
                 return $this->redirect($this->Link('?confirmed=1'));
             }
         } else {
-            return $this->httpError(500);
+            return $this->httpError(404);
         }
+    }
+
+    /**
+     * get the expiration hours to display in the template.
+     * @return String hours
+     */
+    public function getExpiryHours() {
+        return Config::inst()->get('RegistrationForm', 'verification_expiry_hours');
     }
 
 }

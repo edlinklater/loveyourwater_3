@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * {@link Event} extension
+ */
 class EventExtension extends DataExtension {
 
 	private static $db = array(
