@@ -10,7 +10,7 @@
 	<% base_tag %>
 
     <!-- Bootstrap -->
-    <link href="$ThemeDir/css/bootstrap.min.css" rel="stylesheet">
+    <link href="$ThemeDir/css/bootstrap.css" rel="stylesheet">
     <link href="$ThemeDir/css/carousel.css" rel="stylesheet">
     <link href="$ThemeDir/css/brand.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
