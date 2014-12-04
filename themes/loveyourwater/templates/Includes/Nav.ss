@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="$BaseURL">
             <img src="$ThemeDir/assets/images/logo.png" class="navbar-logo" alt="Love Your Water logo">
         </a>
     </div>
