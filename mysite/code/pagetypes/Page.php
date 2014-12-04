@@ -50,11 +50,7 @@ class Page_Controller extends ContentController {
     public function init() {
         parent::init();
 
-        // You can include any CSS or JS required by your project here.
-        // See: http://doc.silverstripe.org/framework/en/reference/requirements
-
 		Requirements::javascript('mysite/thirdparty/jquery/jquery-1.11.1.min.js');
-
 		Requirements::block('framework/thirdparty/jquery/jquery.js');
 		Requirements::block('instagramfeed/javascript/jquery/jquery-1.11.1.min.js');
     }

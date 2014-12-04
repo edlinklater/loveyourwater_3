@@ -28,29 +28,42 @@ class HomePage extends Page {
 
 class HomePage_Controller extends Page_Controller {
 
-	public function getLimitActionLinks() {
-        return $this->ActionLinks()->sort('SortField ASC')->limit(4);
+    /**
+     * action links sorted with a limit.
+     * 
+     * @param  integer   $limit   define a limit on the returned action links
+     * @return ArrayList          of ActionLinks
+     */
+	public function getLimitActionLinks($limit = 4) {
+        return $this->ActionLinks()
+            ->sort('SortField ASC')
+            ->limit($limit);
     }
 
     /**
-     * Get the next 4 upcoming events
-     * @return Event
+     * upcoming events.
+     * 
+     * @param  integer   $limit   define a limit on the returned events
+     * @return ArrayList          of Events
      */
-    public function getEvents() {
-        return CalendarHelper::all_events()->limit(4);
+    public function getEvents($limit = 4) {
+        return CalendarHelper::coming_events_limited(false, $limit);
     }
 
+    /**
+     * Return a link to an event on the CalendarPage.
+     */
     public function getEventLink($ID) {
-        $page = CalendarPage::get()->first();
-
-        if($page) {
+        if($page = CalendarPage::get()->first()) {
             return $page->Link('detail/' . $ID);
         }
     }
 
+    /**
+     * Return a link to the first CalendarPage.
+     */
     public function getEventsLink() {
-        $page = CalendarPage::get()->first();
-        if($page) {
+        if($page = CalendarPage::get()->first()) {
             return $page->Link();
         }
     }
