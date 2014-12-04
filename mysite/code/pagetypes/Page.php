@@ -52,7 +52,6 @@ class Page_Controller extends ContentController {
 
 		Requirements::javascript('mysite/thirdparty/jquery/jquery-1.11.1.min.js');
 		Requirements::block('framework/thirdparty/jquery/jquery.js');
-		Requirements::block('instagramfeed/javascript/jquery/jquery-1.11.1.min.js');
     }
 
     public function getRegistrationLink() {
