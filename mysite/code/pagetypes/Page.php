@@ -52,6 +52,8 @@ class Page_Controller extends ContentController {
 
 		Requirements::javascript('mysite/thirdparty/jquery/jquery-1.11.1.min.js');
 		Requirements::block('framework/thirdparty/jquery/jquery.js');
+
+        Requirements::javascript(SSViewer::get_theme_folder() . 'js/bootstrap.min.js');
     }
 
     public function getRegistrationLink() {
