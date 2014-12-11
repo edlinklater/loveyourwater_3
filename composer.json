@@ -3,11 +3,11 @@
 	"description": "The SilverStripe Framework Installer",
 	"require": {
 		"php": ">=5.3.2",
-		"silverstripe/cms": "3.1.*",
-		"silverstripe/framework": "3.1.*",
+		"silverstripe/cms": "3.1.*@stable",
+		"silverstripe/framework": "3.1.*@stable",
 		"silverstripe-themes/simple": "*",
 		"titledk/silverstripe-calendar": "*",
-		"silverstripe-australia/gridfieldextensions": "*"
+		"silverstripe-australia/gridfieldextensions": "*@stable"
 	},
 	"config": {
 		"process-timeout": 600	
