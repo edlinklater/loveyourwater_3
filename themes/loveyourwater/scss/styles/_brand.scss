@@ -65,6 +65,18 @@ Brand Primary: #33CCCC
 	display: none;
 }
 
+.CalendarPage .EventList {
+	padding-top: 1em;
+
+	.event {
+		padding: 20px;
+
+		.content {
+			margin-left: 120px;
+		}
+	}
+}
+
 .carousel-inner .item {
 	background-repeat: none;
 	background-position: center center;

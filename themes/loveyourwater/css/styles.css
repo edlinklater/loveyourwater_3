@@ -23,6 +23,10 @@ Brand Primary: #33CCCC
 
 #Remember { display: none; }
 
+.CalendarPage .EventList { padding-top: 1em; }
+.CalendarPage .EventList .event { padding: 20px; }
+.CalendarPage .EventList .event .content { margin-left: 120px; }
+
 .carousel-inner .item { background-repeat: none; background-position: center center; background-size: cover; }
 
 @media screen and (max-width: 768px) { .navbar-logo { width: 75px; margin-top: -15px; }
