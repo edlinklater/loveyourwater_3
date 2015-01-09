@@ -7,7 +7,8 @@ class RegistrationPage extends Page {
 
     private static $db = array(
         'SuccessMessage' => 'HTMLText',
-        'ConfirmedMessage' => 'HTMLText'
+        'ConfirmedMessage' => 'HTMLText',
+        'VerifiedMessage' => 'HTMLText'
     );
 
     private static $has_one = array(
@@ -36,6 +37,8 @@ class RegistrationPage extends Page {
             ->setDescription('Message to display after the form has been successfully submitted.'));
         $fields->addFieldToTab('Root.Form', HTMLEditorField::create('ConfirmedMessage', 'Confirmed Message')
             ->setDescription('Message to display after the member has successfully confirmed through their email.'));
+        $fields->addFieldToTab('Root.Form', HTMLEditorField::create('VerifiedMessage', 'Verified Message')
+            ->setDescription('Message to display after the member has attempted to verify an already verified account.'));
 
         return $fields;
     }
@@ -65,6 +68,10 @@ class RegistrationPage_Controller extends Page_Controller {
         return $this->request->getVar('confirmed');
     }
 
+    public function isVerified() {
+        return $this->request->getVar('verified');
+    }
+
     public function verifyemail() {
         $code = $this->request->getVar('h');
 
@@ -72,6 +79,10 @@ class RegistrationPage_Controller extends Page_Controller {
 
         // if a member exists, else throw a 404 error
         if($member) {
+            // if user is already verified - we can tell this is the expiry is set to null
+            if ($member->VerificationExpiry === null) {
+                return $this->redirect($this->Link('?verified=1'));
+            }
 
             // if verification is expired
             if(SS_Datetime::now()->Format('U') > strtotime($member->VerificationExpiry)) {
@@ -88,8 +99,8 @@ class RegistrationPage_Controller extends Page_Controller {
                 ));
             }
 
-            // wipe the verification data
-            $member->VerificationCode = null;
+            // wipe the verification expiry so we know we've been verified
+            // keep the code itself so we can tell if someone attempts to verify it again
             $member->VerificationExpiry = null;
 
             // check if the member has pending data to save
