@@ -91,7 +91,7 @@ class RegistrationForm extends Form {
         $member->write();
 
         // create verification code
-        $this->setVerificationCode($member);
+        $code = $this->setVerificationCode($member);
 
         // create and send email
         $registrationPage = RegistrationPage::get()->first();
@@ -129,6 +129,8 @@ class RegistrationForm extends Form {
             )
         );
         $member->write();
+
+        return $code;
     }
 
 }
