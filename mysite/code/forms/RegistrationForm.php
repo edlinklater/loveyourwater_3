@@ -59,8 +59,19 @@ class RegistrationForm extends Form {
         // store the member data for verification
         $memberData = $data;
 
+        $validator = Member::password_validator();
+
         if(isset($memberData['setPassword']['_Password'])) {
             $memberData['setPassword'] = $memberData['setPassword']['_Password'];
+        }
+
+        $v = $validator->validate($memberData['setPassword'], new Member());
+        if(!$v->valid()){
+            $form->sessionMessage("The password supplied does not meet our minimum security requirements.
+                Passwords must be at least 6 characters long and contain a selection of lowercase, uppercase,
+                digits and punctuation", 'bad'
+            );
+            return $this->controller->redirectBack();
         }
 
         // check if a member exists with the same email
