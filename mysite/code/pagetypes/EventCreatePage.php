@@ -26,7 +26,8 @@ class EventCreatePage extends Page {
 class EventCreatePage_Controller extends Page_Controller {
 
     private static $allowed_actions = array(
-        'CreateEvent'
+        'CreateEvent',
+        'edit'
     );
 
     public function init() {
@@ -36,12 +37,8 @@ class EventCreatePage_Controller extends Page_Controller {
         }
     }
 
-	private static $url_handlers = array(
-		'$ID' => 'index'
-	);
-
     public function CreateEvent() {
-		$EventID = $this->urlParams['ID'];
+		// $eventID = $this->urlParams['Action'];
 
         $fields = new FieldList(
             TextField::create("Title")
@@ -77,23 +74,23 @@ class EventCreatePage_Controller extends Page_Controller {
                 ->setTitle("Create")
                 ->addExtraClass('btn btn-success'));
 
-        $requiredFields = new RequiredFields(array('Title', 'Start'));
+        $requiredFields = new RequiredFields(array('Title'));
 
 		$form = Form::create($this, 'CreateEvent', $fields, $actions, $requiredFields);
 		$form->setTemplate('EventCreateForm');
 
-		if(is_numeric($EventID) && $EventID > 0) {
-			$Event = Event::get()->byID($EventID);
-			if($Event->exists() && $Event->CreatorID == Member::currentUserID()) {
-				die();
-				$form->loadDataFrom($Event);
-			}
-		}
+		// if(is_numeric($eventID) && $eventID > 0) {
+		// 	$event = Event::get()->byID($eventID);
+		// 	if($event->exists() && $event->CreatorID == Member::currentUserID()) {
+		// 		$form->loadDataFrom($event);
+		// 	}
+		// }
 
         return $form;
     }
 
     public function doCreateEvent($data, $form) {
+
         $submission = new Event();
         $form->saveInto($submission);
         // if no currentUser, redirect back to form
