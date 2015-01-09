@@ -1,2 +1,6 @@
 @import "styles/brand";
 @import "styles/carousel";
+
+.message.validation, .message.bad {
+	color:#d9534f;
+}
