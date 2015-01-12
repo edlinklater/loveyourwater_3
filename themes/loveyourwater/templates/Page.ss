@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{$BaseURL}favicon.ico" />
+    <link rel="icon" href="{$BaseURL}favicon-64.png">
+    <link rel="apple-touch-icon-precomposed" href="{$BaseURL}favicon-180.png">
     <title>$SiteConfig.Title – <% if $URLSegment != 'home' %>$Title<% else %>$SiteConfig.Tagline<% end_if %></title>
 
 	<% base_tag %>
