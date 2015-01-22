@@ -90,10 +90,30 @@ class EventCreatePage_Controller extends Page_Controller {
     }
 
     public function doCreateEvent($data, $form) {
+        
+        // get the start datetime
+        $formStartTime = $data['StartDateTime'];
+
+        // get the end datetime
+        $formEndTime = $data['EndDateTime'];
+        
+        // if start datetime and end datetime is set
+        if(isset($formStartTime) && is_array($formStartTime)
+            && isset($formEndTime) && is_array($formEndTime)) {
+
+            // convert the datetime arrays into single strings
+            $startstr = $formStartTime['date'] . ' ' . $formStartTime['time'];
+            $endstr = $formEndTime['date'] . ' ' . $formEndTime['time'];
+
+            // validate the start time is less than the end time
+            if(strtotime($startstr) > strtotime($endstr)) {
+                $form->sessionMessage('Please review your dates! The end date must be after the start date.', 'bad');
+                return $this->redirectBack();
+            }
+        }
 
         $submission = new Event();
         $form->saveInto($submission);
-        // if no currentUser, redirect back to form
         $submission->CreatorID = Member::currentUser()->ID;
         $submission->write();
         $calPage = CalendarPage::get()->first();
