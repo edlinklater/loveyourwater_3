@@ -11,7 +11,7 @@
                 <div class="carousel-caption">
                     <% if Title %><h1>$Title</h1><% end_if %>
                     <% if Content %><p>$Content.Summary</p><% end_if %>
-                    <% if ButtonText %>
+                    <% if ButtonText && $LinkID %>
                         <p><a class="btn btn-lg btn-primary" href="$Link.Link" role="button">$ButtonText</a></p>
                     <% end_if %>
                 </div>

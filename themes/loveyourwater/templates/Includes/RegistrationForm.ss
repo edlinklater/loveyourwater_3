@@ -8,7 +8,7 @@
             <% end_if %>
             <fieldset>
                 <div id="FirstName" class="field first_name form-group">
-                    <label class="left" for"{$FormName}_FirstName">First Name</label>
+                    <label class="left" for="{$FormName}_FirstName">First Name</label>
                     $Fields.dataFieldByName(FirstName)
                     <% if $Fields.dataFieldByName(FirstName).Message %>
                         <span id="{$FormName}_error" class="message $Fields.dataFieldByName(FirstName).MessageType">
@@ -62,7 +62,7 @@
                 
             </fieldset>
 
-            <p>By registering you agree to the <a href="$TermsPageLink" target="_blank">terms and conditions</a>.</p>
+            <p>By registering you agree to the <a href="$Controller.TermsPageLink" target="_blank">terms and conditions</a>.</p>
 
             <% if $Actions %>
                 <div class="Actions">

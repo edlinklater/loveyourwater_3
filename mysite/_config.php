@@ -18,3 +18,10 @@ CalendarConfig::init(array(
 		)
 	)
 ));
+
+
+$validator = new PasswordValidator();
+$validator->minLength(6);
+$validator->checkHistoricalPasswords(6);
+$validator->characterStrength(3, array("lowercase", "uppercase", "digits", "punctuation"));
+Member::set_password_validator($validator);

@@ -12,6 +12,8 @@
 				<p>The link will expire in {$ExpiryHours} hours.</p>
 			<% else_if $isConfirmed %>
 				<div class="content">$ConfirmedMessage</div>
+			<% else_if $isVerified %>
+				<div class="content">$VerifiedMessage</div>
 			<% else %>
 				<div class="content">$Content</div>
 				$Form
