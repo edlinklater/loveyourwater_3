@@ -39,9 +39,6 @@ Brand Primary: #33CCCC
 /* Padding below the footer and lighter body text */
 body { padding-bottom: 40px; color: #5a5a5a; }
 
-/* Generic error styling */
-.message.validation, .message.bad { color: #d9534f; }
-
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
@@ -95,3 +92,5 @@ body { padding-bottom: 40px; color: #5a5a5a; }
   .carousel-caption p { margin-bottom: 20px; font-size: 21px; line-height: 1.4; }
   .featurette-heading { font-size: 50px; } }
 @media (min-width: 992px) { .featurette-heading { margin-top: 120px; } }
+/* Generic error styling */
+.message.validation, .message.bad { color: #d9534f; }
