@@ -15,19 +15,19 @@ class RegistrationForm extends Form {
 
         // Fields
         $fields = new FieldList();
-        $fields->push(TextField::create('FirstName', 'First Name')
+        $fields->push(TextField::create('FirstName', 'First Name', '', 50)
             ->addExtraClass('form-control')
             ->setAttribute( 'placeholder', 'First Name' ));
-        $fields->push(TextField::create('Surname', 'Last Name')
+        $fields->push(TextField::create('Surname', 'Last Name', '', 50)
             ->addExtraClass('form-control')
             ->setAttribute( 'placeholder', 'Last Name' ));
-        $fields->push(EmailField::create('Email', 'Email')
+        $fields->push(EmailField::create('Email', 'Email', '', 50)
             ->addExtraClass('form-control')
             ->setAttribute( 'placeholder', 'Email Address' ));
-        $fields->push(TextField::create('Phone', 'Phone')
+        $fields->push(TextField::create('Phone', 'Phone', '', 50)
             ->addExtraClass('form-control')
             ->setAttribute( 'placeholder', 'Phone Number' ));
-        $fields->push($pw = ConfirmedPasswordField::create('setPassword', 'Password')
+        $fields->push($pw = ConfirmedPasswordField::create('setPassword', 'Password', '', 100)
             ->setCustomValidationMessage('Password is required'));
 
         foreach ($pw->children as $child) {

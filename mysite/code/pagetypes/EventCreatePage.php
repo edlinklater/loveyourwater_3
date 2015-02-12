@@ -41,7 +41,7 @@ class EventCreatePage_Controller extends Page_Controller {
 		// $eventID = $this->urlParams['Action'];
 
         $fields = new FieldList(
-            TextField::create("Title")
+            TextField::create('Title', 'Title', '', 50)
                 ->setAttribute('placeholder','Enter a title')
                 ->setAttribute('required', true)
                 ->addExtraClass('form-control'),
@@ -55,19 +55,19 @@ class EventCreatePage_Controller extends Page_Controller {
         $startDateTime->getDateField()
             ->setConfig('showcalendar', 1)
             ->setAttribute('placeholder','Enter start date')
-            ->setAttribute('readonly', 'true'); 
+            ->setAttribute('readonly', 'true');
 
         $startDateTime->getTimeField()
-            ->setConfig('timeformat', 'HH:mm') 
+            ->setConfig('timeformat', 'HH:mm')
             ->setAttribute('placeholder','Enter start time');
 
         $endDateTime->getDateField()
             ->setConfig('showcalendar', 1)
             ->setAttribute('placeholder','Enter end date')
-            ->setAttribute('readonly', 'true'); 
+            ->setAttribute('readonly', 'true');
 
         $endDateTime->getTimeField()
-            ->setConfig('timeformat', 'HH:mm') 
+            ->setConfig('timeformat', 'HH:mm')
             ->setAttribute('placeholder','Enter end time');
 
         $actions = new FieldList(FormAction::create("doCreateEvent")
@@ -90,13 +90,13 @@ class EventCreatePage_Controller extends Page_Controller {
     }
 
     public function doCreateEvent($data, $form) {
-        
+
         // get the start datetime
         $formStartTime = $data['StartDateTime'];
 
         // get the end datetime
         $formEndTime = $data['EndDateTime'];
-        
+
         // if start datetime and end datetime is set
         if(isset($formStartTime) && is_array($formStartTime)
             && isset($formEndTime) && is_array($formEndTime)) {
@@ -118,7 +118,7 @@ class EventCreatePage_Controller extends Page_Controller {
         $submission->write();
         $calPage = CalendarPage::get()->first();
         if ($calPage) {
-            return $this->redirect($this->join_links($calPage->Link(), "detail", $submission->ID));            
+            return $this->redirect($this->join_links($calPage->Link(), "detail", $submission->ID));
         } else {
             return $this->redirectBack();
         }
