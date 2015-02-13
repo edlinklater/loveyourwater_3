@@ -143,7 +143,7 @@ class EventCreatePage_Controller extends Page_Controller {
             }
         }
 
-        $submission = new Event();
+        $submission = new PublicEvent();
         $form->saveInto($submission);
         $submission->CreatorID = Member::currentUser()->ID;
         $submission->write();
