@@ -112,3 +112,11 @@ body { padding-bottom: 40px; color: #5a5a5a; }
 .event-panel .event-date .event-day { font-size: 38px; float: left; font-weight: bold; }
 .event-panel .event-date .event-month-year { position: relative; top: 9px; left: 8px; }
 .event-panel .event-title { display: table-cell; vertical-align: middle; font-size: 14px; line-height: 1.2; font-weight: bold; }
+
+.document-panel h3 { padding: 10px 20px; background-color: #33CCCC; color: #fff; font-size: 18px; margin-bottom: 20px; }
+.document-panel .heading-row { border: 1px solid #dbdbdb; }
+.document-panel .heading-row div { padding: 22px 0; }
+.document-panel .description-row { padding: 10px 22px; background-color: #f2f2f2; border-color: #dbdbdb; border-width: 0px 1px 1px 1px; border-style: solid; overflow: hidden; }
+.document-panel .col-title { border-color: #dbdbdb; border-width: 0px 0px 0px 1px; border-style: solid; }
+.document-panel .col-title h4 { margin-left: 10px; font-size: 16px; }
+.document-panel .document-item { margin-bottom: 30px; }
