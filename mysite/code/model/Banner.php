@@ -4,6 +4,9 @@
  */
 class Banner extends DataObject {
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'Title' => 'Text',
         'Content' => 'HTMLText',
@@ -11,12 +14,18 @@ class Banner extends DataObject {
         'SortField' => 'Int'
     );
 
+    /**
+     * @var array
+     */
     private static $has_one = array(
     	'Image' => 'Image',
     	'Page' => 'SiteTree',
         'Link' => 'Page'
     );
 
+    /**
+     * @return FieldList
+     */
     public function getCMSFields() {
     	$fields = new FieldList();
 
@@ -32,10 +41,17 @@ class Banner extends DataObject {
     	return $fields;
     }
 
+    /**
+     * @param $pos
+     * @return mixed
+     */
     public function BannerPos($pos) {
         return $pos - 1;
     }
 
+    /**
+     * Ben Manu wrote this
+     */
     public function onBeforeWrite() {
         // add auto sort
         if (!$this->SortField) {

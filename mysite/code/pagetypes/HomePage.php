@@ -1,11 +1,19 @@
 <?php
-
+/**
+ * Class HomePage
+ */
 class HomePage extends Page {
 
+    /**
+     * @var array
+     */
 	private static $has_many = array(
 		'ActionLinks' => 'ActionLink.Page'
 	);
 
+    /**
+     * @return FieldList
+     */
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 

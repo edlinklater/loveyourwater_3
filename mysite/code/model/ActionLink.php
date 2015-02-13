@@ -4,6 +4,9 @@
  */
 class ActionLink extends DataObject {
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'Title' => 'Varchar(255)',
         'Icon' => "VarChar(100)",
@@ -11,11 +14,17 @@ class ActionLink extends DataObject {
         'SortField' => 'Int'
     );
 
+    /**
+     * @var array
+     */
     private static $has_one = array(
         'Page' => 'SiteTree',
         'Link' => 'Page'
     );
 
+    /**
+     * @return FieldList
+     */
     public function getCMSFields() {
         $fields = new FieldList();
 
