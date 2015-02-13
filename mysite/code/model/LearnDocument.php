@@ -27,7 +27,8 @@ class LearnDocument extends DataObject {
 
         $fields->push(TextField::create('Title'));
         $fields->push(TextareaField::create('Description'));
-        $fields->push(DropdownField::create('Type', 'Type', singleton('LearnDocument')->dbObject('Type')->enumValues()));
+        $fields->push(DropdownField::create('Type', 'Type', singleton('LearnDocument')->dbObject('Type')->enumValues())
+            ->setDescription('Will be automatically detected on save.'));
         $fields->push(UploadField::create('File'));
         $fields->push(UploadField::create('Preview', 'Preview image'));
 

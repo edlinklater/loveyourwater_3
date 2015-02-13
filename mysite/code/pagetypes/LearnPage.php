@@ -2,6 +2,8 @@
 
 class LearnPage extends Page {
 
+    private static $description = 'A respository for learning resources.';
+
 	private static $has_many = array(
         'Documents' => 'LearnDocument.Link'
     );
