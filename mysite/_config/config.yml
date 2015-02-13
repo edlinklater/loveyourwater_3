@@ -10,6 +10,8 @@ After:
 SSViewer:
   theme: 'loveyourwater'
 
+
+#Security setting for Member class
 Member:
   extensions:
     - MemberExtension

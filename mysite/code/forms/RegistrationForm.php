@@ -60,11 +60,11 @@ class RegistrationForm extends Form {
         $memberData = $data;
 
         $validator = Member::password_validator();
-
         if(isset($memberData['setPassword']['_Password'])) {
             $memberData['setPassword'] = $memberData['setPassword']['_Password'];
         }
 
+        //ensure password meets minimal security reqs, set in config.yml
         $v = $validator->validate($memberData['setPassword'], new Member());
         if(!$v->valid()){
             $form->sessionMessage("The password supplied does not meet our minimum security requirements.

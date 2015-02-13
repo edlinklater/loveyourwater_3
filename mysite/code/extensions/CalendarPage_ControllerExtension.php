@@ -6,12 +6,17 @@
  */
 class CalendarPage_ControllerExtension extends Extension {
 
+	/**
+	 * @var array
+	 */
 	private static $allowed_actions = array(
 		'myevents',
 		'filtercalendar'
 	);
 
-	// my events filter
+	/**
+	 * @return Object
+	 */
 	public function myevents() {
 		return $this->owner;
 	}
@@ -32,7 +37,9 @@ class CalendarPage_ControllerExtension extends Extension {
 		return ($params['Action'] == 'myevents' ? true : false);
 	}
 
-	// calendar filter
+	/**
+	 * @return Object
+	 */
 	public function filtercalendar() {
 		return $this->owner;
 	}
