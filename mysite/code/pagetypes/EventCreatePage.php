@@ -48,14 +48,6 @@ class EventCreatePage_Controller extends Page_Controller {
         }
     }
 
-
-    /**
-     * @var array
-     */
-	private static $url_handlers = array(
-		'$ID' => 'index'
-	);
-
     /**
      * @return static
      */
@@ -86,7 +78,6 @@ class EventCreatePage_Controller extends Page_Controller {
 
         $endDateTime->getDateField()
             ->setConfig('showcalendar', 1)
-            ->setConfig('dateformat', 'd/')
             ->setAttribute('placeholder','Enter end date')
             ->setAttribute('readonly', 'true'); 
 
@@ -98,7 +89,7 @@ class EventCreatePage_Controller extends Page_Controller {
                 ->setTitle("Create")
                 ->addExtraClass('btn btn-success'));
 
-        $requiredFields = new RequiredFields(array('Title'));
+        $requiredFields = new RequiredFields(array('Title', 'StartDateTime', 'EndDateTime'));
 
 		$form = Form::create($this, 'CreateEvent', $fields, $actions, $requiredFields);
 		$form->setTemplate('EventCreateForm');
