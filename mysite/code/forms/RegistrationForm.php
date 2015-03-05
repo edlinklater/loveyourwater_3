@@ -11,6 +11,9 @@ class RegistrationForm extends Form {
      */
     private static $verification_expiry_hours = 24;
 
+    public function init() {
+    }
+
     public function __construct($controller, $name) {
 
         // Fields

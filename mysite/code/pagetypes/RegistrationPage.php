@@ -69,6 +69,7 @@ class RegistrationPage_Controller extends Page_Controller {
      */
     public function init() {
         parent::init();
+        Requirements::javascript('themes/loveyourwater/js/registrationForm.js');
     }
 
     /**
