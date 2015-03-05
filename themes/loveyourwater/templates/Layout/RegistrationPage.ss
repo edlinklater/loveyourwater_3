@@ -9,7 +9,9 @@
 		<div class="col-sm-6">
 			<% if $isSuccess %>
 				<div class="content">$SuccessMessage</div>
-				<p>The link will expire in {$ExpiryHours} hours.</p>
+				<p>Thank you for Registering.</p>
+				<p>A Verification link has been sent to your email.</p>
+				<p>This link will expire in {$ExpiryHours} hours.</p>
 			<% else_if $isConfirmed %>
 				<div class="content">$ConfirmedMessage</div>
 			<% else_if $isVerified %>
