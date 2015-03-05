@@ -163,6 +163,9 @@ class RegistrationPage_Controller extends Page_Controller {
                     $userGroup->Members()->add($member);
                 }
 
+                $config = SiteConfig::current_site_config();
+
+
                 // send confirmation email
                 $email = Email::create()
                     ->setTo($member->Email)
@@ -171,8 +174,15 @@ class RegistrationPage_Controller extends Page_Controller {
                     ->populateTemplate(array(
                         'Member' => $member,
                         'BaseURL' => Director::absoluteBaseURL()
-                    ))
-                    ->send();
+                    ));
+
+                   if($config->RegistrationEmailAddress){
+                       $email->setFrom($config->RegistrationEmailAddress);
+                   }
+
+                    $email->send();
+
+
 
                 // redirect
                 return $this->redirect($this->Link('?confirmed=1'));

@@ -99,6 +99,9 @@ class RegistrationForm extends Form {
             $registrationPage->Link('verifyemail'),
             '?h=' . $code
         );
+
+        $config = SiteConfig::current_site_config();
+
         $email = Email::create()
             ->setTo($member->Email)
             ->setSubject('Your Love Your Water account verification, nearly done!')
@@ -107,8 +110,13 @@ class RegistrationForm extends Form {
                 'Member' => $member,
                 'VerificationLink' => $link,
                 'BaseURL' => Director::absoluteBaseURL()
-            ))
-            ->send();
+            ));
+
+            if($config->RegistrationEmailAddress){
+                $email->setFrom($config->RegistrationEmailAddress);
+            }
+
+            $email->send();
         
         // redirect to success page
         return $this->controller->redirect($this->controller->Link('?success=1'));
