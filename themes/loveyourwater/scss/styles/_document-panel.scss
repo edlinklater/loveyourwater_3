@@ -1,0 +1,44 @@
+
+.document-panel {
+
+	h3 {
+		padding: 10px 20px;
+		background-color: #33CCCC;
+		color: #fff;
+		font-size: 18px;
+		margin-bottom: 20px;
+	}
+
+	.heading-row {
+		div {
+			padding: 22px 0;
+		}
+		border: 1px solid #dbdbdb;
+	}
+
+	.description-row {
+		padding: 10px 22px;
+		background-color: #f2f2f2;
+		border-color: #dbdbdb;
+		border-width: 0px 1px 1px 1px;
+		border-style: solid;
+		overflow: hidden;
+	}
+
+	.col-title {
+		border-color: #dbdbdb;
+		border-width: 0px 0px 0px 1px;
+		border-style: solid;
+
+		h4 {
+			margin-left: 10px;
+			font-size: 16px;
+		}
+	}
+
+	.document-item {
+		margin-bottom: 30px;
+	}
+
+
+}
