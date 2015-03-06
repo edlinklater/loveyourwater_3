@@ -16,7 +16,7 @@ Member:
   extensions:
     - MemberExtension
   lock_out_after_incorrect_logins:
-    5
+    4
   lock_out_delay_mins:
     60
 
