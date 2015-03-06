@@ -24,6 +24,8 @@ CalendarConfig::init(array(
 	)
 ));
 
+Object::useCustomClass('MemberLoginForm', 'CustomLoginForm');
+
 
 $validator = new PasswordValidator();
 $validator->minLength(6);

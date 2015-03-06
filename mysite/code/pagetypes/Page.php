@@ -99,4 +99,9 @@ class Page_Controller extends ContentController {
         return $this->Banners()->sort('SortField ASC')->limit(4);
     }
 
+    public function ShowLoginBox() {
+        $hasFailedLogin = Session::get('has_failed_login');
+        Session::set('has_failed_login', false);
+        return $hasFailedLogin;
+    } 
 }
