@@ -7,9 +7,12 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-4">
 			$Content
 		</div>
+        <div class="col-lg-8 learn-slide">
+            $SlideEmbedCode.RAW
+        </div>
 	</div>
 </div>
 

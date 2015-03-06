@@ -4,6 +4,10 @@ class LearnPage extends Page {
 
     private static $description = 'A respository for learning resources.';
 
+    private static $db = array(
+        'SlideEmbedCode' => 'Text'
+    );
+
 	private static $has_many = array(
         'Documents' => 'LearnDocument.Link'
     );
@@ -28,6 +32,11 @@ class LearnPage extends Page {
             GridField::create('Documents', 'Documents', $this->Documents())
                 ->setConfig($documentConfig)
         );
+
+        $fields->addFieldToTab("Root.Main",
+            TextareaField::create('SlideEmbedCode', 'Slide embed code'),
+            'Content'
+        );
         
         return $fields;
     }
@@ -35,10 +44,11 @@ class LearnPage extends Page {
 }
 
 class LearnPage_Controller extends Page_Controller {
-
-
-
-
+    
+    public function init() {
+        parent::init();
+        Requirements::javascript('themes/loveyourwater/js/page-learn.js');
+    }
 }
 
 
