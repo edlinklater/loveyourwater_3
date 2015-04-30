@@ -20,6 +20,7 @@
                 <div id="StartDateTime" class="field start_date_time form-group">
                     <label class="left" for="{$formName}_StartDateTime">Start</label>
                     $Fields.dataFieldByName(StartDateTime)
+                    <p id="startTimeHelpBlock" class="help-block"><small>Please format the start time as <code>00:00</code>.</small></p>
                     <% if $Fields.dataFieldByName(StartDateTime).Message %>
                         <span id="{$FormName}_error" class="message $Fields.dataFieldByName(StartDateTime).MessageType">
                             $Fields.dataFieldByName(StartDateTime).Message
@@ -30,6 +31,7 @@
                 <div id="EndDateTime" class="field end_date_time form-group">
                     <label class="left" for="{$FormName}_EndDateTime">End</label>
                     $Fields.dataFieldByName(EndDateTime)
+                    <p id="endTimeHelpBlock" class="help-block"><small>Please format the end time as <code>00:00</code>.</small></p>
                     <% if $Fields.dataFieldByName(EndDateTime).Message %>
                         <span id="{$FormName}_error" class="message $Fields.dataFieldByName(EndDateTime).MessageType">
                             $Fields.dataFieldByName(EndDateTime).Message

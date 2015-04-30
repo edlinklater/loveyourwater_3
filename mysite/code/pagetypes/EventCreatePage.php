@@ -74,7 +74,8 @@ class EventCreatePage_Controller extends Page_Controller {
 
         $startDateTime->getTimeField()
             ->setConfig('timeformat', 'HH:mm') 
-            ->setAttribute('placeholder','Enter start time');
+            ->setAttribute('placeholder','Enter start time')
+            ->setAttribute('aria-describedby','startTimeHelpBlock');
 
         $endDateTime->getDateField()
             ->setConfig('showcalendar', 1)
@@ -83,7 +84,8 @@ class EventCreatePage_Controller extends Page_Controller {
 
         $endDateTime->getTimeField()
             ->setConfig('timeformat', 'HH:mm') 
-            ->setAttribute('placeholder','Enter end time');
+            ->setAttribute('placeholder','Enter end time')
+            ->setAttribute('aria-describedby','endTimeHelpBlock');
 
         $actions = new FieldList(FormAction::create("doCreateEvent")
                 ->setTitle("Create")
