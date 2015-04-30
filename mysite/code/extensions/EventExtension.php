@@ -10,7 +10,8 @@ class EventExtension extends DataExtension {
 	 */
 	private static $db = array(
 		"Region" => "Enum('Northland, Auckland, Waikato, Bay of Plenty, Gisborne, Hawkes Bay, Taranaki,
-		 Manawatu-Whanganui, Wellington, Tasman, Nelson, Marlborough, West Coast, Canterbury, Otago, Southland')"
+		 Manawatu-Whanganui, Wellington, Tasman, Nelson, Marlborough, West Coast, Canterbury, Otago, Southland')",
+		"Geometry" => "Text"
 	);
 
 	/**
@@ -28,6 +29,17 @@ class EventExtension extends DataExtension {
 		$fields->addFieldToTab('Root.Main', $regionDropDown);
 		$memberLookup = new DropdownField('CreatorID', 'Creator', Member::get()->map('ID', 'Name'));
 		$fields->addFieldToTab('Root.Main', $memberLookup);
+
+		$geoField = new LeafletField('Geometry', 'Geometry', $this->owner);
+		$geoField->setLimit(1); // Limit the amount of objects the field can contain.
+		$geoField->setMapOptions(array(
+		    'center' => array(
+		        'latitude' => '-40.866119',
+		        'longitude' => '174.143780'
+		    ),
+		    'zoom' => 5
+		));
+		$fields->addFieldToTab('Root.Geometry', $geoField);
 	}
 
 	/**
