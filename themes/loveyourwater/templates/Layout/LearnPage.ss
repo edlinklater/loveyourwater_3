@@ -30,7 +30,7 @@
 
 						<div class="col-lg-12 text-center">
 							<!-- Preview -->
-							<img src="$File.Filename" width="100%">
+							<img src="$Preview.Filename" width="100%">
 							<div class="heading-row clearfix">
 
 								<div class="col-lg-3 text-center col-icon">
