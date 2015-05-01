@@ -24,13 +24,9 @@
     <!-- NAVBAR
         ================================================== -->
         <div class="navbar-wrapper">
-            <div class="container">
-
-                <nav class="navbar navbar-default navbar-static-top" role="navigation">
-                    <% include Nav %>
-                </nav>
-
-            </div>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <% include Nav %>
+            </nav>
         </div>
 
         <%-- <div class="container"> --%>
