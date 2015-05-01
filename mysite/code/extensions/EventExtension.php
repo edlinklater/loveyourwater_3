@@ -31,13 +31,9 @@ class EventExtension extends DataExtension {
 		$fields->addFieldToTab('Root.Main', $memberLookup);
 
 		$geoField = new LeafletField('Geometry', 'Geometry', $this->owner);
-		$geoField->setLimit(1); // Limit the amount of objects the field can contain.
-		$geoField->setMapOptions(array(
-		    'center' => array(
-		        'latitude' => '-40.866119',
-		        'longitude' => '174.143780'
-		    ),
-		    'zoom' => 5
+		$geoField->setDrawOptions(array(
+		    'rectangle' => false,
+		    'circle'	=> false
 		));
 		$fields->addFieldToTab('Root.Geometry', $geoField);
 	}
