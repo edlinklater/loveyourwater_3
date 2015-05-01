@@ -63,7 +63,7 @@
                 
             </fieldset>
 
-            <p>By registering you agree to the <a href="$TermsPageLink" target="_blank">terms and conditions</a>.</p>
+            <p>By registering you agree to the <a href="$Controller.TermsPageLink" target="_blank">terms and conditions</a>.</p>
 
             <% if $Actions %>
                 <div class="Actions">
