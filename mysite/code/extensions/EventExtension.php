@@ -46,4 +46,34 @@ class EventExtension extends DataExtension {
 		return singleton('Event')->dbObject('Region')->enumValues();
 	}
 
+	/**
+	 * Return the location geometry as geojson
+	 * @return String the GeoJSON representation of the location.
+	 */
+	public function getLocation() {
+		// get the layer and format.
+		$layer = null;
+		if($this->owner->Geometry && $data = json_decode($this->owner->Geometry)) {
+			if(isset($data->layers)) {
+				$layer = array(
+        			'type' => 'FeatureCollection',
+					'features' => array()
+				);
+
+				foreach($data->layers as $feature) {
+					$feature->properties = array(
+						'featureType' => 'projectLayer',
+						'id' => (String)$this->owner->ID
+					);
+					$layer['features'][] = $feature;
+				}
+			}
+		}
+		if($layer) {
+			return json_encode($layer);
+		} else {
+			return null;
+		}
+	}
+
 }

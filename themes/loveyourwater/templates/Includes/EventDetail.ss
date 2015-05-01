@@ -1,7 +1,7 @@
 <% include CalendarPageMenu %>
 <div class="EventDetail">
 	<% with Event %>
-		<div class="eventFullDetails">
+		<div class="eventFullDetails" data-geometry="$Location">
 			<div class="feedBox">
 				<% if $Calendar %>
 					<% with $Calendar %>
