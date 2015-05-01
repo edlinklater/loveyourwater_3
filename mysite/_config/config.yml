@@ -27,13 +27,19 @@ Event:
 SiteConfig:
   extensions:
    - SiteConfigExtension
-   
 TestSessionEnvironment:
   extensions:
     - LywTestSessionExtension
   database_templates_path: mysite/tests/fixtures
-  
 TestSessionController:
   extensions:
     - LywTestSessionExtension
   database_templates_path: mysite/tests/fixtures
+
+LeafletField:
+  map_options:
+    tileLayer: '//{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}.png'
+    subdomains:
+      - 'server'
+      - 'services'
+    attribution: 'ESRI, OpenStreetMap'

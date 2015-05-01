@@ -34,5 +34,11 @@
 			</div>
 		</div>
 		$Details
+		<% if $Location %>
+			<div id="eventLocationMap" data-geometry="$Location" style="height: 400px"></div>
+			<% require css('http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css') %>
+			<% require javascript('http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js') %>
+			<% require javascript('themes/loveyourwater/js/event-detail.js') %>
+		<% end_if %>
 	<% end_with %>
 </div>

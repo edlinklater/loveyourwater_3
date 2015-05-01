@@ -39,6 +39,11 @@
                     <% end_if %>
                 </div>
 
+                <div id="Geometry" class="field geometry form-group">
+                    <label class="left" for="{$FormName}_Geometry">Location</label>
+                    $Fields.dataFieldByName(Geometry)
+                </div>
+
                 <div id="Region" class="field region form-group">
                     <label class="left" for="{$FormName}_Region">Region</label>
                     $Fields.dataFieldByName(Region)
