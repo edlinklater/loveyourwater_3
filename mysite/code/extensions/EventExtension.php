@@ -30,12 +30,12 @@ class EventExtension extends DataExtension {
 		$memberLookup = new DropdownField('CreatorID', 'Creator', Member::get()->map('ID', 'Name'));
 		$fields->addFieldToTab('Root.Main', $memberLookup);
 
-		$geoField = new LeafletField('Geometry', 'Geometry', $this->owner);
+		$geoField = new LeafletField('Geometry', 'Location', $this->owner);
 		$geoField->setDrawOptions(array(
 		    'rectangle' => false,
 		    'circle'	=> false
 		));
-		$fields->addFieldToTab('Root.Geometry', $geoField);
+		$fields->addFieldToTab('Root.Location', $geoField);
 	}
 
 	/**

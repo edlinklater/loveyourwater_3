@@ -2,6 +2,10 @@
 
 class EventCreatePage extends Page {
 
+    private static $db = array(
+        'Geometry' => 'Text'
+    );
+
     /**
      * @throws Exception
      * @throws ValidationException
@@ -54,6 +58,12 @@ class EventCreatePage_Controller extends Page_Controller {
     public function CreateEvent() {
 //		$EventID = Convert::raw2sql($this->urlParams['ID']);
 
+        $geoField = new LeafletField('Geometry', 'Location', $this);
+        $geoField->setDrawOptions(array(
+            'rectangle' => false,
+            'circle'    => false
+        ));
+
         $fields = new FieldList(
             TextField::create("Title")
                 ->setAttribute('placeholder','Enter a title')
@@ -66,6 +76,8 @@ class EventCreatePage_Controller extends Page_Controller {
             DropdownField::create('Region', 'Region', EventExtension::getRegions()),
             HtmlEditorField::create('Details', 'Description')
         );
+
+        $fields->push($geoField);
 
         $startDateTime->getDateField()
             ->setConfig('showcalendar', 1)
@@ -100,6 +112,9 @@ class EventCreatePage_Controller extends Page_Controller {
 		// 		$form->loadDataFrom($event);
 		// 	}
 		// }
+
+        // initiate the leaflet field js.
+        Requirements::customScript('window.leafletfieldInit()');
 
         return $form;
     }
