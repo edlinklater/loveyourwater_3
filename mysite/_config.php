@@ -25,7 +25,7 @@ CalendarConfig::init(array(
 ));
 
 Object::useCustomClass('MemberLoginForm', 'CustomLoginForm');
-
+Object::useCustomClass('Member_ForgotPasswordEmail', 'LYWMember_ForgotPasswordEmail');
 
 $validator = new PasswordValidator();
 $validator->minLength(6);
