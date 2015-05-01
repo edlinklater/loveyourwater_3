@@ -33,6 +33,13 @@
         // @todo to be implemented
     }
 
+
+
+.eventFullDetails .fatDate {
+    width: 25%;
+}
+
+
 .event-panel {
     display: block;
     color: #1066b2;
@@ -87,4 +94,8 @@
             font-weight: bold;
         }
 
+}
+
+#eventLocationMap {
+    margin: 1em 0;
 }
