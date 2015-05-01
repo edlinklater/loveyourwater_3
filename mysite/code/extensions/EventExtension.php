@@ -70,7 +70,8 @@ class EventExtension extends DataExtension {
 			}
 		}
 		if($layer) {
-			return json_encode($layer);
+			$layer = json_encode($layer);
+			return str_replace("\"", "'", $layer);
 		} else {
 			return null;
 		}
