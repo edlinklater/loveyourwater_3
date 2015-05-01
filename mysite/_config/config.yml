@@ -27,3 +27,13 @@ Event:
 SiteConfig:
   extensions:
    - SiteConfigExtension
+   
+TestSessionEnvironment:
+  extensions:
+    - LywTestSessionExtension
+  database_templates_path: mysite/tests/fixtures
+  
+TestSessionController:
+  extensions:
+    - LywTestSessionExtension
+  database_templates_path: mysite/tests/fixtures

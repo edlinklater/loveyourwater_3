@@ -1,0 +1,51 @@
+default:
+  filters:
+    tags: "~@todo"
+  formatter:
+    name: pretty
+    parameters:
+        verbose: true
+  context:
+    parameters:
+      apiBase_url:
+
+  extensions:
+    SilverStripe\BehatExtension\MinkExtension:
+      # Adjust "base_url" to your own website URL.
+      # Can be set via environment variables or _ss_environment.php/$_FILE_TO_URL_MAPPING as well.
+      # 
+      base_url:  http://dev.loveyourwater.silverstripe.com
+      
+      # TODO Dynamically set through LocatorProcessor
+      files_path: %behat.paths.base%/framework/tests/behat/features/files/
+      default_session: selenium2
+      javascript_session: selenium2
+      selenium2:
+        browser: firefox
+    SilverStripe\BehatExtension\Extension:
+      screenshot_path: %behat.paths.base%/_artifacts/screenshots
+          
+chrome:
+  filters:
+    tags: "~@todo"
+  formatter:
+    name: pretty
+    parameters:
+        verbose: true
+
+  extensions:
+    SilverStripe\BehatExtension\MinkExtension:
+      # Adjust "base_url" to your own website URL.
+      # Can be set via environment variables or _ss_environment.php/$_FILE_TO_URL_MAPPING as well.
+      # 
+      base_url:  http://dev.loveyourwater.silverstripe.com
+
+      # TODO Dynamically set through LocatorProcessor
+      files_path: %behat.paths.base%/framework/tests/behat/features/files/
+      default_session: selenium2
+      javascript_session: selenium2
+      selenium2:
+        browser: chrome
+    SilverStripe\BehatExtension\Extension:
+      screenshot_path: %behat.paths.base%/_artifacts/screenshots
+      ajax_timeout: 10000
