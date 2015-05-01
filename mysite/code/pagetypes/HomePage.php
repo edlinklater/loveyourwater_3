@@ -76,4 +76,13 @@ class HomePage_Controller extends Page_Controller {
         }
     }
 
+	/**
+	 * Return the default image from Siteconfig
+	 * @return mixed
+	 */
+	public function getSiteDefaultEventImage(){
+		return SiteConfig::current_site_config()->DefaultEventImage();
+
+	}
+
 }

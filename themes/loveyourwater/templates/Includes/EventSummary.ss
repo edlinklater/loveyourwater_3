@@ -1,7 +1,7 @@
 <% loop Events %>
 <div class="col-sm-4">
     <a class="panel panel-default event-panel" href="$Top.getEventLink($ID)">
-        <span class="event-image" style="background-image: url({$ThemeDir}/images/placeholders/coastline.jpg);">
+        <span class="event-image" <% if $Top.SiteDefaultEventImage %> style="background-image: url($Top.SiteDefaultEventImage.URL); <% else %>style="background-image: url({$ThemeDir}/images/placeholders/coastline.jpg);<% end_if %>">
         </span>
         <span class="event-body">
             <span class="event-date">
