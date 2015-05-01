@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.6.23)
 # Database: lyw3_db
-# Generation Time: 2015-04-30 23:56:46 +0000
+# Generation Time: 2015-05-01 02:42:32 +0000
 # ************************************************************
 
 
@@ -683,7 +683,7 @@ INSERT INTO `Member` (`ID`, `ClassName`, `Created`, `LastEdited`, `FirstName`, `
 VALUES
 	(1,'Member','2014-11-29 14:01:03','2014-11-30 10:16:29','Default Admin',NULL,NULL,NULL,NULL,3,'2014-12-01 08:57:45',NULL,NULL,NULL,NULL,NULL,NULL,'en_US',0,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
 	(2,'Member','2015-01-09 10:39:10','2015-01-09 10:39:10','Default Admin',NULL,'td',NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'en_US',0,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),
-	(3,'Member','2015-03-06 13:33:09','2015-03-06 13:54:56','Default Admin',NULL,'admin',NULL,NULL,3,'2015-05-01 11:56:41',NULL,NULL,NULL,NULL,NULL,NULL,'en_US',0,NULL,NULL,NULL,0,NULL,NULL,NULL,'90b8cd53393cacda5ee397121ca05770371286d1','2015-03-09 13:54:56'),
+	(3,'Member','2015-03-06 13:33:09','2015-03-06 13:54:56','Default Admin',NULL,'admin',NULL,NULL,3,'2015-05-01 14:41:58',NULL,NULL,NULL,NULL,NULL,NULL,'en_US',0,NULL,NULL,NULL,0,NULL,NULL,NULL,'90b8cd53393cacda5ee397121ca05770371286d1','2015-03-09 13:54:56'),
 	(4,'Member','2015-03-06 14:02:10','2015-03-06 14:32:14','John','Smith','test@test.com','$2y$10$1c7917144e10bfb659841e2f.8sm/KmlZU.K57dlYIJ3PPFfrqcNu',NULL,0,NULL,NULL,NULL,'blowfish','10$1c7917144e10bfb659841f',NULL,'2015-03-06 15:32:14','en_US',7,'MMM d, y','h:mm:ss a',NULL,0,NULL,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `Member` ENABLE KEYS */;
@@ -747,7 +747,8 @@ VALUES
 	(7,NULL,0,NULL),
 	(8,NULL,1,NULL),
 	(9,NULL,0,NULL),
-	(10,'subtitle of event',0,'event summary');
+	(10,'subtitle of event',0,'event summary'),
+	(11,'Subtitle of Event Create Page',0,'This is summary text of Event Create Page');
 
 /*!40000 ALTER TABLE `Page` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -780,7 +781,8 @@ VALUES
 	(7,NULL,0,NULL),
 	(8,NULL,1,NULL),
 	(9,NULL,0,NULL),
-	(10,'subtitle of event',0,'event summary');
+	(10,'subtitle of event',0,'event summary'),
+	(11,'Subtitle of Event Create Page',0,'This is summary text of Event Create Page');
 
 /*!40000 ALTER TABLE `Page_Live` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -812,7 +814,9 @@ VALUES
 	(1,1,1,NULL,0,NULL),
 	(29,1,2,'This is subtitle on homepage',0,'This is summary text on homepage'),
 	(30,1,3,'This is subtitle on homepage',0,'This is summary text on homepage'),
-	(31,7,1,NULL,0,NULL);
+	(31,7,1,NULL,0,NULL),
+	(32,11,1,NULL,0,NULL),
+	(33,11,2,'Subtitle of Event Create Page',0,'This is summary text of Event Create Page');
 
 /*!40000 ALTER TABLE `Page_versions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1113,16 +1117,18 @@ CREATE TABLE `SiteConfig` (
   `CanCreateTopLevelType` enum('LoggedInUsers','OnlyTheseUsers') DEFAULT 'LoggedInUsers',
   `GACode` varchar(255) DEFAULT NULL,
   `RegistrationEmailAddress` varchar(255) DEFAULT NULL,
+  `DefaultEventImageID` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`),
-  KEY `ClassName` (`ClassName`)
+  KEY `ClassName` (`ClassName`),
+  KEY `DefaultEventImageID` (`DefaultEventImageID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `SiteConfig` WRITE;
 /*!40000 ALTER TABLE `SiteConfig` DISABLE KEYS */;
 
-INSERT INTO `SiteConfig` (`ID`, `ClassName`, `Created`, `LastEdited`, `Title`, `Tagline`, `Theme`, `CanViewType`, `CanEditType`, `CanCreateTopLevelType`, `GACode`, `RegistrationEmailAddress`)
+INSERT INTO `SiteConfig` (`ID`, `ClassName`, `Created`, `LastEdited`, `Title`, `Tagline`, `Theme`, `CanViewType`, `CanEditType`, `CanCreateTopLevelType`, `GACode`, `RegistrationEmailAddress`, `DefaultEventImageID`)
 VALUES
-	(1,'SiteConfig','2014-11-29 14:01:03','2015-03-06 15:27:28','Love Your Water','your tagline here','loveyourwater','Anyone','LoggedInUsers','LoggedInUsers',NULL,NULL);
+	(1,'SiteConfig','2014-11-29 14:01:03','2015-03-06 15:27:28','Love Your Water','your tagline here','loveyourwater','Anyone','LoggedInUsers','LoggedInUsers',NULL,'no-reply@loveyourwater.org',0);
 
 /*!40000 ALTER TABLE `SiteConfig` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1221,7 +1227,8 @@ VALUES
 	(7,'CalendarPage','2014-11-30 14:34:17','2015-05-01 11:45:14','calendar-page','Calendar page',NULL,NULL,NULL,NULL,1,1,7,0,0,NULL,'Inherit','Inherit',1,0),
 	(8,'RegistrationPage','2015-03-06 13:59:51','2015-03-06 15:21:14','registration-page','Registration Page',NULL,NULL,NULL,NULL,0,1,8,0,0,NULL,'Inherit','Inherit',5,0),
 	(9,'LearnPage','2015-03-06 15:06:36','2015-03-06 15:09:06','learn-page','Learn Page',NULL,NULL,NULL,NULL,1,1,10,0,0,NULL,'Inherit','Inherit',2,0),
-	(10,'ErrorPage','2015-03-06 15:11:03','2015-03-06 15:25:13','event-page','Event Page',NULL,'<p>this is the content of an event.</p>',NULL,NULL,1,1,9,0,0,NULL,'Inherit','Inherit',11,0);
+	(10,'ErrorPage','2015-03-06 15:11:03','2015-03-06 15:25:13','event-page','Event Page',NULL,'<p>this is the content of an event.</p>',NULL,NULL,1,1,9,0,0,NULL,'Inherit','Inherit',11,0),
+	(11,'EventCreatePage','2015-05-01 14:40:47','2015-05-01 14:41:45','event-create-page','Event Create Page',NULL,'<p>You can create events here.</p>',NULL,NULL,1,1,11,0,0,NULL,'OnlyTheseUsers','Inherit',2,0);
 
 /*!40000 ALTER TABLE `SiteTree` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1322,7 +1329,8 @@ VALUES
 	(7,'CalendarPage','2014-11-30 14:34:17','2015-05-01 11:45:14','calendar-page','Calendar page',NULL,NULL,NULL,NULL,1,1,7,0,0,NULL,'Inherit','Inherit',1,0),
 	(8,'RegistrationPage','2015-03-06 13:59:51','2015-03-06 15:21:14','registration-page','Registration Page',NULL,NULL,NULL,NULL,0,1,8,0,0,NULL,'Inherit','Inherit',5,0),
 	(9,'LearnPage','2015-03-06 15:06:36','2015-03-06 15:09:06','learn-page','Learn Page',NULL,NULL,NULL,NULL,1,1,10,0,0,NULL,'Inherit','Inherit',2,0),
-	(10,'ErrorPage','2015-03-06 15:11:03','2015-03-06 15:25:13','event-page','Event Page',NULL,'<p>this is the content of an event.</p>',NULL,NULL,1,1,9,0,0,NULL,'Inherit','Inherit',11,0);
+	(10,'ErrorPage','2015-03-06 15:11:03','2015-03-06 15:25:13','event-page','Event Page',NULL,'<p>this is the content of an event.</p>',NULL,NULL,1,1,9,0,0,NULL,'Inherit','Inherit',11,0),
+	(11,'EventCreatePage','2015-05-01 14:40:47','2015-05-01 14:41:45','event-create-page','Event Create Page',NULL,'<p>You can create events here.</p>',NULL,NULL,1,1,11,0,0,NULL,'OnlyTheseUsers','Inherit',2,0);
 
 /*!40000 ALTER TABLE `SiteTree_Live` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1377,7 +1385,9 @@ VALUES
 	(1,1,1,1,0,0,'Page','2014-11-29 14:01:03','2014-11-29 14:01:03','home','Home',NULL,'<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href=\"admin/\">the CMS</a>. You can now access the <a href=\"http://doc.silverstripe.org\">developer documentation</a>, or begin <a href=\"http://doc.silverstripe.org/doku.php?id=tutorials\">the tutorials.</a></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',0),
 	(2,1,2,1,3,3,'HomePage','2014-11-29 14:01:03','2015-05-01 11:41:35','home','Home',NULL,'<p>Love your Coast is a project to help people around the world look after the coastlines we all love.</p>\n<p>By working together on fun, hands-on projects like beach clean-ups, we can all be a part of the local solution to a global problem.</p>\n<p>Here you can <a href=\"http://loveyourcoast.org/learn/\">learn</a> more about the issue, <a href=\"http://loveyourcoast.org/Events/\">find</a>clean-up events, <a href=\"http://loveyourcoast.org/create/\">create</a> your own event and<a href=\"http://loveyourcoast.org/my-events/share/\">share</a> your results.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',0),
 	(3,1,3,1,3,3,'HomePage','2014-11-29 14:01:03','2015-05-01 11:42:31','home','Home',NULL,'<p>Love your Coast is a project to help people around the world look after the coastlines we all love.</p>\n<p>By working together on fun, hands-on projects like beach clean-ups, we can all be a part of the local solution to a global problem.</p>\n<p>Here you can <a href=\"http://loveyourcoast.org/learn/\">learn</a> more about the issue, <a href=\"http://loveyourcoast.org/Events/\">find</a>clean-up events, <a href=\"http://loveyourcoast.org/create/\">create</a> your own event and<a href=\"http://loveyourcoast.org/my-events/share/\">share</a> your results.</p>',NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',0),
-	(4,7,1,1,3,3,'CalendarPage','2014-11-30 14:34:17','2015-05-01 11:45:14','calendar-page','Calendar page',NULL,NULL,NULL,NULL,1,1,7,0,0,NULL,'Inherit','Inherit',0);
+	(4,7,1,1,3,3,'CalendarPage','2014-11-30 14:34:17','2015-05-01 11:45:14','calendar-page','Calendar page',NULL,NULL,NULL,NULL,1,1,7,0,0,NULL,'Inherit','Inherit',0),
+	(5,11,1,0,3,0,'EventCreatePage','2015-05-01 14:40:47','2015-05-01 14:40:47','new-event-create-page','New Event Create Page',NULL,NULL,NULL,NULL,1,1,11,0,0,NULL,'Inherit','Inherit',0),
+	(6,11,2,1,3,3,'EventCreatePage','2015-05-01 14:40:47','2015-05-01 14:41:45','event-create-page','Event Create Page',NULL,'<p>You can create events here.</p>',NULL,NULL,1,1,11,0,0,NULL,'OnlyTheseUsers','Inherit',0);
 
 /*!40000 ALTER TABLE `SiteTree_versions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1397,6 +1407,15 @@ CREATE TABLE `SiteTree_ViewerGroups` (
   KEY `GroupID` (`GroupID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `SiteTree_ViewerGroups` WRITE;
+/*!40000 ALTER TABLE `SiteTree_ViewerGroups` DISABLE KEYS */;
+
+INSERT INTO `SiteTree_ViewerGroups` (`ID`, `SiteTreeID`, `GroupID`)
+VALUES
+	(1,11,3);
+
+/*!40000 ALTER TABLE `SiteTree_ViewerGroups` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table VirtualPage

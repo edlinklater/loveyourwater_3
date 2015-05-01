@@ -30,11 +30,12 @@ SiteConfig:
 TestSessionEnvironment:
   extensions:
     - LywTestSessionExtension
-  database_templates_path: mysite/tests/fixtures
+  database_templates_path: mysite/tests/fixtures/behat
+  
 TestSessionController:
   extensions:
     - LywTestSessionExtension
-  database_templates_path: mysite/tests/fixtures
+  database_templates_path: mysite/tests/fixtures/behat
 
 LeafletField:
   map_options:

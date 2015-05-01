@@ -185,4 +185,61 @@ class FeatureContext extends SilverStripeContext {
 		return;
 	}
 
+	/**
+	 * @Then /^I should (not |)see a (?:link|button) "([^"]*)"$/
+	 */
+	public function iShouldSeeALink($negate, $linkText) {
+		$page = $this->getSession()->getPage();
+		$eles = $page->findAll('named', array('link_or_button', "'$linkText'"));
+        $matchedEle = null;
+		foreach($eles as $ele) {
+			if($ele->isVisible()) { 
+				$matchedEle = $ele;
+				break;
+			}
+		}
+
+		if($negate) {
+			assertNull($matchedEle, sprintf('%s element found and is not invisible', $linkText));
+		} else {
+			assertNotNull($matchedEle, sprintf('%s element not found or invisible', $linkText));
+		}
+	}
+
+	/**
+	 * @Given /^I login with "((?:[^"]|\\")*)" and "((?:[^"]|\\")*)"$/
+	 */
+	public function iLogInWith($username, $password) {
+		$steps = array(
+			new Then("I am on homepage"),
+			new Then("I follow \"Log In\""),
+			new Then(sprintf('I fill in \"Email\" with "%s"', $username)),
+			new Then(sprintf('I fill in \"Password\" with "%s"', $password)),
+			new Then("I Press \"Log In\"")
+		);
+		
+		return $steps;
+	}
+
+	/**
+	 * @Given /^I wait for the ajax to complete$/
+	 */
+	public function iWaitForTheTheAjaxToComplete() {
+		$session = $this->getSession();
+		// wait for up to 10 seconds, or if jQuery.active finishes
+		sleep(1);
+		$session->wait(10000, "(typeof jQuery !== 'undefined') && (0 === jQuery.active)");
+	}
+
+	/**
+	 * @Given /^I click on the field "(?P<field>(?:[^"]|\\")*)"$/
+	 */
+	public function iClickOnTheElement($field) {
+		$element = $this->getSession()->getPage()->find('named', array(
+						'field', $this->getSession()->getSelectorsHandler()->xpathLiteral($field)
+			));
+
+		assertNotNull($element, sprintf('%s not found', $field));
+		$element->click();
+	}
 }
