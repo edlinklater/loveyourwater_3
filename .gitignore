@@ -17,3 +17,5 @@ instagramfeed/
 gridfieldextensions/
 themes/simple/
 .sass-cache
+node_modules/
+leafletfield/

@@ -11,6 +11,9 @@ class RegistrationForm extends Form {
      */
     private static $verification_expiry_hours = 24;
 
+    public function init() {
+    }
+
     public function __construct($controller, $name) {
 
         // Fields
@@ -60,11 +63,11 @@ class RegistrationForm extends Form {
         $memberData = $data;
 
         $validator = Member::password_validator();
-
         if(isset($memberData['setPassword']['_Password'])) {
             $memberData['setPassword'] = $memberData['setPassword']['_Password'];
         }
 
+        //ensure password meets minimal security reqs, set in config.yml
         $v = $validator->validate($memberData['setPassword'], new Member());
         if(!$v->valid()){
             $form->sessionMessage("The password supplied does not meet our minimum security requirements.
@@ -99,6 +102,9 @@ class RegistrationForm extends Form {
             $registrationPage->Link('verifyemail'),
             '?h=' . $code
         );
+
+        $config = SiteConfig::current_site_config();
+
         $email = Email::create()
             ->setTo($member->Email)
             ->setSubject('Your Love Your Water account verification, nearly done!')
@@ -107,8 +113,13 @@ class RegistrationForm extends Form {
                 'Member' => $member,
                 'VerificationLink' => $link,
                 'BaseURL' => Director::absoluteBaseURL()
-            ))
-            ->send();
+            ));
+
+            if($config->RegistrationEmailAddress){
+                $email->setFrom($config->RegistrationEmailAddress);
+            }
+
+            $email->send();
         
         // redirect to success page
         return $this->controller->redirect($this->controller->Link('?success=1'));

@@ -4,7 +4,7 @@
 <% else %>
 	<% if RegistrationLink %><li><a href="$RegistrationLink">Sign Up</a></li><% end_if %>
   	<li class="divider-vertical"></li>
-	<li class="dropdown">
+	<li class="dropdown <% if ShowLoginBox %>open<% end_if %>">
 		<a class="dropdown-toggle" href="#" data-toggle="dropdown">Log In <strong class="caret"></strong></a>
 		<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
 			$LoginForm

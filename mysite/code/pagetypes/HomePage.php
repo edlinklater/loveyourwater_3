@@ -1,11 +1,19 @@
 <?php
-
+/**
+ * Class HomePage
+ */
 class HomePage extends Page {
 
+    /**
+     * @var array
+     */
 	private static $has_many = array(
 		'ActionLinks' => 'ActionLink.Page'
 	);
 
+    /**
+     * @return FieldList
+     */
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 
@@ -67,5 +75,14 @@ class HomePage_Controller extends Page_Controller {
             return $page->Link();
         }
     }
+
+	/**
+	 * Return the default image from Siteconfig
+	 * @return mixed
+	 */
+	public function getSiteDefaultEventImage(){
+		return SiteConfig::current_site_config()->DefaultEventImage();
+
+	}
 
 }

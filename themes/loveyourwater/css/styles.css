@@ -3,96 +3,286 @@
 Brand Primary: #33CCCC
 
 */
-.navbar-logo { width: 100px; margin-top: -25px; }
+.navbar-logo {
+  width: 100px;
+  margin-top: -10px; }
 
-.jumbotron { padding-top: 80px; }
+.jumbotron {
+  padding-top: 80px; }
 
-.jumbotron--brand { background-color: #33CCCC; color: #fff; }
+.jumbotron--brand {
+  background-color: #33CCCC;
+  color: #fff; }
 
-.heading-block { /*width: 100%;*/ text-align: center; padding: 1em; }
+.heading-block {
+  /*width: 100%;*/
+  text-align: center;
+  padding: 1em; }
 
-.heading-block .glyphicon { font-size: 3em; line-height: 2.4em; }
+.heading-block .glyphicon {
+  font-size: 3em;
+  line-height: 2.4em; }
 
-.heading--brand { background-color: #33CCCC; color: #fff; }
+.heading--brand {
+  background-color: #33CCCC;
+  color: #fff; }
 
-.heading-block--circle { border-radius: 200px; width: 130px; height: 130px; margin: auto; }
+.heading-block--circle {
+  border-radius: 200px;
+  width: 130px;
+  height: 130px;
+  margin: auto; }
 
-.embed-container { position: relative; padding-bottom: 45%; margin-bottom: 3em; height: 0; overflow: hidden; max-width: 100%; height: auto; }
+.embed-container {
+  position: relative;
+  padding-bottom: 45%;
+  margin-bottom: 3em;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto; }
 
-.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.embed-container iframe, .embed-container object, .embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
 
-#Remember { display: none; }
+#Remember {
+  display: none; }
 
-.CalendarPage .EventList { padding-top: 1em; }
-.CalendarPage .EventList .event { padding: 20px; }
-.CalendarPage .EventList .event .content { margin-left: 120px; }
+.CalendarPage .EventList {
+  padding-top: 1em; }
+  .CalendarPage .EventList .event {
+    padding: 20px; }
+    .CalendarPage .EventList .event .content {
+      margin-left: 120px; }
 
-.carousel-inner .item { background-repeat: none; background-position: center center; background-size: cover; }
+.carousel-inner .item {
+  background-repeat: none;
+  background-position: center center;
+  background-size: cover; }
 
-@media screen and (max-width: 768px) { .navbar-logo { width: 75px; margin-top: -15px; }
-  .carousel-caption h1 { font-size: 30px; }
-  .search.pull-right { clear: left; float: left !important; margin-top: 20px; }
-  .search.pull-right .form-inline { clear: left; } }
-@media screen and (min-width: 768px) { .carousel-caption { /*margin-top: 80px;*/ left: 10%; right: 10%; } }
+.footer {
+  clear: both; }
+
+@media screen and (max-width: 768px) {
+  .navbar-logo {
+    width: 75px;
+    margin-top: -15px; }
+  .carousel-caption h1 {
+    font-size: 30px; }
+  .search.pull-right {
+    clear: left;
+    float: left !important;
+    margin-top: 20px; }
+  .search.pull-right .form-inline {
+    clear: left; } }
+
+@media screen and (min-width: 768px) {
+  .carousel-caption {
+    /*margin-top: 80px;*/
+    left: 10%;
+    right: 10%; } }
+
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
-body { padding-bottom: 40px; color: #5a5a5a; }
+body {
+  padding-bottom: 40px;
+  color: #5a5a5a; }
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
-.navbar-wrapper { position: absolute; top: 0; right: 0; left: 0; z-index: 20; }
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20; }
 
 /* Flip around the padding for proper display in narrow viewports */
-.navbar-wrapper > .container { padding-right: 0; padding-left: 0; }
+.navbar-wrapper > .container {
+  padding-right: 0;
+  padding-left: 0; }
 
-.navbar-wrapper .navbar { padding-right: 15px; padding-left: 15px; }
-
-.navbar-wrapper .navbar .container { width: auto; }
+.navbar-wrapper .navbar {
+  padding-right: 15px;
+  padding-left: 15px; }
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 /* Carousel base class */
-.carousel { height: 400px; margin-bottom: 0px; }
+.carousel {
+  height: 400px;
+  margin-bottom: 0px; }
 
 /* Since positioning the image, we need to help out the caption */
-.carousel-caption { z-index: 10; }
+.carousel-caption {
+  z-index: 10; }
 
 /* Declare heights because of positioning of img element */
-.carousel .item { height: 400px; background-color: #777; }
+.carousel .item {
+  height: 400px;
+  background-color: #777; }
 
-.carousel-inner > .item > img { position: absolute; top: 0; left: 0; min-width: 100%; height: 400px; }
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 400px; }
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
 /* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4 { margin-bottom: 20px; text-align: center; }
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center; }
 
-.marketing h2 { font-weight: normal; }
+.marketing h2 {
+  font-weight: normal; }
 
-.marketing .col-lg-4 p { margin-right: 10px; margin-left: 10px; }
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px; }
 
 /* Featurettes
 ------------------------- */
-.featurette-divider { margin: 80px 0; /* Space out the Bootstrap <hr> more */ }
+.featurette-divider {
+  margin: 80px 0;
+  /* Space out the Bootstrap <hr> more */ }
 
 /* Thin out the marketing headings */
-.featurette-heading { font-weight: 300; line-height: 1; letter-spacing: -1px; }
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px; }
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
-@media (min-width: 768px) { /* Navbar positioning foo */
-  .navbar-wrapper { margin-top: 20px; }
-  .navbar-wrapper .container { padding-right: 15px; padding-left: 15px; }
-  .navbar-wrapper .navbar { padding-right: 0; padding-left: 0; }
-  /* The navbar becomes detached from the top, so we round the corners */
-  .navbar-wrapper .navbar { border-radius: 4px; }
+@media (min-width: 768px) {
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px; }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0; }
   /* Bump up size of carousel content */
-  .carousel-caption p { margin-bottom: 20px; font-size: 21px; line-height: 1.4; }
-  .featurette-heading { font-size: 50px; } }
-@media (min-width: 992px) { .featurette-heading { margin-top: 120px; } }
-/* Generic error styling */
-.message.validation, .message.bad { color: #d9534f; }
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4; }
+  .featurette-heading {
+    font-size: 50px; } }
 
-.event-date { margin-top: 3px; font-size: 1em; }
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px; } }
+
+/* Generic error styling */
+.message.validation, .message.bad {
+  color: #d9534f; }
+
+.event-date {
+  margin-top: 3px;
+  font-size: 1em; }
+
+.event-badge-wrapper {
+  display: block;
+  background-color: #f3f3f3;
+  overflow: hidden;
+  padding: 0;
+  border-top: 1px solid #ddd; }
+  .event-badge-wrapper .event-badge {
+    border-right: 1px solid #ddd; }
+  .event-badge-wrapper .event-badge-title {
+    display: block;
+    padding: 12px 12px 12px 50px;
+    font-size: 0.8em;
+    color: #00adef; }
+
+.event-badge {
+  display: block;
+  float: left;
+  width: 42px;
+  height: 40px;
+  background-color: #fff;
+  background-position: 50% 50%;
+  background-image: url(../images/placeholders/badge.png); }
+
+.eventFullDetails .fatDate {
+  width: 25%; }
+
+.event-panel {
+  display: block;
+  color: #1066b2;
+  overflow: hidden; }
+  .event-panel, .event-panel:hover {
+    text-decoration: none; }
+  .event-panel .event-image {
+    display: block;
+    height: 146px;
+    background-size: cover;
+    background-repeat: no-repeat; }
+  .event-panel .event-body {
+    display: block;
+    display: table;
+    overflow: hidden; }
+  .event-panel .event-date, .event-panel .event-title {
+    display: block;
+    padding: 12px; }
+  .event-panel .event-date {
+    display: table-cell;
+    width: 105px;
+    font-size: 14px;
+    border-right: 1px solid #ddd; }
+    .event-panel .event-date .event-day {
+      font-size: 38px;
+      float: left;
+      font-weight: bold; }
+    .event-panel .event-date .event-month-year {
+      position: relative;
+      top: 9px;
+      left: 8px; }
+  .event-panel .event-title {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: bold; }
+
+#eventLocationMap {
+  margin: 1em 0; }
+
+.document-panel h3 {
+  padding: 10px 20px;
+  background-color: #33CCCC;
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 20px; }
+.document-panel .heading-row {
+  border: 1px solid #dbdbdb; }
+  .document-panel .heading-row div {
+    padding: 22px 0; }
+.document-panel .description-row {
+  padding: 10px 22px;
+  background-color: #f2f2f2;
+  border-color: #dbdbdb;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  overflow: hidden; }
+.document-panel .col-title {
+  border-color: #dbdbdb;
+  border-width: 0px 0px 0px 1px;
+  border-style: solid; }
+  .document-panel .col-title h4 {
+    margin-left: 10px;
+    font-size: 16px; }
+.document-panel .document-item {
+  margin-bottom: 30px; }
+
+.learn-slide > iframe {
+  width: 100%; }

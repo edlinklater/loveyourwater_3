@@ -5,12 +5,18 @@
  */
 class RegistrationPage extends Page {
 
+    /**
+     * @var array
+     */
     private static $db = array(
         'SuccessMessage' => 'HTMLText',
         'ConfirmedMessage' => 'HTMLText',
         'VerifiedMessage' => 'HTMLText'
     );
 
+    /**
+     * @var array
+     */
     private static $has_one = array(
         'Group' => 'Group',
         'TermsAndConditions' => 'SiteTree'
@@ -22,6 +28,9 @@ class RegistrationPage extends Page {
      */
     private static $user_group = 'users';
 
+    /**
+     * @return FieldList
+     */
     public function getCMSFields() {
         $fields = parent::getCMSFields();
 
@@ -47,23 +56,39 @@ class RegistrationPage extends Page {
 
 class RegistrationPage_Controller extends Page_Controller {
 
+    /**
+     * @var array
+     */
     private static $allowed_actions = array(
         'Form',
         'verifyemail'
     );
 
+    /**
+     *
+     */
     public function init() {
         parent::init();
+        Requirements::javascript('themes/loveyourwater/js/registrationForm.js');
     }
 
+    /**
+     * @return RegistrationForm
+     */
     public function Form() {
         return new RegistrationForm($this, 'Form');
     }
 
+    /**
+     * @return mixed
+     */
     public function isSuccess() {
         return $this->request->getVar('success');
     }
 
+    /**
+     * @return mixed
+     */
     public function isConfirmed() {
         return $this->request->getVar('confirmed');
     }
@@ -72,6 +97,12 @@ class RegistrationPage_Controller extends Page_Controller {
         return $this->request->getVar('verified');
     }
 
+    /**
+     * @return SS_HTTPResponse|ViewableData_Customised|void
+     * @throws Exception
+     * @throws ValidationException
+     * @throws null
+     */
     public function verifyemail() {
         $code = $this->request->getVar('h');
 
@@ -133,6 +164,9 @@ class RegistrationPage_Controller extends Page_Controller {
                     $userGroup->Members()->add($member);
                 }
 
+                $config = SiteConfig::current_site_config();
+
+
                 // send confirmation email
                 $email = Email::create()
                     ->setTo($member->Email)
@@ -141,8 +175,15 @@ class RegistrationPage_Controller extends Page_Controller {
                     ->populateTemplate(array(
                         'Member' => $member,
                         'BaseURL' => Director::absoluteBaseURL()
-                    ))
-                    ->send();
+                    ));
+
+                   if($config->RegistrationEmailAddress){
+                       $email->setFrom($config->RegistrationEmailAddress);
+                   }
+
+                    $email->send();
+
+
 
                 // redirect
                 return $this->redirect($this->Link('?confirmed=1'));

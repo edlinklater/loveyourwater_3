@@ -4,7 +4,12 @@ global $project;
 $project = 'mysite';
 
 global $database;
-$database = 'lyw3_db';
+
+if(SS_ENVIRONMENT_TYPE === 'live') {
+    $database = 'db203872_ss_lyw3_db';
+} else {
+    $database = 'lyw3_db';
+}
 
 require_once('conf/ConfigureFromEnv.php');
 
@@ -19,6 +24,8 @@ CalendarConfig::init(array(
 	)
 ));
 
+Object::useCustomClass('MemberLoginForm', 'CustomLoginForm');
+Object::useCustomClass('Member_ForgotPasswordEmail', 'LYWMember_ForgotPasswordEmail');
 
 $validator = new PasswordValidator();
 $validator->minLength(6);

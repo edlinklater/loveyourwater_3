@@ -1,0 +1,101 @@
+@import "bootstrap/variables";
+
+.event-badge-wrapper {
+    display: block;
+    background-color: #f3f3f3;
+    overflow: hidden;
+    padding: 0;
+    border-top: 1px solid $panel-default-border;
+
+    .event-badge {
+        border-right: 1px solid $panel-default-border;
+    }
+
+    .event-badge-title {
+        display: block;
+        padding: 12px 12px 12px 50px;
+        font-size: 0.8em;
+        color: #00adef;
+    }
+}
+
+.event-badge {
+    display: block;
+    float: left;
+    width: 42px;
+    height: 40px;
+    background-color: #fff;
+    background-position: 50% 50%;
+    background-image: url(../images/placeholders/badge.png);
+}
+
+    .event-badge-coastlines {
+        // @todo to be implemented
+    }
+
+
+
+.eventFullDetails .fatDate {
+    width: 25%;
+}
+
+
+.event-panel {
+    display: block;
+    color: #1066b2;
+    overflow: hidden;
+    
+    &, &:hover {
+        text-decoration: none;
+    }
+
+    .event-image {
+        display: block;
+        height: 146px;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .event-body {
+        display: block;
+        display: table;
+        overflow: hidden;
+    }
+
+        .event-date, .event-title {
+            display: block;
+            padding: 12px;
+        }
+
+        .event-date {
+            display: table-cell;
+            width: 105px;
+            font-size: 14px;
+            border-right: 1px solid $panel-default-border;
+
+            .event-day {
+                font-size: 38px;
+                float: left;
+                font-weight: bold;
+            }
+
+            .event-month-year {
+                position: relative;
+                top: 9px;
+                left: 8px;
+            }
+        }
+
+        .event-title {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 14px;
+            line-height: 1.2;
+            font-weight: bold;
+        }
+
+}
+
+#eventLocationMap {
+    margin: 1em 0;
+}

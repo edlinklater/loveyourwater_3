@@ -20,6 +20,7 @@
                 <div id="StartDateTime" class="field start_date_time form-group">
                     <label class="left" for="{$formName}_StartDateTime">Start</label>
                     $Fields.dataFieldByName(StartDateTime)
+                    <p id="startTimeHelpBlock" class="help-block"><small>Please format the start time as <code>00:00</code>.</small></p>
                     <% if $Fields.dataFieldByName(StartDateTime).Message %>
                         <span id="{$FormName}_error" class="message $Fields.dataFieldByName(StartDateTime).MessageType">
                             $Fields.dataFieldByName(StartDateTime).Message
@@ -30,11 +31,17 @@
                 <div id="EndDateTime" class="field end_date_time form-group">
                     <label class="left" for="{$FormName}_EndDateTime">End</label>
                     $Fields.dataFieldByName(EndDateTime)
+                    <p id="endTimeHelpBlock" class="help-block"><small>Please format the end time as <code>00:00</code>.</small></p>
                     <% if $Fields.dataFieldByName(EndDateTime).Message %>
                         <span id="{$FormName}_error" class="message $Fields.dataFieldByName(EndDateTime).MessageType">
                             $Fields.dataFieldByName(EndDateTime).Message
                         </span>
                     <% end_if %>
+                </div>
+
+                <div id="Geometry" class="field geometry form-group">
+                    <label class="left" for="{$FormName}_Geometry">Location</label>
+                    $Fields.dataFieldByName(Geometry)
                 </div>
 
                 <div id="Region" class="field region form-group">
@@ -61,7 +68,7 @@
                 
             </fieldset>
 
-            <p>By registering you agree to the <a href="$TermsPageLink" target="_blank">terms and conditions</a>.</p>
+            <p>By registering you agree to the <a href="$Controller.TermsPageLink" target="_blank">terms and conditions</a>.</p>
 
             <% if $Actions %>
                 <div class="Actions">

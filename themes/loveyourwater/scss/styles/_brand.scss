@@ -6,7 +6,7 @@ Brand Primary: #33CCCC
 
 .navbar-logo {
 	width: 100px;
-	margin-top: -25px;
+	margin-top: -10px;
 }
 
 .jumbotron {
@@ -81,6 +81,10 @@ Brand Primary: #33CCCC
 	background-repeat: none;
 	background-position: center center;
 	background-size: cover;
+}
+
+.footer {
+	clear: both;
 }
 
 @media screen and (max-width: 768px) {

@@ -9,8 +9,9 @@
             <h2 class="page-header">Upcoming events</h2>
             <div class="row">
                 <% include EventSummary %>
+            </div>
+            <div class="row">
                 <div class="col-sm-4 col-sm-offset-4">
-                    <br>
                     <a href="$getEventsLink" class="btn btn-primary btn-lg btn-block">See all events <span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
             </div>

@@ -10,11 +10,13 @@ After:
 SSViewer:
   theme: 'loveyourwater'
 
+
+#Security setting for Member class
 Member:
   extensions:
     - MemberExtension
   lock_out_after_incorrect_logins:
-    5
+    4
   lock_out_delay_mins:
     60
 
@@ -25,3 +27,20 @@ Event:
 SiteConfig:
   extensions:
    - SiteConfigExtension
+TestSessionEnvironment:
+  extensions:
+    - LywTestSessionExtension
+  database_templates_path: mysite/tests/fixtures/behat
+  
+TestSessionController:
+  extensions:
+    - LywTestSessionExtension
+  database_templates_path: mysite/tests/fixtures/behat
+
+LeafletField:
+  map_options:
+    tileLayer: '//{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}.png'
+    subdomains:
+      - 'server'
+      - 'services'
+    attribution: 'ESRI, OpenStreetMap'

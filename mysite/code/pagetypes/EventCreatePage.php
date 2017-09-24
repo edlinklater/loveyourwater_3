@@ -2,6 +2,15 @@
 
 class EventCreatePage extends Page {
 
+    private static $db = array(
+        'Geometry' => 'Text'
+    );
+
+    /**
+     * @throws Exception
+     * @throws ValidationException
+     * @throws null
+     */
     public function onAfterWrite() {
         parent::onAfterWrite();
 
@@ -25,11 +34,17 @@ class EventCreatePage extends Page {
 
 class EventCreatePage_Controller extends Page_Controller {
 
+    /**
+     * @var array
+     */
     private static $allowed_actions = array(
         'CreateEvent',
         'edit'
     );
 
+    /**
+     *
+     */
     public function init() {
         parent::init();
         if (!Member::currentUser()->ID) {
@@ -37,8 +52,17 @@ class EventCreatePage_Controller extends Page_Controller {
         }
     }
 
+    /**
+     * @return static
+     */
     public function CreateEvent() {
-		// $eventID = $this->urlParams['Action'];
+//		$EventID = Convert::raw2sql($this->urlParams['ID']);
+
+        $geoField = new LeafletField('Geometry', 'Location', $this);
+        $geoField->setDrawOptions(array(
+            'rectangle' => false,
+            'circle'    => false
+        ));
 
         $fields = new FieldList(
             TextField::create('Title', 'Title', '', 50)
@@ -47,10 +71,13 @@ class EventCreatePage_Controller extends Page_Controller {
                 ->addExtraClass('form-control'),
             $startDateTime = DatetimeField::create("StartDateTime", 'Start'),
             $endDateTime = DatetimeField::create("EndDateTime", 'End'),
+
             DropdownField::create('Calendar', 'Category', Calendar::get()->map()),
             DropdownField::create('Region', 'Region', EventExtension::getRegions()),
             HtmlEditorField::create('Details', 'Description')
         );
+
+        $fields->push($geoField);
 
         $startDateTime->getDateField()
             ->setConfig('showcalendar', 1)
@@ -58,8 +85,9 @@ class EventCreatePage_Controller extends Page_Controller {
             ->setAttribute('readonly', 'true');
 
         $startDateTime->getTimeField()
-            ->setConfig('timeformat', 'HH:mm')
-            ->setAttribute('placeholder','Enter start time');
+            ->setConfig('timeformat', 'HH:mm') 
+            ->setAttribute('placeholder','Enter start time')
+            ->setAttribute('aria-describedby','startTimeHelpBlock');
 
         $endDateTime->getDateField()
             ->setConfig('showcalendar', 1)
@@ -67,14 +95,15 @@ class EventCreatePage_Controller extends Page_Controller {
             ->setAttribute('readonly', 'true');
 
         $endDateTime->getTimeField()
-            ->setConfig('timeformat', 'HH:mm')
-            ->setAttribute('placeholder','Enter end time');
+            ->setConfig('timeformat', 'HH:mm') 
+            ->setAttribute('placeholder','Enter end time')
+            ->setAttribute('aria-describedby','endTimeHelpBlock');
 
         $actions = new FieldList(FormAction::create("doCreateEvent")
                 ->setTitle("Create")
                 ->addExtraClass('btn btn-success'));
 
-        $requiredFields = new RequiredFields(array('Title'));
+        $requiredFields = new RequiredFields(array('Title', 'StartDateTime', 'EndDateTime'));
 
 		$form = Form::create($this, 'CreateEvent', $fields, $actions, $requiredFields);
 		$form->setTemplate('EventCreateForm');
@@ -86,9 +115,19 @@ class EventCreatePage_Controller extends Page_Controller {
 		// 	}
 		// }
 
+        // initiate the leaflet field js.
+        Requirements::customScript('window.leafletfieldInit()');
+
         return $form;
     }
 
+    /**
+     * @param $data
+     * @param $form
+     * @return bool|SS_HTTPResponse
+     * @throws ValidationException
+     * @throws null
+     */
     public function doCreateEvent($data, $form) {
 
         // get the start datetime
@@ -112,7 +151,7 @@ class EventCreatePage_Controller extends Page_Controller {
             }
         }
 
-        $submission = new Event();
+        $submission = new PublicEvent();
         $form->saveInto($submission);
         $submission->CreatorID = Member::currentUser()->ID;
         $submission->write();
