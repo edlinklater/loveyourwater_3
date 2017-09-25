@@ -1,6 +1,0 @@
----
-Name: testsessionroutes
----
-Director:
-  rules:
-    'dev/testsession': 'TestSessionController'
