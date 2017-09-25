@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Registers fake web services which are connected to a temporary database.
  * The registration is for the lifetime of the current request only,
@@ -7,20 +8,23 @@
  *
  * The database is reset through..TBC
  */
-class LywFakeManagerRequestFilter {
+class LywFakeManagerRequestFilter
+{
 
-	public function preRequest($req, $session, $model) {
-		if(class_exists('TestSessionEnvironment')) {
-			// Set in App\Test\Behaviour\FeatureContext
-			$testState = Injector::inst()->get('TestSessionEnvironment')->getState();
+    public function preRequest($req, $session, $model)
+    {
+        if (class_exists('TestSessionEnvironment')) {
+            // Set in App\Test\Behaviour\FeatureContext
+            $testState = Injector::inst()->get('TestSessionEnvironment')->getState();
 
-			if($testState && isset($testState->fakeDatabasePath) && $testState->fakeDatabasePath) {
-				$fakeDb = new FakeDatabase($testState->fakeDatabasePath);
-				Injector::inst()->get('LywFakeManager', false, array($fakeDb));
-			}
-		}
-	}
+            if ($testState && isset($testState->fakeDatabasePath) && $testState->fakeDatabasePath) {
+                $fakeDb = new FakeDatabase($testState->fakeDatabasePath);
+                Injector::inst()->get('LywFakeManager', false, array($fakeDb));
+            }
+        }
+    }
 
-	public function postRequest() {
-	}
+    public function postRequest()
+    {
+    }
 }

@@ -1,9 +1,11 @@
 <?php
+
 /**
- * A form used to register to the site. 
+ * A form used to register to the site.
  * Provides a verification and confirmation email on successful submission.
  */
-class RegistrationForm extends Form {
+class RegistrationForm extends Form
+{
 
     /**
      * @config
@@ -11,25 +13,27 @@ class RegistrationForm extends Form {
      */
     private static $verification_expiry_hours = 24;
 
-    public function init() {
+    public function init()
+    {
     }
 
-    public function __construct($controller, $name) {
+    public function __construct($controller, $name)
+    {
 
         // Fields
         $fields = new FieldList();
         $fields->push(TextField::create('FirstName', 'First Name', '', 50)
             ->addExtraClass('form-control')
-            ->setAttribute( 'placeholder', 'First Name' ));
+            ->setAttribute('placeholder', 'First Name'));
         $fields->push(TextField::create('Surname', 'Last Name', '', 50)
             ->addExtraClass('form-control')
-            ->setAttribute( 'placeholder', 'Last Name' ));
+            ->setAttribute('placeholder', 'Last Name'));
         $fields->push(EmailField::create('Email', 'Email', '', 50)
             ->addExtraClass('form-control')
-            ->setAttribute( 'placeholder', 'Email Address' ));
+            ->setAttribute('placeholder', 'Email Address'));
         $fields->push(TextField::create('Phone', 'Phone', '', 50)
             ->addExtraClass('form-control')
-            ->setAttribute( 'placeholder', 'Phone Number' ));
+            ->setAttribute('placeholder', 'Phone Number'));
         $fields->push($pw = ConfirmedPasswordField::create('setPassword', 'Password', '', 100)
             ->setCustomValidationMessage('Password is required'));
 
@@ -53,23 +57,24 @@ class RegistrationForm extends Form {
 
     /**
      * On form submission
-     * 
-     * @param  array  $data    Submitted form data as an array
-     * @param  Form   $form    The submitted RegistrationForm object
+     *
+     * @param  array $data Submitted form data as an array
+     * @param  Form $form The submitted RegistrationForm object
      */
-    public function doRegistration($data, $form) {
+    public function doRegistration($data, $form)
+    {
 
         // store the member data for verification
         $memberData = $data;
 
         $validator = Member::password_validator();
-        if(isset($memberData['setPassword']['_Password'])) {
+        if (isset($memberData['setPassword']['_Password'])) {
             $memberData['setPassword'] = $memberData['setPassword']['_Password'];
         }
 
         //ensure password meets minimal security reqs, set in config.yml
         $v = $validator->validate($memberData['setPassword'], new Member());
-        if(!$v->valid()){
+        if (!$v->valid()) {
             $form->sessionMessage("The password supplied does not meet our minimum security requirements.
                 Passwords must be at least 6 characters long and contain a selection of lowercase, uppercase,
                 digits and punctuation", 'bad'
@@ -82,7 +87,7 @@ class RegistrationForm extends Form {
             'Email' => $data['Email']
         ))->first();
 
-        if($member) {
+        if ($member) {
             $form->sessionMessage("A member exists with the same email address!", 'bad');
             return $this->controller->redirectBack();
         }
@@ -115,12 +120,12 @@ class RegistrationForm extends Form {
                 'BaseURL' => Director::absoluteBaseURL()
             ));
 
-            if($config->RegistrationEmailAddress){
-                $email->setFrom($config->RegistrationEmailAddress);
-            }
+        if ($config->RegistrationEmailAddress) {
+            $email->setFrom($config->RegistrationEmailAddress);
+        }
 
-            $email->send();
-        
+        $email->send();
+
         // redirect to success page
         return $this->controller->redirect($this->controller->Link('?success=1'));
     }
@@ -128,7 +133,8 @@ class RegistrationForm extends Form {
     /**
      * Set the members verification code and expiry date
      */
-    public function setVerificationCode($member) {
+    public function setVerificationCode($member)
+    {
         $generator = new RandomGenerator();
         $code = $generator->randomToken();
         $member->VerificationCode = $code;

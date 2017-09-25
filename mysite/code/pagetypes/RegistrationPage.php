@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Provides a page that gives users the ability to register to the site, creating a {@link Member} account
  * and adding them to a {@link Group}.
  */
-class RegistrationPage extends Page {
+class RegistrationPage extends Page
+{
 
     /**
      * @var array
@@ -31,7 +33,8 @@ class RegistrationPage extends Page {
     /**
      * @return FieldList
      */
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         $fields = parent::getCMSFields();
 
         $groups = Group::get()->map();
@@ -54,7 +57,8 @@ class RegistrationPage extends Page {
 
 }
 
-class RegistrationPage_Controller extends Page_Controller {
+class RegistrationPage_Controller extends Page_Controller
+{
 
     /**
      * @var array
@@ -67,7 +71,8 @@ class RegistrationPage_Controller extends Page_Controller {
     /**
      *
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
         Requirements::javascript('themes/loveyourwater/js/registrationForm.js');
     }
@@ -75,25 +80,29 @@ class RegistrationPage_Controller extends Page_Controller {
     /**
      * @return RegistrationForm
      */
-    public function Form() {
+    public function Form()
+    {
         return new RegistrationForm($this, 'Form');
     }
 
     /**
      * @return mixed
      */
-    public function isSuccess() {
+    public function isSuccess()
+    {
         return $this->request->getVar('success');
     }
 
     /**
      * @return mixed
      */
-    public function isConfirmed() {
+    public function isConfirmed()
+    {
         return $this->request->getVar('confirmed');
     }
 
-    public function isVerified() {
+    public function isVerified()
+    {
         return $this->request->getVar('verified');
     }
 
@@ -103,20 +112,21 @@ class RegistrationPage_Controller extends Page_Controller {
      * @throws ValidationException
      * @throws null
      */
-    public function verifyemail() {
+    public function verifyemail()
+    {
         $code = $this->request->getVar('h');
 
         $member = Member::get()->filter('VerificationCode', $code)->first();
 
         // if a member exists, else throw a 404 error
-        if($member) {
+        if ($member) {
             // if user is already verified - we can tell this is the expiry is set to null
             if ($member->VerificationExpiry === null) {
                 return $this->redirect($this->Link('?verified=1'));
             }
 
             // if verification is expired
-            if(SS_Datetime::now()->Format('U') > strtotime($member->VerificationExpiry)) {
+            if (SS_Datetime::now()->Format('U') > strtotime($member->VerificationExpiry)) {
                 $member->delete();
                 $member->destroy();
 
@@ -135,7 +145,7 @@ class RegistrationPage_Controller extends Page_Controller {
             $member->VerificationExpiry = null;
 
             // check if the member has pending data to save
-            if($member->PendingFormData) {
+            if ($member->PendingFormData) {
 
                 // save member data
                 $data = unserialize($member->PendingFormData);
@@ -150,12 +160,12 @@ class RegistrationPage_Controller extends Page_Controller {
                 $member->changePassword($data['setPassword']);
 
                 // find or make group to add member to
-                if($this->GroupID) {
+                if ($this->GroupID) {
                     $member->Groups()->add($this->Group());
                 } else {
                     $code = RegistrationPage::config()->user_group;
                     $userGroup = Group::get()->filter("Code", $code)->first();
-                    if(!$userGroup) {
+                    if (!$userGroup) {
                         $userGroup = new Group();
                         $userGroup->Code = $code;
                         $userGroup->Title = $code;
@@ -177,12 +187,11 @@ class RegistrationPage_Controller extends Page_Controller {
                         'BaseURL' => Director::absoluteBaseURL()
                     ));
 
-                   if($config->RegistrationEmailAddress){
-                       $email->setFrom($config->RegistrationEmailAddress);
-                   }
+                if ($config->RegistrationEmailAddress) {
+                    $email->setFrom($config->RegistrationEmailAddress);
+                }
 
-                    $email->send();
-
+                $email->send();
 
 
                 // redirect
@@ -197,7 +206,8 @@ class RegistrationPage_Controller extends Page_Controller {
      * get the expiration hours to display in the template.
      * @return String hours
      */
-    public function getExpiryHours() {
+    public function getExpiryHours()
+    {
         return Config::inst()->get('RegistrationForm', 'verification_expiry_hours');
     }
 

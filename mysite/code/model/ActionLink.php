@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Action links display on the home page
  */
-class ActionLink extends DataObject {
+class ActionLink extends DataObject
+{
 
     /**
      * @var array
@@ -25,7 +27,8 @@ class ActionLink extends DataObject {
     /**
      * @return FieldList
      */
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         $fields = new FieldList();
 
         // Main
@@ -40,7 +43,8 @@ class ActionLink extends DataObject {
         return $fields;
     }
 
-    public function onBeforeWrite() {
+    public function onBeforeWrite()
+    {
         // add auto sort
         if (!$this->SortField) {
             $this->SortField = ActionLink::get()->max('SortField') + 1;
