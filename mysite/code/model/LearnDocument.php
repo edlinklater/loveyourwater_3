@@ -1,8 +1,10 @@
 <?php
+
 /**
  * A document attached to the Learn page.
  */
-class LearnDocument extends DataObject {
+class LearnDocument extends DataObject
+{
     private static $db = array(
         'Title' => 'Varchar(255)',
         'Description' => 'Text',
@@ -18,11 +20,12 @@ class LearnDocument extends DataObject {
 
     private static $file_extensions = array(
         'PDF' => array('pdf'),
-        'Presentation' => array('ppt', 'pps', 'pot', 'pptx',  'pptm', 'potx', 'potm', 'odp', 'otp'),
+        'Presentation' => array('ppt', 'pps', 'pot', 'pptx', 'pptm', 'potx', 'potm', 'odp', 'otp'),
         'Video' => array('avi', 'mpeg', 'mpg', 'mov')
     );
 
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         $fields = new FieldList();
 
         $fields->push(TextField::create('Title'));
@@ -32,10 +35,11 @@ class LearnDocument extends DataObject {
         $fields->push(UploadField::create('File'));
         $fields->push(UploadField::create('Preview', 'Preview image'));
 
-    	return $fields;
+        return $fields;
     }
 
-    public function onBeforeWrite() {
+    public function onBeforeWrite()
+    {
         // Default the type baesd on the file extension (if it exists).
         if (!$this->Type && $this->File()) {
             $extension = strtolower($this->File()->getExtension());

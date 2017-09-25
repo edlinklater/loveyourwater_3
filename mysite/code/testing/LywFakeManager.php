@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The "Fake-Manager" instantiates fake objects, mainly to replace webservices with
  * faked implementations. It also provides shortcuts for creating complex fake datasets
@@ -21,30 +22,33 @@
  * @author SilverStripe Iterators <iterators@silverstripe.com>
  * @author SilverStripe Science Ninjas <scienceninjas@silverstripe.com>
  */
-class LywFakeManager {
+class LywFakeManager
+{
 
-	/**
-	 *
-	 * @var type
-	 */
-	protected $db;
+    /**
+     *
+     * @var type
+     */
+    protected $db;
 
-	/**
-	 *
-	 * @param FakeDatabase $db
-	 */
-	function __construct($db = null) {
-		$testState = Injector::inst()->get('TestSessionEnvironment')->getState();
+    /**
+     *
+     * @param FakeDatabase $db
+     */
+    function __construct($db = null)
+    {
+        $testState = Injector::inst()->get('TestSessionEnvironment')->getState();
 
-		if(!$db) {
-			$db = new FakeDatabase($testState->fakeDatabasePath);
-		}
+        if (!$db) {
+            $db = new FakeDatabase($testState->fakeDatabasePath);
+        }
 
-		$this->db = $db;
-	}
+        $this->db = $db;
+    }
 
-	public function getDb() {
-		return $this->db;
-	}
+    public function getDb()
+    {
+        return $this->db;
+    }
 
 }

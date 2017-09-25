@@ -1,6 +1,7 @@
 <?php
 
-class Page extends SiteTree {
+class Page extends SiteTree
+{
 
     /**
      * @var array
@@ -21,7 +22,8 @@ class Page extends SiteTree {
     /**
      * @return FieldList
      */
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         // Get the fields from the parent implementation
         $fields = parent::getCMSFields();
 
@@ -38,7 +40,7 @@ class Page extends SiteTree {
         );
         $bannerConfig = GridFieldConfig_RecordEditor::create()
             ->addComponent(new GridFieldOrderableRows('SortField')
-        );
+            );
         $fields->addFieldToTab("Root.Banners",
             GridField::create('Banners', 'Banners', $this->Banners())
                 ->setConfig($bannerConfig)
@@ -49,7 +51,8 @@ class Page extends SiteTree {
 
 }
 
-class Page_Controller extends ContentController {
+class Page_Controller extends ContentController
+{
 
     /**
      * @var array
@@ -62,10 +65,11 @@ class Page_Controller extends ContentController {
     /**
      *
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
-		Requirements::javascript('mysite/thirdparty/jquery/jquery-1.11.1.min.js');
-		Requirements::block('framework/thirdparty/jquery/jquery.js');
+        Requirements::javascript('mysite/thirdparty/jquery/jquery-1.11.1.min.js');
+        Requirements::block('framework/thirdparty/jquery/jquery.js');
         Requirements::javascript(SSViewer::get_theme_folder() . '/js/bootstrap.min.js');
         Requirements::javascript('themes/loveyourwater/js/helper.js');
     }
@@ -74,8 +78,9 @@ class Page_Controller extends ContentController {
      * Template helper function for Registration form
      * @return mixed
      */
-    public function getRegistrationLink() {
-        if($page = RegistrationPage::get()->first()) {
+    public function getRegistrationLink()
+    {
+        if ($page = RegistrationPage::get()->first()) {
             return $page->Link();
         }
     }
@@ -84,24 +89,27 @@ class Page_Controller extends ContentController {
      * Template helper function for Terms and conditions pages
      * @return mixed
      */
-    public function getTermsPageLink() {
-		$TermsPage = DataObject::get_one('Page', '"IsTerms" = TRUE');
-		if($TermsPage instanceof DataObject) {
-			return $TermsPage->Link();
-		}
+    public function getTermsPageLink()
+    {
+        $TermsPage = DataObject::get_one('Page', '"IsTerms" = TRUE');
+        if ($TermsPage instanceof DataObject) {
+            return $TermsPage->Link();
+        }
     }
 
     /**
      * Return the first 4 banners from the CMS
      * @return mixed
      */
-    public function getLimitBanners() {
+    public function getLimitBanners()
+    {
         return $this->Banners()->sort('SortField ASC')->limit(4);
     }
 
-    public function ShowLoginBox() {
+    public function ShowLoginBox()
+    {
         $hasFailedLogin = Session::get('has_failed_login');
         Session::set('has_failed_login', false);
         return $hasFailedLogin;
-    } 
+    }
 }

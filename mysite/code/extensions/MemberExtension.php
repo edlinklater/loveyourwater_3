@@ -5,7 +5,8 @@
  *
  * Add love your water Member fields
  */
-class MemberExtension extends DataExtension {
+class MemberExtension extends DataExtension
+{
 
     /**
      * @var array

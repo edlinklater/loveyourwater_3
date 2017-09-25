@@ -12,11 +12,11 @@ require_once('conf/ConfigureFromEnv.php');
 i18n::set_locale('en_US');
 
 CalendarConfig::init(array(
-	'pagetypes' => array(
-		'calendarpage' => array(
-			'eventlist' => 'coming'
-		)
-	)
+    'pagetypes' => array(
+        'calendarpage' => array(
+            'eventlist' => 'coming'
+        )
+    )
 ));
 
 Object::useCustomClass('MemberLoginForm', 'CustomLoginForm');

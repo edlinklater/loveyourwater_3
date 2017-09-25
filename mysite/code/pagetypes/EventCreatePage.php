@@ -1,6 +1,7 @@
 <?php
 
-class EventCreatePage extends Page {
+class EventCreatePage extends Page
+{
 
     private static $db = array(
         'Geometry' => 'Text'
@@ -11,17 +12,18 @@ class EventCreatePage extends Page {
      * @throws ValidationException
      * @throws null
      */
-    public function onAfterWrite() {
+    public function onAfterWrite()
+    {
         parent::onAfterWrite();
 
-        if($this->CanViewType != "OnlyTheseUsers") {
+        if ($this->CanViewType != "OnlyTheseUsers") {
             $this->CanViewType = "OnlyTheseUsers";
             $this->write();
         }
 
         $code = RegistrationPage::config()->user_group;
         $userGroup = Group::get()->filter("Code", $code)->first();
-        if(!$userGroup) {
+        if (!$userGroup) {
             $userGroup = new Group();
             $userGroup->Code = $code;
             $userGroup->Title = $code;
@@ -32,7 +34,8 @@ class EventCreatePage extends Page {
 
 }
 
-class EventCreatePage_Controller extends Page_Controller {
+class EventCreatePage_Controller extends Page_Controller
+{
 
     /**
      * @var array
@@ -45,7 +48,8 @@ class EventCreatePage_Controller extends Page_Controller {
     /**
      *
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
         if (!Member::currentUser()->ID) {
             Security::permissionFailure($this, "You must be logged in to create an event.");
@@ -55,18 +59,19 @@ class EventCreatePage_Controller extends Page_Controller {
     /**
      * @return static
      */
-    public function CreateEvent() {
+    public function CreateEvent()
+    {
 //		$EventID = Convert::raw2sql($this->urlParams['ID']);
 
         $geoField = new LeafletField('Geometry', 'Location', $this);
         $geoField->setDrawOptions(array(
             'rectangle' => false,
-            'circle'    => false
+            'circle' => false
         ));
 
         $fields = new FieldList(
             TextField::create('Title', 'Title', '', 50)
-                ->setAttribute('placeholder','Enter a title')
+                ->setAttribute('placeholder', 'Enter a title')
                 ->setAttribute('required', true)
                 ->addExtraClass('form-control'),
             $startDateTime = DatetimeField::create("StartDateTime", 'Start'),
@@ -81,39 +86,39 @@ class EventCreatePage_Controller extends Page_Controller {
 
         $startDateTime->getDateField()
             ->setConfig('showcalendar', 1)
-            ->setAttribute('placeholder','Enter start date')
+            ->setAttribute('placeholder', 'Enter start date')
             ->setAttribute('readonly', 'true');
 
         $startDateTime->getTimeField()
-            ->setConfig('timeformat', 'HH:mm') 
-            ->setAttribute('placeholder','Enter start time')
-            ->setAttribute('aria-describedby','startTimeHelpBlock');
+            ->setConfig('timeformat', 'HH:mm')
+            ->setAttribute('placeholder', 'Enter start time')
+            ->setAttribute('aria-describedby', 'startTimeHelpBlock');
 
         $endDateTime->getDateField()
             ->setConfig('showcalendar', 1)
-            ->setAttribute('placeholder','Enter end date')
+            ->setAttribute('placeholder', 'Enter end date')
             ->setAttribute('readonly', 'true');
 
         $endDateTime->getTimeField()
-            ->setConfig('timeformat', 'HH:mm') 
-            ->setAttribute('placeholder','Enter end time')
-            ->setAttribute('aria-describedby','endTimeHelpBlock');
+            ->setConfig('timeformat', 'HH:mm')
+            ->setAttribute('placeholder', 'Enter end time')
+            ->setAttribute('aria-describedby', 'endTimeHelpBlock');
 
         $actions = new FieldList(FormAction::create("doCreateEvent")
-                ->setTitle("Create")
-                ->addExtraClass('btn btn-success'));
+            ->setTitle("Create")
+            ->addExtraClass('btn btn-success'));
 
         $requiredFields = new RequiredFields(array('Title', 'StartDateTime', 'EndDateTime'));
 
-		$form = Form::create($this, 'CreateEvent', $fields, $actions, $requiredFields);
-		$form->setTemplate('EventCreateForm');
+        $form = Form::create($this, 'CreateEvent', $fields, $actions, $requiredFields);
+        $form->setTemplate('EventCreateForm');
 
-		// if(is_numeric($eventID) && $eventID > 0) {
-		// 	$event = Event::get()->byID($eventID);
-		// 	if($event->exists() && $event->CreatorID == Member::currentUserID()) {
-		// 		$form->loadDataFrom($event);
-		// 	}
-		// }
+        // if(is_numeric($eventID) && $eventID > 0) {
+        // 	$event = Event::get()->byID($eventID);
+        // 	if($event->exists() && $event->CreatorID == Member::currentUserID()) {
+        // 		$form->loadDataFrom($event);
+        // 	}
+        // }
 
         // initiate the leaflet field js.
         Requirements::customScript('window.leafletfieldInit()');
@@ -128,7 +133,8 @@ class EventCreatePage_Controller extends Page_Controller {
      * @throws ValidationException
      * @throws null
      */
-    public function doCreateEvent($data, $form) {
+    public function doCreateEvent($data, $form)
+    {
 
         // get the start datetime
         $formStartTime = $data['StartDateTime'];
@@ -137,15 +143,16 @@ class EventCreatePage_Controller extends Page_Controller {
         $formEndTime = $data['EndDateTime'];
 
         // if start datetime and end datetime is set
-        if(isset($formStartTime) && is_array($formStartTime)
-            && isset($formEndTime) && is_array($formEndTime)) {
+        if (isset($formStartTime) && is_array($formStartTime)
+            && isset($formEndTime) && is_array($formEndTime)
+        ) {
 
             // convert the datetime arrays into single strings
             $startstr = $formStartTime['date'] . ' ' . $formStartTime['time'];
             $endstr = $formEndTime['date'] . ' ' . $formEndTime['time'];
 
             // validate the start time is less than the end time
-            if(strtotime($startstr) > strtotime($endstr)) {
+            if (strtotime($startstr) > strtotime($endstr)) {
                 $form->sessionMessage('Please review your dates! The end date must be after the start date.', 'bad');
                 return $this->redirectBack();
             }
