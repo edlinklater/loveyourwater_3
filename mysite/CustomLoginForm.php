@@ -34,8 +34,9 @@ class CustomLoginForm extends MemberLoginForm {
 			Requirements::css($customCSS);
 		}
 
-
-			$backURL = HomePage::get_one('HomePage')->Link();
+        if ($home = HomePage::get()->first()) {
+            $backURL = $home->Link();
+        }
 
 
 		if ($checkCurrentUser && Member::currentUser() && Member::logged_in_session_exists()) {

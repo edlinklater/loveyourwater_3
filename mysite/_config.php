@@ -4,12 +4,7 @@ global $project;
 $project = 'mysite';
 
 global $database;
-
-if(SS_ENVIRONMENT_TYPE === 'live') {
-    $database = 'db203872_ss_lyw3_db';
-} else {
-    $database = 'lyw3_db';
-}
+$database = '';
 
 require_once('conf/ConfigureFromEnv.php');
 
