@@ -1,0 +1,55 @@
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+
+  /* Flip around the padding for proper display in narrow viewports */
+  & > .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .navbar {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-logo {
+    height: 60px;
+    margin-top: -15px;
+  }
+
+}
+
+@media (min-width: 768px) {
+  header {
+    background: #052F48 url('../images/bg/header.jpg') no-repeat center top;
+    padding-top: 140px;
+  }
+
+  .navbar-wrapper {
+    top: 89px;
+
+    & > .container {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    .navbar {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    .navbar-default {
+      background-color: #f8f8f8;
+    }
+    .navbar-logo {
+      height: auto;
+      width: 200px;
+      margin-top: -77px;
+    }
+  }
+}
+
