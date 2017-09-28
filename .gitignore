@@ -6,9 +6,11 @@ silverstripe-cache/
 vendor/
 framework/
 calendar/
+display_logic/
 gridfieldextensions/
 themes/simple/
 leafletfield/
+linkable/
 reports/
 siteconfig/
 testsession/
@@ -18,3 +20,4 @@ mix-manifest.json
 node_modules/
 subsites/
 mix.js.map
+_ss_environment.php

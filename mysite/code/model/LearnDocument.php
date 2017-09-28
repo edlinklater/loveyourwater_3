@@ -13,7 +13,7 @@ class LearnDocument extends DataObject
     );
 
     private static $has_one = array(
-        'File' => 'File',
+        'Attachment' => 'Link',
         'Link' => 'LearnPage',
         'Preview' => 'Image'
     );
@@ -32,7 +32,8 @@ class LearnDocument extends DataObject
         $fields->push(TextareaField::create('Description'));
         $fields->push(DropdownField::create('Type', 'Type', singleton('LearnDocument')->dbObject('Type')->enumValues())
             ->setDescription('Will be automatically detected on save.'));
-        $fields->push(UploadField::create('File'));
+
+        $fields->push(LinkField::create('AttachmentID', 'Attachment (link to file or page)')->setAllowedTypes(['URL', 'File']));
         $fields->push(UploadField::create('Preview', 'Preview image'));
 
         return $fields;

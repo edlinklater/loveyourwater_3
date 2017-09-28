@@ -27,7 +27,7 @@ class LearnPage extends Page
             ->addComponent(new GridFieldOrderableRows('SortField'));
 
         $documentConfig->getComponentByType('GridFieldDataColumns')->setDisplayFields(array(
-            'File.Filename' => 'Filename'
+            'Attachment.LinkURL' => 'Filename / URL'
         ));
 
         $fields->addFieldToTab("Root.Documents",
