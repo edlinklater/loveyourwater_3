@@ -11,7 +11,7 @@
               <% if $SiteConfig.Logo %>
                 <img src="$SiteConfig.Logo.URL" class="navbar-logo" alt="">
               <% else %>
-                <img src="$ThemeDir/assets/images/logo.png" class="navbar-logo" alt="">
+                <img src="$ThemeDir/assets/images/logo.png" class="navbar-logo" alt="$SiteConfig.Title">
               <% end_if %>
 
             </a>
