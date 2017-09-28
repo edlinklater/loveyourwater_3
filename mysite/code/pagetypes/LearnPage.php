@@ -10,7 +10,8 @@ class LearnPage extends Page
     );
 
     private static $has_many = array(
-        'Documents' => 'LearnDocument.Link'
+        'Documents' => 'LearnDocument.Link',
+        'Videos' => 'LearnVideo.Link',
     );
 
     public function getCMSFields()
@@ -25,14 +26,23 @@ class LearnPage extends Page
 
         $documentConfig = GridFieldConfig_RecordEditor::create()
             ->addComponent(new GridFieldOrderableRows('SortField'));
-
         $documentConfig->getComponentByType('GridFieldDataColumns')->setDisplayFields(array(
             'Attachment.LinkURL' => 'Filename / URL'
         ));
-
         $fields->addFieldToTab("Root.Documents",
             GridField::create('Documents', 'Documents', $this->Documents())
                 ->setConfig($documentConfig)
+        );
+
+        $videoConfig = GridFieldConfig_RecordEditor::create()
+            ->addComponent(new GridFieldOrderableRows('SortField'));
+        $videoConfig->getComponentByType('GridFieldDataColumns')->setDisplayFields([
+            'Title' => 'Title',
+            'VideoID' => 'YouTube Video',
+        ]);
+        $fields->addFieldToTab("Root.Videos",
+            GridField::create('Videos', 'Videos', $this->Videos())
+                ->setConfig($videoConfig)
         );
 
         $fields->addFieldToTab("Root.Main",
