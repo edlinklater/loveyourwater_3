@@ -9,7 +9,7 @@
             </button>
             <a class="navbar-brand" href="$BaseURL">
               <% if $SiteConfig.Logo %>
-                <img src="$SiteConfig.Logo.URL" class="navbar-logo" alt="">
+                <img src="$SiteConfig.Logo.URL" class="navbar-logo" alt="$SiteConfig.Title">
               <% else %>
                 <img src="$ThemeDir/assets/images/logo.png" class="navbar-logo" alt="$SiteConfig.Title">
               <% end_if %>
