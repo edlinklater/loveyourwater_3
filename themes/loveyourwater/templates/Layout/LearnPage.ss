@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron--brand">
   <div class="container">
     <h1>$Title</h1>
-    <% if Summary %><p>$Summary</p><% end_if %>
+    <% if $Summary %><p>$Summary</p><% end_if %>
   </div>
 </div>
 
@@ -61,7 +61,6 @@
               </div>
             </div>
 
-
           </div>
 
         <% end_loop %>
@@ -70,6 +69,30 @@
       </div>
       <div class="col-lg-4 document-panel">
         <h3>Useful videos</h3>
+
+        <div class="row">
+          <% loop $Videos %>
+
+          <div class="col-lg-12 document-item">
+            <div class="row">
+              <div class="col-lg-12 text-center">
+                <div class="heading-row clearfix">
+                  <h4>$Title</h4>
+                </div>
+
+                <div class="ytcontainer">
+                  <iframe src="https://www.youtube.com/embed/{$VideoID}?autohide=1&showinfo=0" frameborder="0" allowfullscreen class="ytvideo"></iframe>
+                </div>
+
+                <div class="description-row">
+                  $Description
+              </div>
+            </div>
+          </div>
+
+          <% end_loop %>
+        </div>
       </div>
     </div>
   </div>
+</div>
