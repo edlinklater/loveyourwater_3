@@ -12,3 +12,9 @@ leafletfield/
 reports/
 siteconfig/
 testsession/
+themes/lyc/
+themes/lyc2012/
+mix-manifest.json
+node_modules/
+subsites/
+mix.js.map

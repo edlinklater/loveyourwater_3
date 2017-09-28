@@ -4,111 +4,99 @@ Brand Primary: #33CCCC
 
 */
 
-.navbar-logo {
-	width: 100px;
-	margin-top: -10px;
-}
-
 .jumbotron {
-	padding-top: 80px;
+  padding-top: 80px;
 }
 
 .jumbotron--brand {
-	background-color: #33CCCC;
-	color: #fff;
+  background-color: #33CCCC;
+  color: #fff;
 }
 
 .heading-block {
-	/*width: 100%;*/
-	text-align: center;
-	padding: 1em;
+  text-align: center;
+  padding: 1em;
 }
 
 .heading-block .glyphicon {
-	font-size: 3em;
-	line-height: 2.4em;
+  font-size: 3em;
+  line-height: 2.4em;
 }
 
 .heading--brand {
-	background-color: #33CCCC;
-	color: #fff;
+  background-color: #33CCCC;
+  color: #fff;
 }
 
 .heading-block--circle {
-	border-radius: 200px;
-	width: 130px;
-	height: 130px;
-	margin: auto;
+  border-radius: 200px;
+  width: 130px;
+  height: 130px;
+  margin: auto;
 }
 
 .embed-container {
-	position: relative; 
-	padding-bottom: 45%; 
-	margin-bottom: 3em;
-	height: 0; 
-	overflow: hidden; 
-	max-width: 100%; 
-	height: auto; 
-} 
-.embed-container iframe, 
-.embed-container object, 
-.embed-container embed {
-	position: absolute; 
-	top: 0; 
-	left: 0; 
-	width: 100%; 
-	height: 100%;
+  position: relative;
+  padding-bottom: 45%;
+  margin-bottom: 3em;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+
+  iframe, object, embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
-
 #Remember {
-	display: none;
+  display: none;
 }
 
 .CalendarPage .EventList {
-	padding-top: 1em;
+  padding-top: 1em;
 
-	.event {
-		padding: 20px;
+  .event {
+    padding: 20px;
 
-		.content {
-			margin-left: 120px;
-		}
-	}
+    .content {
+      margin-left: 120px;
+    }
+  }
 }
 
 .carousel-inner .item {
-	background-repeat: none;
-	background-position: center center;
-	background-size: cover;
+  background-repeat: none;
+  background-position: center center;
+  background-size: cover;
 }
 
 .footer {
-	clear: both;
+  clear: both;
 }
 
 @media screen and (max-width: 768px) {
-	.navbar-logo {
-		width: 75px;
-		margin-top: -15px;
-	}
-	.carousel-caption h1 {
-		font-size: 30px;
-	}
-	.search.pull-right {
-		clear: left;
-		float: left !important;
-		margin-top: 20px;
-	}
-	.search.pull-right .form-inline {
-		clear: left;
-	}
+  .carousel-caption h1 {
+    font-size: 30px;
+  }
+  .search.pull-right {
+    clear: left;
+    float: left !important;
+    margin-top: 20px;
+  }
+  .search.pull-right .form-inline {
+    clear: left;
+  }
 }
 
 @media screen and (min-width: 768px) {
-	.carousel-caption {
-		/*margin-top: 80px;*/
-		left: 10%;
-		right: 10%;
-	}
+  .carousel-caption {
+    /*margin-top: 80px;*/
+    left: 10%;
+    right: 10%;
+  }
 }

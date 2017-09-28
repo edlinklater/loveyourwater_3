@@ -8,7 +8,12 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="$BaseURL">
-                <img src="$ThemeDir/assets/images/logo.png" class="navbar-logo" alt="Love Your Water logo">
+              <% if $SiteConfig.Logo %>
+                <img src="$SiteConfig.Logo.URL" class="navbar-logo" alt="$SiteConfig.Title">
+              <% else %>
+                <img src="$ThemeDir/assets/images/logo.png" class="navbar-logo" alt="$SiteConfig.Title">
+              <% end_if %>
+
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -17,10 +22,12 @@
                     <li><a href="$Link">$MenuTitle</a></li>
                 <% end_loop %>
             </ul>
-    
+
+          <% if $SiteConfig.AllowLogin %>
             <ul class="nav navbar-nav navbar-right">
                 <% include Member %>
             </ul>
+          <% end_if %>
         </div>
     </div>
 </div>

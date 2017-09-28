@@ -1,7 +1,19 @@
+@import "bootstrap";
 @import "styles/brand";
+
 @import "styles/carousel";
-@import "styles/type";
-@import "styles/event-panel";
 @import "styles/document-panel";
+@import "styles/event-panel";
+@import "styles/header";
+@import "styles/type";
 
 @import "styles/page-learn";
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-bottom: 40px;
+  color: #5a5a5a;
+}

@@ -31,7 +31,7 @@ TestSessionEnvironment:
   extensions:
     - LywTestSessionExtension
   database_templates_path: mysite/tests/fixtures/behat
-  
+
 TestSessionController:
   extensions:
     - LywTestSessionExtension

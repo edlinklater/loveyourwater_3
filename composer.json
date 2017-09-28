@@ -8,7 +8,8 @@
 		"silverstripe-themes/simple": "*",
 		"titledk/silverstripe-calendar": "*",
 		"symbiote/silverstripe-gridfieldextensions": "*@stable",
-		"benmanu/silverstripe-leafletfield": "1.0.0"
+		"benmanu/silverstripe-leafletfield": "1.0.0",
+		"silverstripe/subsites": "^1.3"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "*",
