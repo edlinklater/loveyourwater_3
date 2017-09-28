@@ -25,16 +25,16 @@
 		overflow: hidden;
 	}
 
-	.col-title {
-		border-color: #dbdbdb;
-		border-width: 0px 0px 0px 1px;
-		border-style: solid;
+  .col-title {
+    h4 {
+      font-size: 16px;
+    }
 
-		h4 {
-			margin-left: 10px;
-			font-size: 16px;
-		}
-	}
+    &:not(:first-child) {
+      border: 0 solid #dbdbdb;
+      border-left-width: 1px;
+    }
+  }
 
 	.document-item {
 		margin-bottom: 30px;
