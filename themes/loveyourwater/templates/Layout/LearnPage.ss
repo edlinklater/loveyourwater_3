@@ -86,6 +86,7 @@
 
                 <div class="description-row">
                   $Description
+                </div>
               </div>
             </div>
           </div>
