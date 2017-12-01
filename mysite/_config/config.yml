@@ -20,10 +20,6 @@ Member:
   lock_out_delay_mins:
     60
 
-Event:
-  extensions:
-   - EventExtension
-
 SiteConfig:
   extensions:
    - SiteConfigExtension

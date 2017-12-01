@@ -11,14 +11,6 @@ require_once('conf/ConfigureFromEnv.php');
 // Set the site locale
 i18n::set_locale('en_US');
 
-CalendarConfig::init(array(
-    'pagetypes' => array(
-        'calendarpage' => array(
-            'eventlist' => 'coming'
-        )
-    )
-));
-
 Object::useCustomClass('MemberLoginForm', 'CustomLoginForm');
 Object::useCustomClass('Member_ForgotPasswordEmail', 'LYWMember_ForgotPasswordEmail');
 
