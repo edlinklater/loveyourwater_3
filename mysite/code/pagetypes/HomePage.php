@@ -54,37 +54,6 @@ class HomePage_Controller extends Page_Controller
     }
 
     /**
-     * upcoming events.
-     *
-     * @param  integer $limit define a limit on the returned events
-     * @return ArrayList          of Events
-     */
-    public function getEvents($limit = 4)
-    {
-        return CalendarHelper::coming_events_limited(false, $limit);
-    }
-
-    /**
-     * Return a link to an event on the CalendarPage.
-     */
-    public function getEventLink($ID)
-    {
-        if ($page = CalendarPage::get()->first()) {
-            return $page->Link('detail/' . $ID);
-        }
-    }
-
-    /**
-     * Return a link to the first CalendarPage.
-     */
-    public function getEventsLink()
-    {
-        if ($page = CalendarPage::get()->first()) {
-            return $page->Link();
-        }
-    }
-
-    /**
      * Return the default image from Siteconfig
      * @return mixed
      */
