@@ -120,4 +120,13 @@ class Event extends DataObject
             $title
         );
     }
+
+    public function SiteName()
+    {
+        if ($this->SubsiteID) {
+            return $this->Subsite()->Title;
+        }
+
+        return SiteConfig::get()->filter('SubsiteID', 0)->first()->Title;
+    }
 }
