@@ -22,7 +22,10 @@ class EventController extends Controller
     {
         $event = Event::get()->filter('Code', $this->request->param('ID'))->first();
         if ($event->exists()) {
-            return ['Event' => $event];
+            return [
+                'Title' => $event->Name,
+                'Event' => $event
+            ];
         }
 
         return new SS_HTTPResponse('', 404);
