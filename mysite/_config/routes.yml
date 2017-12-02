@@ -1,0 +1,9 @@
+---
+Name: routes
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+Director:
+  rules:
+    'event': 'EventController'
