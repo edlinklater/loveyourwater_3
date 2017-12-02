@@ -120,4 +120,9 @@ class Event extends DataObject
             $title
         );
     }
+
+    public static function getRegions()
+    {
+
+    }
 }
