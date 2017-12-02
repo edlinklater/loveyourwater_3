@@ -107,6 +107,14 @@ class Event extends DataObject
         return $StartTime->Format('jS F Y');
     }
 
+    public function ShortLink()
+    {
+        return Controller::join_links(
+            'event',
+            $this->Code
+        );
+    }
+
     public function Link()
     {
         $filter = URLSegmentFilter::create();
@@ -119,6 +127,15 @@ class Event extends DataObject
             $region,
             $title
         );
+    }
+
+    public function SiteName()
+    {
+        if ($this->SubsiteID) {
+            return $this->Subsite()->Title;
+        }
+
+        return SiteConfig::get()->filter('SubsiteID', 0)->first()->Title;
     }
 
     public static function getRegions()

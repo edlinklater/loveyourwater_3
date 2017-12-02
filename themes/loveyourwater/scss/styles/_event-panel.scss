@@ -24,27 +24,18 @@
     float: left;
     width: 42px;
     height: 40px;
-    background-color: #fff;
-    background-position: 50% 50%;
-    background-image: url(../images/placeholders/badge.png);
+    background: #fff url(../images/placeholders/badge.png) 50% 50%;
 }
-
-    .event-badge-coastlines {
-        // @todo to be implemented
-    }
-
-
 
 .eventFullDetails .fatDate {
     width: 25%;
 }
 
-
 .event-panel {
     display: block;
     color: #1066b2;
     overflow: hidden;
-    
+
     &, &:hover {
         text-decoration: none;
     }
@@ -57,7 +48,6 @@
     }
 
     .event-body {
-        display: block;
         display: table;
         overflow: hidden;
     }
