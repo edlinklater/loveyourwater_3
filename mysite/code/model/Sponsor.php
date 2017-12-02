@@ -21,7 +21,7 @@ class Sponsor extends DataObject
         $fields = parent::getCMSFields();
 
         if (class_exists('Subsite')) {
-            $fields->push(new HiddenField('SubsiteID', 'SubsiteID', Subsite::currentSubsiteID()));
+            $fields->push(HiddenField::create('SubsiteID', 'SubsiteID', Subsite::currentSubsiteID()));
         }
 
         return $fields;

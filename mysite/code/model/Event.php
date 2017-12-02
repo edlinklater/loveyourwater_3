@@ -49,17 +49,16 @@ class Event extends DataObject
     {
         $fields = parent::getCMSFields();
 
-        if(class_exists('Subsite')){
-            $fields->push(new HiddenField('SubsiteID','SubsiteID', Subsite::currentSubsiteID()));
+        if (class_exists('Subsite')) {
+            $fields->push(HiddenField::create('SubsiteID', 'SubsiteID', Subsite::currentSubsiteID()));
         }
 
         $fields->replaceField('Code', ReadonlyField::create('Code'));
 
         $sortableField = $fields->dataFieldByName('Sponsors');
-        if($sortableField instanceof GridField)
-        {
+        if ($sortableField instanceof GridField) {
             $sortableFieldConfig = $sortableField->getConfig();
-            $sortableFieldConfig->addComponent(new GridFieldOrderableRows('SortOrder'));
+            $sortableFieldConfig->addComponent(GridFieldOrderableRows::create('SortOrder'));
         }
 
         return $fields;
@@ -93,18 +92,15 @@ class Event extends DataObject
         $StartTime = $this->dbObject('StartTime');
         $EndTime = $this->dbObject('EndTime');
 
-        if($StartTime->Year() != $EndTime->Year())
-        {
+        if ($StartTime->Year() != $EndTime->Year()) {
             return $StartTime->Format('jS F Y') . ' &ndash; ' . $EndTime->Format('jS F Y');
         }
 
-        if($StartTime->Month() != $EndTime->Month())
-        {
+        if ($StartTime->Month() != $EndTime->Month()) {
             return $StartTime->Format('jS F') . ' &ndash; ' . $EndTime->Format('jS F Y');
         }
 
-        if($StartTime->DayOfMonth() != $EndTime->DayOfMonth())
-        {
+        if ($StartTime->DayOfMonth() != $EndTime->DayOfMonth()) {
             return $StartTime->Format('jS') . ' &ndash; ' . $EndTime->Format('jS F Y');
         }
 
