@@ -107,6 +107,14 @@ class Event extends DataObject
         return $StartTime->Format('jS F Y');
     }
 
+    public function ShortLink()
+    {
+        return Controller::join_links(
+            'event',
+            $this->Code
+        );
+    }
+
     public function Link()
     {
         $filter = URLSegmentFilter::create();
