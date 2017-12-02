@@ -20,7 +20,7 @@ class Event extends DataObject
     ];
 
     private static $has_many = [
-//        'Registrations' => 'EventRegistration',
+        'Registrations' => 'EventRegistration',
     ];
 
     private static $many_many = [
