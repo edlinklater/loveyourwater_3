@@ -1,0 +1,30 @@
+/**
+ * Maps Bootstrap to the native SilverStripe Form class structure;
+ * Might want to replace with some hand-written HTML in the future.
+ */
+
+#Form_CreateEventForm {
+  input[type=text] {
+    @extend .form-control;
+  }
+
+  .fieldholder-small {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .fieldholder-small-label {
+    min-width: 50px;
+  }
+
+  .date,
+  .time {
+    width: 45%;
+  }
+
+  textarea {
+    width: 100%;
+  }
+}

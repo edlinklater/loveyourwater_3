@@ -5,6 +5,10 @@
 </div>
 
 <div class="container">
-  $Content
-  $Form
+  <div class="row">
+    <div class="col-md-8">
+      $Content
+      $Form
+    </div>
+  </div>
 </div>
