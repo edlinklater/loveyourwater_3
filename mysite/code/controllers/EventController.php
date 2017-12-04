@@ -90,18 +90,24 @@ class EventController extends Controller
 //        $geoField->setDrawOptions(['rectangle' => false, 'circle' => false]);
 //        Requirements::customScript('window.leafletfieldInit()');
 
+        Requirements::javascript('https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.1/trix.js');
+        Requirements::css('https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.1/trix.css');
+
         $fields = FieldList::create(
             TextField::create('Name', 'Title', '', 200)
                 ->setAttribute('required', true),
+            TextField::create('Summary'),
             DropdownField::create('Region', 'Region', (new Event)->obj('Region')->enumValues()),
             FieldGroup::create(
                 HeaderField::create('DateHeader', 'Dates', 3),
                 $startField = DateTimeField::create('StartTime', 'Start'),
                 $endField = DateTimeField::create('EndTime', 'End')
             ),
-            TextField::create('Summary'),
-            TextareaField::create('Content', 'Description'),
-            CheckboxField::create('Active', 'Publicly visible')
+
+            LabelField::create('ContentLabel', 'Details'),
+            HiddenField::create('Content', 'Description'),
+            LiteralField::create('ContentTrix', '<trix-editor input="Form_CreateEventForm_Content"></trix-editor>'),
+            CheckboxField::create('Active', 'Publicly advertise this event on Sustainable Coastlines\' websites')->setValue(true)
         );
 
         $startField->getDateField()

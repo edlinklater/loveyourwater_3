@@ -8,11 +8,19 @@
     @extend .form-control;
   }
 
+  .field {
+    margin-bottom: 1rem;
+  }
+
   .fieldholder-small {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+
+    .field {
+      margin-bottom: 0;
+    }
   }
 
   .fieldholder-small-label {
@@ -24,7 +32,19 @@
     width: 45%;
   }
 
+  .checkbox input[type="checkbox"] {
+    margin-left: 0;
+  }
+
   textarea {
     width: 100%;
+  }
+
+  trix-editor {
+    min-height: 20em;
+  }
+
+  .trix-button-group {
+    margin-bottom: 5px;
   }
 }
