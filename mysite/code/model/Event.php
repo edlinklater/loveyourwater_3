@@ -137,4 +137,9 @@ class Event extends DataObject
 
         return SiteConfig::get()->filter('SubsiteID', 0)->first()->Title;
     }
+
+    public static function getRegions()
+    {
+
+    }
 }

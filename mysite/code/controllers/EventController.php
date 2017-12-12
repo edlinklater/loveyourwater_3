@@ -3,10 +3,20 @@
 class EventController extends Controller
 {
     private static $url_handlers = [
-        '$ID/RegisterForm' => 'RegisterForm',
-        '$ID/register' => 'register',
+        'CreateEventForm' => 'CreateEventForm',
+        'create' => 'createevent',
+        '$ID!/RegisterForm' => 'RegisterForm',
+        '$ID!/register' => 'register',
         '$ID!/$Region/$Segment' => 'index',
     ];
+
+    private static $allowed_actions = [
+        'createevent', 'CreateEventForm'
+    ];
+
+    public function EditorToolbar() {
+        return HtmlEditorField_Toolbar::create($this, 'EditorToolbar');
+    }
 
     public function Link()
     {
@@ -21,6 +31,7 @@ class EventController extends Controller
     public function index()
     {
         $event = Event::get()->filter('Code', $this->request->param('ID'))->first();
+
         if ($event->exists()) {
             return [
                 'Title' => $event->Name,
@@ -69,5 +80,60 @@ class EventController extends Controller
         }
 
         return new ArrayList($visible);
+    }
+
+    public function createevent()
+    {
+        return ['Form' => $this->CreateEventForm()];
+    }
+
+    public function CreateEventForm()
+    {
+//        $geoField = LeafletField::create('Geometry', 'Location', $this);
+//        $geoField->setDrawOptions(['rectangle' => false, 'circle' => false]);
+//        Requirements::customScript('window.leafletfieldInit()');
+
+        Requirements::javascript('https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.1/trix.js');
+        Requirements::css('https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.1/trix.css');
+
+        $fields = FieldList::create(
+            TextField::create('Name', 'Title', '', 200)
+                ->setAttribute('required', true),
+            TextField::create('Summary'),
+            DropdownField::create('Region', 'Region', (new Event)->obj('Region')->enumValues()),
+            FieldGroup::create(
+                HeaderField::create('DateHeader', 'Dates', 3),
+                $startField = DateTimeField::create('StartTime', 'Start'),
+                $endField = DateTimeField::create('EndTime', 'End')
+            ),
+
+            LabelField::create('ContentLabel', 'Details'),
+            HiddenField::create('Content', 'Description'),
+            LiteralField::create('ContentTrix', '<trix-editor input="Form_CreateEventForm_Content"></trix-editor>'),
+            CheckboxField::create('Active', 'Publicly advertise this event on Sustainable Coastlines\' websites')->setValue(true)
+        );
+
+        $startField->getDateField()
+            ->setConfig('showcalendar', 1);
+        $endField->getDateField()
+            ->setConfig('showcalendar', 1);
+
+        return Form::create(
+            $this,
+            'CreateEventForm',
+            $fields,
+            FieldList::create(FormAction::create('doCreateEvent')->setTitle('Create')),
+            RequiredFields::create(['Title', 'Region', 'StartTime', 'EndTime'])
+        );
+    }
+
+    public function doCreateEvent($data, Form $form)
+    {
+        $event = new Event();
+        $form->saveInto($event);
+        $event->CreatorID = Member::currentUserID();
+        $event->write();
+
+        return $this->redirect($event->Link());
     }
 }
